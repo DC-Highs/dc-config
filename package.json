@@ -15,6 +15,9 @@
     "configuration",
     "dc highs"
   ],
+  "scripts": {
+    "build": "tsc"
+  },
   "author": "Marcuth",
   "license": "MIT",
   "type": "commonjs",
