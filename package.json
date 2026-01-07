@@ -1,12 +1,20 @@
 {
   "name": "@dchighs/dc-config",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "description": "A library to handle configuration for Dragon City.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/*",
+    "!/**/__tests__"
+  ],
+  "keywords": [
+    "dragon city",
+    "dc",
+    "configuration",
+    "dc highs"
+  ],
   "author": "Marcuth",
   "license": "MIT",
   "type": "commonjs",
