@@ -1,15 +1,13 @@
-import { ConfigFilterItem, ConfigLanguage, ConfigPlatform } from "@dchighs/dc-core"
 import axios from "axios"
 
-import { ConfigFilter } from "./enums/config-filter"
+import { ConfigFilter, ConfigLanguage, ConfigPlatform } from "./enums"
 import { GameConfigDto } from "./dtos/game-config"
-import { ItemsWrapper } from "./wrappers/items-wrapper"
 
 export type ConfigOptions = {
     language: ConfigLanguage | `${ConfigLanguage}`
-    filter?: Array<ConfigFilterItem | `${ConfigFilter}`>
+    filter?: Array<ConfigFilter | `${ConfigFilter}`>
     platform: ConfigPlatform | `${ConfigPlatform}`
-    data: any
+    data: GameConfigDto
 }
 
 export type CreateOptions = Omit<
@@ -30,14 +28,12 @@ export class Config {
     readonly langauge: ConfigLanguage
     readonly filter?: ConfigFilter[]
     readonly data: GameConfigDto
-    readonly items: ItemsWrapper
 
     constructor({ data, language, platform, filter }: ConfigOptions) {
         this.data = data
         this.langauge = language as ConfigLanguage
         this.platform = platform as ConfigPlatform
         this.filter = filter ? filter as ConfigFilter[] : undefined
-        this.items = new ItemsWrapper(this)
     }
 
     static async create({
