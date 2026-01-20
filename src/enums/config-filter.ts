@@ -1,3 +1,3 @@
-import { ConfigFilterItem } from "@dchighs/dc-core"
+import { ConfigFilter } from "@dchighs/dc-core"
 
-export { ConfigFilterItem as ConfigFilter }
+export { ConfigFilter }
