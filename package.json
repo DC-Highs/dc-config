@@ -28,7 +28,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@dchighs/dc-core": "^0.0.2",
     "axios": "^1.13.2"
+  },
+  "peerDependencies": {
+    "@dchighs/dc-core": "^0.3.0"
   }
 }
