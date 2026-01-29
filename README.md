@@ -1,5 +1,7 @@
 # @dchighs/dc-config
 
+> ⚠️ **Note**: Don't ask me how to get your URL, Auth Token, or User ID; I won't answer you. If you don't know how to use this, it's because you shouldn't.
+
 **@dchighs/dc-config** is a package for accessing game configuration data from [Dragon City](https://dragoncitygame.com/) (this is not an official SocialPoint library; it is fan-made).
 
 ## 📦 Installation
