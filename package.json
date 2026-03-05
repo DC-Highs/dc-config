@@ -16,7 +16,8 @@
     "dc highs"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "update-dto": "ts-node scripts/update-dto.ts"
   },
   "author": "Marcuth",
   "license": "MIT",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@marcuth/env": "^0.0.1",
     "@types/node": "^25.0.3",
+    "quicktype-core": "^23.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },

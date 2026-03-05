@@ -1,0 +1,73 @@
+name: Renew Game Config Interface
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Todo dia às 13:00 (Horário da Espanha / 12:00 UTC)
+  workflow_dispatch: # Permite rodar manualmente pelo GitHub
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch and Generate Interface
+        env:
+          GAME_CONFIG_URL: ${{ secrets.GAME_CONFIG_URL }}
+          GAME_USER_ID: ${{ secrets.GAME_USER_ID }}
+          GAME_AUTH_TOKEN: ${{ secrets.GAME_AUTH_TOKEN }}
+        run: npm run update-dto
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code src/dtos/game-config.ts || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Update Version, Commit and Push
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Incrementa versão sem criar tag git automática (vamos fazer o commit manual)
+          npm version patch --no-git-tag-version
+          
+          git add src/dtos/game-config.ts package.json package-lock.json
+          git commit -m "chore: update game-config interface and bump version [skip ci]"
+          git push
+
+      - name: Publish to NPM
+        if: steps.git-check.outputs.changes == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Build do projeto antes de publicar (necessário se o build gerar dist/)
+          npm run build
+          npm publish --access public
+
+      - name: Notify Discord
+        if: steps.git-check.outputs.changes == 'true'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          MESSAGE="🚀 **New version of @dchighs/dc-config library published!**\n\n- \`GameConfigDto\` interface updated from current JSON.\n- New type definitions automatically generated.\n- Updated version: \`$VERSION\`\n- Status: Successfully published to NPM."
+          
+          curl -H "Content-Type: application/json" \
+               -d "{\"content\": \"$MESSAGE\"}" \
+               $DISCORD_WEBHOOK
