@@ -3593,7 +3593,6 @@ export interface GoldBoost {
     gold_boost_3: number
     gold_boost_4: number
     gold_boost_5: number
-    gold_boost_6: number
 }
 
 export interface GradeMasterPoint {
