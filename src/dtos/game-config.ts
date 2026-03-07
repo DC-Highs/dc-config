@@ -1185,10 +1185,10 @@ export interface MatchReward {
     "album_pack.temp"?:         number
     w_token?:                   number
     keys?:                      number
+    li_token?:                  number
     wd_token?:                  number
     el_token?:                  number
     m_token?:                   number
-    li_token?:                  number
     "rank_up_coin.common"?:     number
     "rank_up_coin.rare"?:       number
     "rank_up_coin.very_rare"?:  number
@@ -2372,22 +2372,21 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The0
-    "3":    The3
-    "4":    The12
+    "2":    The2
+    "3":    The11
+    "4":    The10
     "5":    The10
     "6":    The10
-    "7":    The10
-    "8":    The12
-    "9":    The9
+    "7":    The11
+    "8":    The8
+    "9":    The10
     "10":   The10
-    "11":   The10
-    "12":   The12
+    "11":   The11
+    "12":   The10
     "13":   The10
-    "14":   The10
-    "15":   The12
-    "16":   The16
-    "17":   The12
+    "14":   The11
+    "15":   The15
+    "16":   The11
     canvas: Canva[]
 }
 
@@ -2400,7 +2399,7 @@ export interface The0 {
     hud_button:            The0_HudButton
     id:                    number
     min_level:             number
-    popup_frequency?:      string
+    popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
     slides:                The0_Slide[]
@@ -2414,9 +2413,9 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key?:      string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2459,13 +2458,13 @@ export interface The10 {
 }
 
 export interface The10_Slide {
+    content_localized_key?:     string
     custom_title_localized_key: string
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
-    content_localized_key?:     string
     forceClose?:                boolean
 }
 
@@ -2476,11 +2475,11 @@ export interface MultipleButton {
     glint:              boolean
     key:                Key
     link:               string
-    linkItemId?:        number | string
     normalizedPosition: NormalizedPosition
     size:               Size
     spineAsset:         SpineAsset
     style:              Style
+    linkItemId?:        number | string
 }
 
 export enum AnimationPlace {
@@ -2516,7 +2515,7 @@ export enum SlideType {
     FullImage = "FullImage",
 }
 
-export interface The12 {
+export interface The11 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2534,7 +2533,7 @@ export interface The12 {
     start_ts:              string
 }
 
-export interface The16 {
+export interface The15 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2554,12 +2553,12 @@ export interface The16 {
     start_ts:              string
 }
 
-export interface The3 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     end_ts:                string
-    hud_button:            The3_HudButton
+    hud_button:            The2_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2568,12 +2567,12 @@ export interface The3 {
     start_ts:              string
 }
 
-export interface The3_HudButton {
+export interface The2_HudButton {
     file:  string
     title: string
 }
 
-export interface The9 {
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2596,42 +2595,11 @@ export interface The9 {
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number | string
-    end_ts:          number | string
+    start_ts:        number
+    end_ts:          number
     min_level:       number
-    slides:          CanvaSlide[]
+    slides:          The10_Slide[]
     show_on_startup: number
-    priority?:       string
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:     number
-    rotation:   number
-    stroke:     string
-    text_color: string
-    text_key:   string
-    text_size:  number
-    timer:      number
-    type:       string
-    width:      number
-    x:          number
-    y:          number
 }
 
 export interface Perks {
