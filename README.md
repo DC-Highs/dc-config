@@ -10,13 +10,12 @@ Installation is straightforward—simply use your preferred package manager. Her
 
 ```cmd
 npm i @dchighs/dc-config
-
 ```
 
 ## 🚀 Usage
 
 <a href="https://www.buymeacoffee.com/marcuth">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200">
 </a>
 
 ### Fetching configuration for specific parameters
@@ -27,24 +26,23 @@ To create a `Config` instance, you need to provide credentials or use the static
 import { Config, ConfigLanguage, ConfigPlatform, ConfigFilter } from "@dchighs/dc-config"
 
 ;(async () => {
-	const userId = process.env.USER_ID
-	const authToken = process.env.AUTH_TOKEN
-	const url = process.env.URL
+    const userId = process.env.USER_ID
+    const authToken = process.env.AUTH_TOKEN
+    const url = process.env.URL
 
-	const config = await Config.create({
-		url: url,
-		userId: userId,
-		authToken: authToken,
-		language: ConfigLanguage.Turkish, // optional - "en" is default
-		platform: ConfigPlatform.Android, // optional - "ios" is default
-		filter: [ConfigFilter.Items] // optional - undefined is default
-	})
-	
-	const data = config.data
-	
-	console.log(data)
+    const config = await Config.create({
+        url: url,
+        userId: userId,
+        authToken: authToken,
+        language: ConfigLanguage.Turkish, // optional - "en" is default
+        platform: ConfigPlatform.Android, // optional - "ios" is default
+        filter: [ConfigFilter.Items] // optional - undefined is default
+    })
+
+    const data = config.data
+
+    console.log(data)
 })();
-
 ```
 
 ---
@@ -58,17 +56,43 @@ import { Config, ConfigLanguage, ConfigPlatform, GameConfigDto } from "@dchighs/
 import fs from "node:fs"
 
 ;(async () => {
-	const filePath = "config.json"
-	const contentString = await fs.promises.readFile(filePath, { encoding: "utf-8" })
-	const data = JSON.parse(contentString) as GameConfigDto
+    const filePath = "config.json"
+    const contentString = await fs.promises.readFile(filePath, { encoding: "utf-8" })
+    const data = JSON.parse(contentString) as GameConfigDto
 
-	const config = new Config({
-		language: ConfigLanguage.Turkish,
-		platform: ConfigPlatform.Android,
-		data: data
-	})
+    const config = new Config({
+        language: ConfigLanguage.Turkish,
+        platform: ConfigPlatform.Android,
+        data: data
+    })
 })();
+```
 
+---
+
+### Fetching a raw configuration from a URL
+
+If you have a full raw JSON file and want to fetch it and filter specific keys:
+
+```ts
+import { Config, ConfigFilter, ConfigLanguage } from "@dchighs/dc-config"
+
+;(async () => {
+    const rawUrl = "https://example.com/config.json"
+    
+    // Using createRaw to get a Config instance
+    const config = await Config.createRaw({
+        url: rawUrl,
+        filter: [ConfigFilter.Items],
+        language: ConfigLanguage.English
+    })
+
+    // Or using fetchRaw to get just the data (GameConfigDto)
+    const data = await Config.fetchRaw({
+        url: rawUrl,
+        filter: [ConfigFilter.Items]
+    })
+})();
 ```
 
 ---
