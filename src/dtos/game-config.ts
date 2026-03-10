@@ -1316,7 +1316,7 @@ export interface FogIsland {
 export interface ActionElement {
     id:                number
     type:              ActionType
-    tid_name:          TidName
+    tid_name:          ActionTidName
     image:             Image
     pool_percent:      number
     max_points:        number
@@ -1342,7 +1342,7 @@ export enum Image {
     ICInfoActionPvpPNG = "ic-info-action-pvp.png",
 }
 
-export enum TidName {
+export enum ActionTidName {
     TidGridIslandsBreedDragons = "tid_grid_islands_breed_dragons",
     TidGridIslandsCollectFarmFood = "tid_grid_islands_collect_farm_food",
     TidGridIslandsCollectGold = "tid_grid_islands_collect_gold",
@@ -1565,6 +1565,7 @@ export enum FightBackgroundID {
     BgBattleBackgroundMiMidsummerMisery = "bg_battle_background_mi_midsummer_misery",
     BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
     BgBattleBackgroundMiRebornRetold = "bg_battle_background_mi_reborn_retold",
+    BgBattleBackgroundMiSpringB = "bg_battle_background_mi_spring_b",
     BgBattleBackgroundMiValentinesVault = "bg_battle_background_mi_valentines_vault",
     BgBattleBackgroundMr101_MythicalElixir = "bg_battle_background_mr_101_mythical_elixir",
     BgBattleBackgroundMr102_MythicalCryogenic = "bg_battle_background_mr_102_mythical_cryogenic",
@@ -2296,7 +2297,7 @@ export interface Cloud {
 
 export interface MazeIslandIsland {
     id:                               number
-    tid_name:                         string
+    tid_name:                         IslandTidName
     name:                             string
     availability:                     TimerIntervalElement
     paths:                            number[]
@@ -2319,7 +2320,15 @@ export interface MazeIslandIsland {
     mobile_building_position:         number[]
     active_platforms:                 ValueClass
     help_view_id:                     number
-    sound_tag:                        string
+    sound_tag:                        FluffySoundTag
+}
+
+export enum FluffySoundTag {
+    Fantasy = "FANTASY",
+}
+
+export enum IslandTidName {
+    TidMiGenericName = "tid_mi_generic_name",
 }
 
 export interface MazeIslandNode {
@@ -2348,6 +2357,9 @@ export interface NodeReward {
     "album_pack_aces.2"?:       number
     "album_pack_aces.4"?:       number
     egg?:                       number
+    "pet_food_pack.s"?:         number
+    "pet_food_pack.m"?:         number
+    "pet_food_pack.l"?:         number
 }
 
 export interface Path {
@@ -2372,19 +2384,20 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
-    "3":    The12
-    "4":    The12
-    "5":    The10
-    "6":    The12
-    "7":    The10
-    "8":    The12
-    "9":    The12
+    "2":    The11
+    "3":    The3
+    "4":    The1
+    "5":    The3
+    "6":    The1
+    "7":    The3
+    "8":    The3
+    "9":    The1
     "10":   The10
     "11":   The11
-    "12":   The12
-    "13":   The10
-    "14":   The10
+    "12":   The1
+    "13":   The1
+    "14":   The14
+    "15":   The15
     canvas: Canva[]
 }
 
@@ -2392,16 +2405,19 @@ export interface The0 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
+    hud_button:            The0_HudButton
     id:                    number
     min_level:             number
-    popup_frequency:       string
-    popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
+}
+
+export interface The0_HudButton {
+    file:  string
+    title: string
 }
 
 export interface The0_Slide {
@@ -2421,25 +2437,6 @@ export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    end_ts:                string
-    hud_button:            The1_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The1_HudButton {
-    file:  string
-    title: string
-}
-
-export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
@@ -2450,11 +2447,11 @@ export interface The10 {
     popup_type:            string
     priority:              number | null
     show_on_startup:       number
-    slides:                The10_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The10_Slide {
+export interface The1_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2462,7 +2459,6 @@ export interface The10_Slide {
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
-    forceClose?:                boolean
 }
 
 export interface MultipleButton {
@@ -2512,14 +2508,14 @@ export enum SlideType {
     FullImage = "FullImage",
 }
 
-export interface The11 {
+export interface The10 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The11_HudButton
+    hud_button:            The10_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2532,13 +2528,73 @@ export interface The11 {
     start_ts:              string
 }
 
-export interface The11_HudButton {
+export interface The10_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The12 {
+export interface The10_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    forceClose?:                boolean
+    header_localized_key:       string
+    image_url:                  string
+    multiple_buttons?:          MultipleButton[]
+    times_to_show:              number
+    type:                       SlideType
+}
+
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The14 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_is_critical:     boolean
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The15 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The10_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2819,7 +2875,7 @@ export interface RunnerIslandIsland {
     zip_file:                  ZipFile
     help_id:                   number
     run_cost:                  number
-    sound_tag:                 FluffySoundTag
+    sound_tag:                 TentacledSoundTag
     mission_pool:              number[]
     sections:                  number[]
     building_tooltip_position: number[]
@@ -2827,7 +2883,7 @@ export interface RunnerIslandIsland {
     milestone_rewards:         number[]
 }
 
-export enum FluffySoundTag {
+export enum TentacledSoundTag {
     Aquatic = "AQUATIC",
 }
 
