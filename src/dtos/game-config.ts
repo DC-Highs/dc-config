@@ -2384,22 +2384,22 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
+    "2":    The11
     "3":    The1
-    "4":    The10
-    "5":    The10
-    "6":    The10
+    "4":    The11
+    "5":    The5
+    "6":    The11
     "7":    The1
     "8":    The8
-    "9":    The1
-    "10":   The10
-    "11":   The1
+    "9":    The11
+    "10":   The1
+    "11":   The11
     "12":   The1
-    "13":   The13
+    "13":   The1
     "14":   The14
-    "15":   The1
-    "16":   The10
-    "17":   The10
+    "15":   The15
+    "16":   The11
+    "17":   The11
     canvas: Canva[]
 }
 
@@ -2458,7 +2458,7 @@ export interface The1_Slide {
     custom_title_localized_key: string
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons?:          PurpleMultipleButton[]
+    multiple_buttons:           PurpleMultipleButton[]
     times_to_show:              number
     type:                       SlideType
     forceClose?:                boolean
@@ -2469,9 +2469,9 @@ export interface PurpleMultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                Key
+    key:                string
     link:               string
-    linkItemId?:        number
+    linkItemId:         number
     normalizedPosition: NormalizedPosition
     size:               Size
     spineAsset:         SpineAsset
@@ -2480,11 +2480,6 @@ export interface PurpleMultipleButton {
 
 export enum AnimationPlace {
     Foreground = "Foreground",
-}
-
-export enum Key {
-    Empty = "",
-    TidNewsApocalypsepathButton = "tid_news_apocalypsepath_button",
 }
 
 export interface NormalizedPosition {
@@ -2511,7 +2506,7 @@ export enum SlideType {
     FullImage = "FullImage",
 }
 
-export interface The10 {
+export interface The11 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2526,7 +2521,7 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface The13 {
+export interface The14 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2542,7 +2537,7 @@ export interface The13 {
     start_ts:              string
 }
 
-export interface The14 {
+export interface The15 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2553,11 +2548,11 @@ export interface The14 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The14_Slide[]
+    slides:                The15_Slide[]
     start_ts:              string
 }
 
-export interface The14_Slide {
+export interface The15_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     forceClose:                 boolean
@@ -2582,6 +2577,50 @@ export interface FluffyMultipleButton {
     style:              Style
 }
 
+export enum Key {
+    Empty = "",
+    TidNewsApocalypsepathButton = "tid_news_apocalypsepath_button",
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The5_Slide[]
+    start_ts:              string
+}
+
+export interface The5_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    multiple_buttons:           TentacledMultipleButton[]
+    times_to_show:              number
+    type:                       SlideType
+    forceClose?:                boolean
+}
+
+export interface TentacledMultipleButton {
+    animation:          AnimationNameEnum
+    animationPlace:     AnimationPlace
+    forceClose:         boolean
+    glint:              boolean
+    key:                Key
+    link:               string
+    normalizedPosition: NormalizedPosition
+    size:               Size
+    spineAsset:         SpineAsset
+    style:              Style
+}
+
 export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2598,7 +2637,7 @@ export interface The8 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The5_Slide[]
     start_ts:              string
 }
 
