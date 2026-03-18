@@ -1634,6 +1634,8 @@ export interface SquareResource {
     "pet_food_pack.s"?: number
     "pet_food_pack.m"?: number
     "pet_food_pack.l"?: number
+    b?:                 number[]
+    chest?:             number
 }
 
 export enum Wall {
@@ -1808,11 +1810,11 @@ export interface LapRewardReward {
     "album_pack.l"?:            number
     "album_pack_aces.2"?:       number
     "pet_food_pack.m"?:         number
+    "pet_food_pack.l"?:         number
     "album_pack.xl"?:           number
     "album_pack_aces.3"?:       number
     "album_pack_aces.generic"?: number
     trade_tickets?:             TradeTicket[]
-    "pet_food_pack.l"?:         number
     "album_pack_aces.4"?:       number
     egg?:                       number[] | number
     seeds?:                     Seed[]
@@ -2384,18 +2386,18 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The11
-    "3":    The1
-    "4":    The11
-    "5":    The5
-    "6":    The11
-    "7":    The1
-    "8":    The8
-    "9":    The11
-    "10":   The1
+    "2":    The10
+    "3":    The11
+    "4":    The10
+    "5":    The11
+    "6":    The6
+    "7":    The11
+    "8":    The10
+    "9":    The9
+    "10":   The10
     "11":   The11
-    "12":   The1
-    "13":   The1
+    "12":   The10
+    "13":   The10
     "14":   The14
     "15":   The15
     "16":   The11
@@ -2423,7 +2425,9 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
+    content_localized_key:      string
     custom_title_localized_key: string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2431,11 +2435,30 @@ export interface The0_Slide {
     slide_type_2:               string
     timer?:                     string
     times_to_show?:             number
-    content_localized_key?:     string
-    header_localized_key?:      string
 }
 
 export interface The1 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The1_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The1_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The10 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2449,11 +2472,11 @@ export interface The1 {
     popup_type:            string
     priority:              number | null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
-export interface The1_Slide {
+export interface The10_Slide {
     content_localized_key?:     string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2517,7 +2540,7 @@ export interface The11 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2582,7 +2605,7 @@ export enum Key {
     TidNewsApocalypsepathButton = "tid_news_apocalypsepath_button",
 }
 
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2593,11 +2616,11 @@ export interface The5 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The5_Slide[]
+    slides:                The6_Slide[]
     start_ts:              string
 }
 
-export interface The5_Slide {
+export interface The6_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2621,14 +2644,14 @@ export interface TentacledMultipleButton {
     style:              Style
 }
 
-export interface The8 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The8_HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2637,14 +2660,8 @@ export interface The8 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The5_Slide[]
+    slides:                The6_Slide[]
     start_ts:              string
-}
-
-export interface The8_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
 }
 
 export interface Canva {
@@ -2653,7 +2670,7 @@ export interface Canva {
     start_ts:        number
     end_ts:          number
     min_level:       number
-    slides:          The1_Slide[]
+    slides:          The10_Slide[]
     show_on_startup: number
 }
 
@@ -2668,7 +2685,7 @@ export interface Perks {
 
 export interface Ability {
     id:         number
-    type:       string
+    type:       AbilityType
     parameters: AbilityParameters
     asset:      CustomForeground
 }
@@ -2676,6 +2693,14 @@ export interface Ability {
 export interface AbilityParameters {
     value:           number
     passiveSkillId?: number
+}
+
+export enum AbilityType {
+    DragonAttackBoost = "dragon_attack_boost",
+    DragonLifeBoost = "dragon_life_boost",
+    IncreaseBreedingChances = "increase_breeding_chances",
+    PhoenixSkill = "phoenix_skill",
+    ReaperSkill = "reaper_skill",
 }
 
 export interface PerksParameter {
@@ -3677,8 +3702,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
