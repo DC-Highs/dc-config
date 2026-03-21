@@ -1682,7 +1682,11 @@ export interface HelpViewSlide {
     image_path?:                    string
     custom_title_localized_tidkey?: string
     animatedAssetName?:             string
-    animationName?:                 string
+    animationName?:                 AnimationNameEnum
+}
+
+export enum AnimationNameEnum {
+    Anim1 = "anim1",
 }
 
 export enum ContentLocalizedKey {
@@ -2382,18 +2386,17 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The11
+    "2":    The10
     "3":    The3
     "4":    The4
-    "5":    The13
+    "5":    The12
     "6":    The6
     "7":    The0
-    "8":    The11
-    "9":    The4
+    "8":    The10
+    "9":    The9
     "10":   The10
-    "11":   The11
-    "12":   The0
-    "13":   The13
+    "11":   The0
+    "12":   The12
     canvas: Canva[]
 }
 
@@ -2424,8 +2427,8 @@ export interface The0_Slide {
 }
 
 export interface PurpleMultipleButton {
-    animation:          string
-    animationPlace:     string
+    animation:          AnimationNameEnum
+    animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
     key:                string
@@ -2433,8 +2436,12 @@ export interface PurpleMultipleButton {
     linkItemId?:        number | string
     normalizedPosition: NormalizedPosition
     size:               Size
-    spineAsset:         string
+    spineAsset:         SpineAsset
     style:              string
+}
+
+export enum AnimationPlace {
+    Foreground = "Foreground",
 }
 
 export interface NormalizedPosition {
@@ -2445,6 +2452,11 @@ export interface NormalizedPosition {
 export interface Size {
     h: number
     w: number
+}
+
+export enum SpineAsset {
+    Empty = "",
+    PointerAnimationV2 = "pointer_animation_v2",
 }
 
 export interface The1 {
@@ -2474,9 +2486,9 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2484,41 +2496,10 @@ export interface The1_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer?:                     string
+    times_to_show?:             number
 }
 
 export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    end_ts:                string
-    hud_button:            The10_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
-}
-
-export interface The10_HudButton {
-    file:  string
-    title: string
-}
-
-export interface The10_Slide {
-    custom_title_localized_key: string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    content_localized_key?:     string
-    header_localized_key?:      string
-}
-
-export interface The11 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2529,11 +2510,11 @@ export interface The11 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The11_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
-export interface The11_Slide {
+export interface The10_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2545,8 +2526,8 @@ export interface The11_Slide {
 }
 
 export interface FluffyMultipleButton {
-    animation:          string
-    animationPlace:     string
+    animation:          AnimationNameEnum
+    animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
     key:                string
@@ -2554,11 +2535,15 @@ export interface FluffyMultipleButton {
     linkItemId:         number
     normalizedPosition: NormalizedPosition
     size:               Size
-    spineAsset:         string
-    style:              string
+    spineAsset:         SpineAsset
+    style:              Style
 }
 
-export interface The13 {
+export enum Style {
+    Transparent = "Transparent",
+}
+
+export interface The12 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2572,7 +2557,7 @@ export interface The13 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The11_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2610,23 +2595,11 @@ export interface The4 {
     hud_button:            The1_HudButton
     id:                    number
     min_level:             number
-    popup_frequency?:      string
+    popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The4_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
-}
-
-export interface The4_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer:                      string
 }
 
 export interface The6 {
@@ -2641,8 +2614,27 @@ export interface The6 {
     popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The10_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
+}
+
+export interface The9 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The9_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The9_HudButton {
+    file:  string
+    title: string
 }
 
 export interface Canva {
@@ -2653,7 +2645,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2662,7 +2653,7 @@ export interface CanvaSlide {
     image_url?:                  string
     times_to_show?:              number
     type?:                       string
-    multiple_buttons?:           PurpleMultipleButton[]
+    multiple_buttons?:           FluffyMultipleButton[]
     bg?:                         string
     content?:                    Content[]
     edit_mode?:                  number
@@ -2673,19 +2664,15 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
+    action:   ContentAction
+    height:   number
+    rotation: number
+    style:    string
+    text_key: string
+    type:     string
+    width:    number
+    x:        number
+    y:        number
 }
 
 export interface ContentAction {
@@ -3671,7 +3658,7 @@ export interface TreeOfLifeRaritySeed {
 
 export interface TreeOfLifePowerup {
     parameters:          BattlesConfigElement[]
-    animation:           Animation[]
+    animation:           AnimationElement[]
     grades_by_rarity:    GradesBy[]
     grades_by_dragon:    GradesBy[]
     visuals:             Visual[]
@@ -3681,7 +3668,7 @@ export interface TreeOfLifePowerup {
     gold_boost:          GoldBoost[]
 }
 
-export interface Animation {
+export interface AnimationElement {
     dragon_grade:          number
     background_color:      string
     dragon_particle_color: string
