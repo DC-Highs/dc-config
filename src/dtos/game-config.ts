@@ -2397,6 +2397,7 @@ export interface News {
     "10":   The10
     "11":   The0
     "12":   The12
+    "13":   The10
     canvas: Canva[]
 }
 
