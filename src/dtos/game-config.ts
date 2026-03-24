@@ -2018,6 +2018,7 @@ export interface BoostModifierClass {
     pr?: number
     wd?: number
     wr?: number
+    mg?: number
 }
 
 export interface CostsCh {
@@ -2391,8 +2392,9 @@ export interface News {
     "4":    The4
     "5":    The3
     "6":    The3
-    "7":    The1
-    "8":    The3
+    "7":    The3
+    "8":    The1
+    "9":    The3
     canvas: Canva[]
 }
 
@@ -2418,7 +2420,7 @@ export interface The0_Slide {
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       string
+    type:                       SlideType
 }
 
 export interface MultipleButton {
@@ -2426,7 +2428,7 @@ export interface MultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                Key
+    key:                string
     link:               string
     normalizedPosition: NormalizedPosition
     size:               Size
@@ -2437,11 +2439,6 @@ export interface MultipleButton {
 
 export enum AnimationPlace {
     Foreground = "Foreground",
-}
-
-export enum Key {
-    Empty = "",
-    TidNewsApocalypsepathButton = "tid_news_apocalypsepath_button",
 }
 
 export interface NormalizedPosition {
@@ -2460,8 +2457,13 @@ export enum SpineAsset {
 }
 
 export enum Style {
+    Blue = "Blue",
     BlueLarge = "BlueLarge",
     Transparent = "Transparent",
+}
+
+export enum SlideType {
+    FullImage = "FullImage",
 }
 
 export interface The1 {
@@ -2489,7 +2491,7 @@ export interface The1_Slide {
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       string
+    type:                       SlideType
     forceClose?:                boolean
 }
 
@@ -2510,9 +2512,9 @@ export interface The2 {
 }
 
 export interface The2_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key?:      string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2571,7 +2573,7 @@ export interface CanvaSlide {
     header_localized_key?:       string
     image_url?:                  string
     times_to_show?:              number
-    type?:                       string
+    type?:                       SlideType
     multiple_buttons?:           MultipleButton[]
     bg?:                         string
     content?:                    Content[]
@@ -2583,15 +2585,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    action:   ContentAction
-    height:   number
-    rotation: number
-    style:    string
-    text_key: string
-    type:     string
-    width:    number
-    x:        number
-    y:        number
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
 }
 
 export interface ContentAction {
