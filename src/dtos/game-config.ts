@@ -1367,8 +1367,15 @@ export enum ActionType {
 
 export interface Currency {
     id:       number
-    tid_name: string
+    tid_name: CurrencyTidName
     actions:  number[]
+}
+
+export enum CurrencyTidName {
+    TidFiCurrencyName = "tid_fi_currency_name",
+    TidGiCurrencyName = "tid_gi_currency_name",
+    TidMazeIslandCurrencyName = "tid_maze_island_currency_name",
+    TidTowerIslandCurrencyName = "tid_tower_island_currency_name",
 }
 
 export interface Hint {
@@ -1493,7 +1500,7 @@ export interface FogIslandParameter {
 
 export interface FogIslandReward {
     id:              number
-    type:            RewardType
+    type:            ViewTypeEnum
     island_id:       number
     reward_id:       number
     last_piece_cost: number
@@ -1501,16 +1508,18 @@ export interface FogIslandReward {
     show_new_badge:  number
 }
 
-export enum RewardType {
+export enum ViewTypeEnum {
     Chest = "CHEST",
+    Dragon = "DRAGON",
     DragonPiece = "DRAGON_PIECE",
     None = "NONE",
+    Resource = "RESOURCE",
     Step = "STEP",
 }
 
 export interface FogIslandSquare {
     id:             number
-    type:           RewardType
+    type:           ViewTypeEnum
     type_id?:       number
     highlight:      number
     x:              number
@@ -1519,6 +1528,11 @@ export interface FogIslandSquare {
     claim_cost:     number
     come_back_cost: number
     reward_id?:     number
+    resource?:      PurpleResource
+}
+
+export interface PurpleResource {
+    b: number[]
 }
 
 export interface GridIsland {
@@ -1561,13 +1575,13 @@ export enum FightBackgroundID {
     BgBattleBackgroundHrFallFriday = "bg_battle_background_hr_fall_friday",
     BgBattleBackgroundHrNewBeginnings = "bg_battle_background_hr_new_beginnings",
     BgBattleBackgroundHrSaintvalentine26 = "bg_battle_background_hr_saintvalentine_26",
+    BgBattleBackgroundMiAprilShowers = "bg_battle_background_mi_april_showers",
     BgBattleBackgroundMiCarnival = "bg_battle_background_mi_carnival",
     BgBattleBackgroundMiDragonmysteries = "bg_battle_background_mi_dragonmysteries",
     BgBattleBackgroundMiEaster2020 = "bg_battle_background_mi_easter2020",
     BgBattleBackgroundMiMidsummerMisery = "bg_battle_background_mi_midsummer_misery",
     BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
     BgBattleBackgroundMiRebornRetold = "bg_battle_background_mi_reborn_retold",
-    BgBattleBackgroundMiSpringB = "bg_battle_background_mi_spring_b",
     BgBattleBackgroundMiValentinesVault = "bg_battle_background_mi_valentines_vault",
     BgBattleBackgroundMr101_MythicalElixir = "bg_battle_background_mr_101_mythical_elixir",
     BgBattleBackgroundMr102_MythicalCryogenic = "bg_battle_background_mr_102_mythical_cryogenic",
@@ -1582,13 +1596,6 @@ export interface GridIslandEnemy {
     view_type:          ViewTypeEnum
     elements_view_type: any[]
     cooldown:           number
-}
-
-export enum ViewTypeEnum {
-    Chest = "CHEST",
-    Dragon = "DRAGON",
-    None = "NONE",
-    Resource = "RESOURCE",
 }
 
 export interface Episode {
@@ -1629,10 +1636,10 @@ export interface GridIslandSquare {
     claim_cost:   number
     wall?:        Wall
     wall_suffix?: WallSuffix
-    resource?:    SquareResource
+    resource?:    FluffyResource
 }
 
-export interface SquareResource {
+export interface FluffyResource {
     "pet_food_pack.s"?: number
     "pet_food_pack.m"?: number
     "pet_food_pack.l"?: number
@@ -2389,17 +2396,18 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The12
-    "3":    The12
-    "4":    The4
+    "2":    The2
+    "3":    The13
+    "4":    The13
     "5":    The5
-    "6":    The0
-    "7":    The0
-    "8":    The0
-    "9":    The0
-    "10":   The0
-    "11":   The0
-    "12":   The12
+    "6":    The6
+    "7":    The7
+    "8":    The1
+    "9":    The10
+    "10":   The10
+    "11":   The1
+    "12":   The1
+    "13":   The13
     canvas: Canva[]
 }
 
@@ -2409,81 +2417,38 @@ export interface The0 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
+    filter_category:       null
+    hud_button:            The0_HudButton
     id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
     min_level:             number
     popup_frequency:       string
     popup_type:            string
+    priority:              null
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
 }
 
+export interface The0_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
 export interface The0_Slide {
-    content_localized_key:      FluffyContentLocalizedKey
+    content_localized_key?:     string
     custom_title_localized_key: string
-    forceClose?:                boolean
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
-    multiple_buttons:           MultipleButton[]
-    times_to_show:              number
-    type:                       SlideType
-}
-
-export enum FluffyContentLocalizedKey {
-    Empty = "",
-    TidNewsEasterraceDesc = "tid_news_easterrace_desc",
-    TidNewsEventifiedarenasDesc = "tid_news_eventifiedarenas_desc",
-    TidNewsMdsEventDesc = "tid_news_mds_event_desc",
-}
-
-export interface MultipleButton {
-    animation:          AnimationNameEnum
-    animationPlace:     AnimationPlace
-    forceClose:         boolean
-    glint:              boolean
-    key:                Key
-    link:               string
-    linkItemId?:        number | string
-    normalizedPosition: NormalizedPosition
-    size:               Size
-    spineAsset:         SpineAsset
-    style:              Style
-}
-
-export enum AnimationPlace {
-    Foreground = "Foreground",
-}
-
-export enum Key {
-    Empty = "",
-    TidNewsApocalypsepathButton = "tid_news_apocalypsepath_button",
-    TidNewsPetsdaypassS1Button = "tid_news_petsdaypass_s1_button",
-    TidNewsPetsdaypassS3Button = "tid_news_petsdaypass_s3_button",
-}
-
-export interface NormalizedPosition {
-    x: number
-    y: number
-}
-
-export interface Size {
-    h: number
-    w: number
-}
-
-export enum SpineAsset {
-    Empty = "",
-    PointerAnimationV2 = "pointer_animation_v2",
-}
-
-export enum Style {
-    Blue = "Blue",
-    BlueLarge = "BlueLarge",
-    Transparent = "Transparent",
-}
-
-export enum SlideType {
-    FullImage = "FullImage",
+    link:                       string
+    link_button_key:            string
+    link_item_id?:              number
+    slide_type:                 string
+    slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
 }
 
 export interface The1 {
@@ -2502,16 +2467,110 @@ export interface The1 {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
+    content_localized_key:      FluffyContentLocalizedKey
     custom_title_localized_key: string
+    forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons:           MultipleButton[]
+    multiple_buttons:           PurpleMultipleButton[]
     times_to_show:              number
     type:                       SlideType
 }
 
-export interface The12 {
+export enum FluffyContentLocalizedKey {
+    Empty = "",
+    TidNewsEasterraceDesc = "tid_news_easterrace_desc",
+    TidNewsMdsEventDesc = "tid_news_mds_event_desc",
+}
+
+export interface PurpleMultipleButton {
+    animation:          AnimationNameEnum
+    animationPlace:     AnimationPlace
+    forceClose:         boolean
+    glint:              boolean
+    key:                Key
+    link:               string
+    linkItemId:         number
+    normalizedPosition: NormalizedPosition
+    size:               Size
+    spineAsset:         SpineAsset
+    style:              Style
+}
+
+export enum AnimationPlace {
+    Foreground = "Foreground",
+}
+
+export enum Key {
+    Empty = "",
+    TidNewsPetsdaypassS1Button = "tid_news_petsdaypass_s1_button",
+    TidNewsPetsdaypassS3Button = "tid_news_petsdaypass_s3_button",
+}
+
+export interface NormalizedPosition {
+    x: number
+    y: number
+}
+
+export interface Size {
+    h: number
+    w: number
+}
+
+export enum SpineAsset {
+    PointerAnimationV2 = "pointer_animation_v2",
+}
+
+export enum Style {
+    Blue = "Blue",
+    Transparent = "Transparent",
+}
+
+export enum SlideType {
+    FullImage = "FullImage",
+}
+
+export interface The10 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The10_Slide[]
+    start_ts:              string
+}
+
+export interface The10_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    forceClose:                 boolean
+    header_localized_key:       string
+    image_url:                  string
+    multiple_buttons:           FluffyMultipleButton[]
+    times_to_show:              number
+    type:                       SlideType
+}
+
+export interface FluffyMultipleButton {
+    animation:          AnimationNameEnum
+    animationPlace:     AnimationPlace
+    forceClose:         boolean
+    glint:              boolean
+    key:                string
+    link:               string
+    linkItemId?:        number | string
+    normalizedPosition: NormalizedPosition
+    size:               Size
+    spineAsset:         string
+    style:              string
+}
+
+export interface The13 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2525,11 +2584,36 @@ export interface The12 {
     popup_type:            string
     priority:              number | null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The4 {
+export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The2_Slide[]
+    start_ts:              string
+}
+
+export interface The2_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    multiple_buttons:           FluffyMultipleButton[]
+    times_to_show:              number
+    type:                       SlideType
+}
+
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2541,38 +2625,40 @@ export interface The4 {
     popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The4_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
-export interface The4_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-}
-
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            HudButton
+    hud_button:            The0_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
     show_on_startup:       number
-    slides:                The4_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The7 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The7_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The7_HudButton {
     file:  string
     title: string
 }
@@ -2585,6 +2671,7 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
+    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2593,7 +2680,7 @@ export interface CanvaSlide {
     image_url?:                  string
     times_to_show?:              number
     type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
+    multiple_buttons?:           PurpleMultipleButton[]
     bg?:                         string
     content?:                    Content[]
     edit_mode?:                  number
