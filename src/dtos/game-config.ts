@@ -1684,7 +1684,7 @@ export enum PopupType {
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         PurpleContentLocalizedKey
+    content_localized_key?:         ContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1698,7 +1698,7 @@ export enum AnimationNameEnum {
     Anim1 = "anim1",
 }
 
-export enum PurpleContentLocalizedKey {
+export enum ContentLocalizedKey {
     Empty = "",
     TidDBCollectionsHelpScreen1 = "tid_db_collections_help_screen_1",
     TidDBCollectionsHelpScreen2 = "tid_db_collections_help_screen_2",
@@ -2397,17 +2397,16 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The13
-    "4":    The13
+    "3":    The12
+    "4":    The12
     "5":    The5
     "6":    The6
-    "7":    The7
+    "7":    The1
     "8":    The1
-    "9":    The10
-    "10":   The10
+    "9":    The1
+    "10":   The1
     "11":   The1
-    "12":   The1
-    "13":   The13
+    "12":   The12
     canvas: Canva[]
 }
 
@@ -2438,9 +2437,9 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key?:      string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2467,30 +2466,24 @@ export interface The1 {
 }
 
 export interface The1_Slide {
-    content_localized_key:      FluffyContentLocalizedKey
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons:           PurpleMultipleButton[]
+    multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
 }
 
-export enum FluffyContentLocalizedKey {
-    Empty = "",
-    TidNewsEasterraceDesc = "tid_news_easterrace_desc",
-    TidNewsMdsEventDesc = "tid_news_mds_event_desc",
-}
-
-export interface PurpleMultipleButton {
+export interface MultipleButton {
     animation:          AnimationNameEnum
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
     key:                Key
     link:               string
-    linkItemId:         number
+    linkItemId?:        number | string
     normalizedPosition: NormalizedPosition
     size:               Size
     spineAsset:         SpineAsset
@@ -2518,11 +2511,13 @@ export interface Size {
 }
 
 export enum SpineAsset {
+    Empty = "",
     PointerAnimationV2 = "pointer_animation_v2",
 }
 
 export enum Style {
     Blue = "Blue",
+    Empty = "",
     Transparent = "Transparent",
 }
 
@@ -2530,47 +2525,7 @@ export enum SlideType {
     FullImage = "FullImage",
 }
 
-export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
-}
-
-export interface The10_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    forceClose:                 boolean
-    header_localized_key:       string
-    image_url:                  string
-    multiple_buttons:           FluffyMultipleButton[]
-    times_to_show:              number
-    type:                       SlideType
-}
-
-export interface FluffyMultipleButton {
-    animation:          AnimationNameEnum
-    animationPlace:     AnimationPlace
-    forceClose:         boolean
-    glint:              boolean
-    key:                string
-    link:               string
-    linkItemId?:        number | string
-    normalizedPosition: NormalizedPosition
-    size:               Size
-    spineAsset:         string
-    style:              string
-}
-
-export interface The13 {
+export interface The12 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2608,7 +2563,7 @@ export interface The2_Slide {
     custom_title_localized_key: string
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons:           FluffyMultipleButton[]
+    multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
 }
@@ -2633,9 +2588,8 @@ export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The0_HudButton
+    hud_button:            The6_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2644,21 +2598,7 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    end_ts:                string
-    hud_button:            The7_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The7_HudButton {
+export interface The6_HudButton {
     file:  string
     title: string
 }
@@ -2671,7 +2611,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2680,7 +2619,7 @@ export interface CanvaSlide {
     image_url?:                  string
     times_to_show?:              number
     type?:                       SlideType
-    multiple_buttons?:           PurpleMultipleButton[]
+    multiple_buttons?:           MultipleButton[]
     bg?:                         string
     content?:                    Content[]
     edit_mode?:                  number
