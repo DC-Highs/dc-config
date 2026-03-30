@@ -2409,6 +2409,7 @@ export interface News {
     "12":   The1
     "13":   The13
     "14":   The1
+    "15":   The1
     canvas: Canva[]
 }
 
@@ -2439,9 +2440,9 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
