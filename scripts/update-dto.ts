@@ -1,8 +1,10 @@
 import { quicktype, InputData, jsonInputForTargetLanguage } from "quicktype-core"
+import path from "node:path"
+import fs from "node:fs"
 import axios from "axios"
-import path from "path"
-import fs from "fs"
+import dotenv from "dotenv"
 
+dotenv.config({ quiet: true, debug: false })
 
 async function quicktypeJSON(targetLanguage: string, typeName: string, jsonString: string) {
     const jsonInput = jsonInputForTargetLanguage(targetLanguage as any)

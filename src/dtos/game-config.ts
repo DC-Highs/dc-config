@@ -657,18 +657,19 @@ export interface Chests {
 }
 
 export interface Chest {
-    id:               number
-    type:             ChestType
-    rewards:          number[]
-    img_name:         string
-    chest_name_key:   string
-    type_name_key:    string
-    level_tiers:      number[]
-    description_key?: string
-    default_reward:   number
-    pool_size:        number
-    gatcha_ids?:      number[]
-    instant?:         boolean | AnimatedCanvas
+    id:                number
+    type:              ChestType
+    rewards:           number[]
+    img_name:          string
+    chest_name_key:    string
+    type_name_key:     string
+    level_tiers:       number[]
+    description_key?:  string
+    default_reward:    number
+    pool_size:         number
+    gatcha_ids?:       number[]
+    instant?:          boolean | AnimatedCanvas
+    foreground_asset?: string
 }
 
 export enum AnimatedCanvas {
@@ -1113,7 +1114,7 @@ export interface Match {
     enemy1:            Enemy1Class
     enemy2:            Enemy1Class
     enemy3:            Enemy1Class
-    requirements1:     Requirements1
+    requirements1:     Requirements
     requirements2:     Requirements
     requirements3:     Requirements
     battle_cooldown:   number
@@ -1129,73 +1130,43 @@ export interface Enemy1Class {
     level?:       number
 }
 
-export interface Requirements1 {
-    level?:          number
-    elements?:       ElementType[]
-    rarity?:         Rarity
-    dragonId?:       number | string
-    noRequirements?: boolean
-    staticLevel?:    number
-}
-
 export interface Requirements {
     level?:          number
-    rarity?:         Rarity
     elements?:       ElementType[]
+    rarity?:         Rarity
     dragonId?:       number
     noRequirements?: boolean
 }
 
 export interface MatchReward {
-    x?:                         number
-    egg?:                       number
-    chest?:                     number
-    elp?:                       number
-    ep?:                        number
-    f?:                         number
-    trade_tickets?:             TradeTicket[]
-    en_runner?:                 number
-    c?:                         number
-    seeds?:                     Seed[]
-    "rank_up_coin.mythical"?:   number
-    rarity_seeds?:              RewardRaritySeed[]
-    skin?:                      number
-    n_token?:                   number
-    d_token?:                   number
-    "rank_up_coin.heroic"?:     number
-    b?:                         number[] | number
-    moves?:                     number
-    pr_token?:                  number
-    "album_pack.s"?:            number
-    "album_pack.m"?:            number
-    "album_pack.l"?:            number
-    "album_pack.xl"?:           number
-    l_token?:                   number
-    g?:                         number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.4"?:       number
-    wr_token?:                  number
-    e_token?:                   number
-    "album_pack_aces.1"?:       number
-    "album_pack_aces.3"?:       number
-    "album_pack_aces.generic"?: number
-    "rank_up_coin.legendary"?:  number
-    p_token?:                   number
-    pu_token?:                  number
-    "album_pack.temp"?:         number
-    w_token?:                   number
-    "album_pack_aces.5"?:       number
-    keys?:                      number
-    li_token?:                  number
-    wd_token?:                  number
-    el_token?:                  number
-    m_token?:                   number
-    "rank_up_coin.common"?:     number
-    "rank_up_coin.rare"?:       number
-    "rank_up_coin.very_rare"?:  number
-    "rank_up_coin.epic"?:       number
-    i_token?:                   number
-    perks?:                     RewardPerk[]
+    x?:                       number
+    egg?:                     number
+    chest?:                   number
+    ep?:                      number
+    f?:                       number
+    trade_tickets?:           TradeTicket[]
+    en_runner?:               number
+    c?:                       number
+    seeds?:                   Seed[]
+    "rank_up_coin.mythical"?: number
+    rarity_seeds?:            RewardRaritySeed[]
+    skin?:                    number
+    b?:                       number
+    moves?:                   number
+    g?:                       number
+    "rank_up_coin.heroic"?:   number
+    n_token?:                 number
+    "album_pack.m"?:          number
+    pu_token?:                number
+    "album_pack.l"?:          number
+    li_token?:                number
+    "album_pack.xl"?:         number
+    "album_pack_aces.1"?:     number
+    "album_pack_aces.3"?:     number
+    "album_pack.s"?:          number
+    "album_pack_aces.2"?:     number
+    "album_pack_aces.4"?:     number
+    d_token?:                 number
 }
 
 export interface DragonTournamentsReward {
@@ -1500,7 +1471,7 @@ export interface FogIslandParameter {
 
 export interface FogIslandReward {
     id:              number
-    type:            ViewTypeEnum
+    type:            RewardType
     island_id:       number
     reward_id:       number
     last_piece_cost: number
@@ -1508,18 +1479,16 @@ export interface FogIslandReward {
     show_new_badge:  number
 }
 
-export enum ViewTypeEnum {
+export enum RewardType {
     Chest = "CHEST",
-    Dragon = "DRAGON",
     DragonPiece = "DRAGON_PIECE",
     None = "NONE",
-    Resource = "RESOURCE",
     Step = "STEP",
 }
 
 export interface FogIslandSquare {
     id:             number
-    type:           ViewTypeEnum
+    type:           RewardType
     type_id?:       number
     highlight:      number
     x:              number
@@ -1528,11 +1497,6 @@ export interface FogIslandSquare {
     claim_cost:     number
     come_back_cost: number
     reward_id?:     number
-    resource?:      PurpleResource
-}
-
-export interface PurpleResource {
-    b: number[]
 }
 
 export interface GridIsland {
@@ -1571,6 +1535,7 @@ export interface Encounter {
 
 export enum FightBackgroundID {
     BgBattleBackgroundGiTreasurehunt = "bg_battle_background_gi_treasurehunt",
+    BgBattleBackgroundHrAnniversary14 = "bg_battle_background_hr_anniversary14",
     BgBattleBackgroundHrEaster26 = "bg_battle_background_hr_easter26",
     BgBattleBackgroundHrFallFriday = "bg_battle_background_hr_fall_friday",
     BgBattleBackgroundHrNewBeginnings = "bg_battle_background_hr_new_beginnings",
@@ -1579,14 +1544,17 @@ export enum FightBackgroundID {
     BgBattleBackgroundMiCarnival = "bg_battle_background_mi_carnival",
     BgBattleBackgroundMiDragonmysteries = "bg_battle_background_mi_dragonmysteries",
     BgBattleBackgroundMiEaster2020 = "bg_battle_background_mi_easter2020",
+    BgBattleBackgroundMiForestOfLife = "bg_battle_background_mi_forest_of_life",
     BgBattleBackgroundMiMidsummerMisery = "bg_battle_background_mi_midsummer_misery",
     BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
     BgBattleBackgroundMiRebornRetold = "bg_battle_background_mi_reborn_retold",
+    BgBattleBackgroundMiSpringB = "bg_battle_background_mi_spring_b",
     BgBattleBackgroundMiValentinesVault = "bg_battle_background_mi_valentines_vault",
     BgBattleBackgroundMr101_MythicalElixir = "bg_battle_background_mr_101_mythical_elixir",
     BgBattleBackgroundMr102_MythicalCryogenic = "bg_battle_background_mr_102_mythical_cryogenic",
     BgBattleBackgroundMr103_MythicalDracarticpredator = "bg_battle_background_mr_103_mythical_dracarticpredator",
     BgBattleBackgroundMr104_MythicalUnfaethful = "bg_battle_background_mr_104_mythical_unfaethful",
+    BgBattleBackgroundMr105_MythicalDeepjungle = "bg_battle_background_mr_105_mythical_deepjungle",
 }
 
 export interface GridIslandEnemy {
@@ -1596,6 +1564,13 @@ export interface GridIslandEnemy {
     view_type:          ViewTypeEnum
     elements_view_type: any[]
     cooldown:           number
+}
+
+export enum ViewTypeEnum {
+    Chest = "CHEST",
+    Dragon = "DRAGON",
+    None = "NONE",
+    Resource = "RESOURCE",
 }
 
 export interface Episode {
@@ -1636,10 +1611,10 @@ export interface GridIslandSquare {
     claim_cost:   number
     wall?:        Wall
     wall_suffix?: WallSuffix
-    resource?:    FluffyResource
+    resource?:    SquareResource
 }
 
-export interface FluffyResource {
+export interface SquareResource {
     "pet_food_pack.s"?: number
     "pet_food_pack.m"?: number
     "pet_food_pack.l"?: number
@@ -1812,13 +1787,13 @@ export interface LapRewardReward {
     "rank_up_coin.mythical"?:   number
     "album_pack.s"?:            number
     "pet_food_pack.s"?:         number
+    "pet_food_pack.m"?:         number
     b?:                         number[]
     chest?:                     number
     "album_pack_aces.1"?:       number
     "album_pack.m"?:            number
     "album_pack.l"?:            number
     "album_pack_aces.2"?:       number
-    "pet_food_pack.m"?:         number
     "pet_food_pack.l"?:         number
     "album_pack.xl"?:           number
     "album_pack_aces.3"?:       number
@@ -2127,6 +2102,7 @@ export interface Properties {
 }
 
 export enum Tag {
+    Apex = "Apex",
     Apocalypse = "Apocalypse",
     Armor = "Armor",
     Astro = "Astro",
@@ -2151,6 +2127,7 @@ export enum Tag {
     Twd = "TWD",
     Vampire = "Vampire",
     Vip = "VIP",
+    Void = "Void",
     Youtuber = "Youtuber",
 }
 
@@ -2396,17 +2373,15 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The1
+    "2":    The2
     "3":    The3
-    "4":    The4
+    "4":    The3
     "5":    The5
-    "6":    The5
-    "7":    The0
-    "8":    The0
-    "9":    The0
-    "10":   The1
-    "11":   The0
-    "12":   The0
+    "6":    The6
+    "7":    The2
+    "8":    The3
+    "9":    The3
+    "10":   The0
     canvas: Canva[]
 }
 
@@ -2419,6 +2394,7 @@ export interface The0 {
     id:                    number
     min_level:             number
     popup_frequency:       string
+    popup_is_critical?:    boolean
     popup_type:            string
     show_on_startup:       number
     slides:                The0_Slide[]
@@ -2426,17 +2402,55 @@ export interface The0 {
 }
 
 export interface The0_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
+}
+
+export interface The1 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The1_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The1_Slide {
     content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons:           PurpleMultipleButton[]
+    multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
 }
 
-export interface PurpleMultipleButton {
+export interface MultipleButton {
     animation:          AnimationNameEnum
     animationPlace:     AnimationPlace
     forceClose:         boolean
@@ -2476,7 +2490,7 @@ export enum SlideType {
     FullImage = "FullImage",
 }
 
-export interface The1 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2490,7 +2504,7 @@ export interface The1 {
     popup_type:            string
     priority:              number | null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -2503,43 +2517,10 @@ export interface The3 {
     id:                    number
     min_level:             number
     popup_frequency:       string
-    popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The3_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
-}
-
-export interface The3_Slide {
-    content_localized_key?:     string
-    custom_title_localized_key: string
-    header_localized_key?:      string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-}
-
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    end_ts:                string
-    hud_button:            HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The3_Slide[]
-    start_ts:              string
-}
-
-export interface HudButton {
-    file:  string
-    title: string
 }
 
 export interface The5 {
@@ -2548,38 +2529,32 @@ export interface The5 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
+    hud_button:            The1_HudButton
     id:                    number
     min_level:             number
-    popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The5_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
-export interface The5_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    forceClose:                 boolean
-    header_localized_key:       string
-    image_url:                  string
-    multiple_buttons:           FluffyMultipleButton[]
-    times_to_show:              number
-    type:                       SlideType
+export interface The6 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The6_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
 }
 
-export interface FluffyMultipleButton {
-    animation:          AnimationNameEnum
-    animationPlace:     AnimationPlace
-    forceClose:         boolean
-    glint:              boolean
-    key:                string
-    link:               string
-    linkItemId:         number | string
-    normalizedPosition: NormalizedPosition
-    size:               Size
-    spineAsset:         SpineAsset
-    style:              Style
+export interface The6_HudButton {
+    file:  string
+    title: string
 }
 
 export interface Canva {
@@ -2588,7 +2563,7 @@ export interface Canva {
     start_ts:        number
     end_ts:          number
     min_level:       number
-    slides:          The0_Slide[]
+    slides:          The1_Slide[]
     show_on_startup: number
 }
 
@@ -3111,7 +3086,7 @@ export interface Effect {
     parameters:              EffectParameters
     sfx_id?:                 number
     vfx_id?:                 string
-    passive_trigger_type?:   string[]
+    passive_trigger_type?:   PassiveTriggerType[]
     level_based_parameters?: number
     status_effect_data?:     StatusEffectData
 }
@@ -3175,6 +3150,9 @@ export interface EffectParameters {
     avoidSkills?:                  AvoidSkillElement[]
     destroySkills?:                DestroySkill[]
     element?:                      ElementType
+    giveToDragons?:                string
+    canReceiveElementalDamage?:    boolean
+    canReceiveCriticals?:          boolean
 }
 
 export enum AvoidSkillElement {
@@ -3239,10 +3217,19 @@ export enum Vfx {
     Empty = "",
     SilencedShield3 = "silenced_shield_3",
     TestVfx = "testVfx",
+    VoidSkill = "void_skill",
 }
 
 export enum VfxTextEffectname {
     MegacritSkill = "megacrit_skill",
+}
+
+export enum PassiveTriggerType {
+    Attack = "attack",
+    Defense = "defense",
+    Negative = "negative",
+    OnDie = "onDie",
+    OnEnterCombat = "onEnterCombat",
 }
 
 export interface StatusEffectData {
@@ -3259,12 +3246,14 @@ export enum EffectVfxEnum {
     SpineKarmaSkills = "spine_karma_skills",
     TitanShield = "titan_shield",
     VampireTitanShield = "vampire_titan_shield",
+    VoidSkill = "void_skill",
 }
 
 export enum StatusEffectDataEffectName {
     TidCritEffectName = "tid_crit_effect_name",
     TidDoomSkillEffectName = "tid_doom_skill_effect_name",
     TidSkillArmorEffectName = "tid_skill_armor_effect_name",
+    TidSkillDrainedEffectName = "tid_skill_drained_effect_name",
     TidSkillExhaustionEffectName = "tid_skill_exhaustion_effect_name",
 }
 
@@ -3538,10 +3527,11 @@ export enum TreasureItemType {
 }
 
 export interface TreeOfLife {
-    parameters:           TreeOfLifeParameter[]
-    rarity_summon_time:   SummonTime[]
-    dragonid_summon_time: SummonTime[]
-    rarity_seeds:         TreeOfLifeRaritySeed[]
+    parameters:             TreeOfLifeParameter[]
+    rarity_summon_time:     SummonTime[]
+    dragonid_summon_time:   SummonTime[]
+    non_summonable_dragons: NonSummonableDragon[]
+    rarity_seeds:           TreeOfLifeRaritySeed[]
 }
 
 export interface SummonTime {
@@ -3553,6 +3543,15 @@ export interface SummonTime {
     summon_time_seconds_ngu_aggressive: number
     summon_time_seconds_ngu_soft:       number
     rarity?:                            Rarity
+}
+
+export interface NonSummonableDragon {
+    dragon_id:         number
+    unlock_system_id?: UnlockSystemID
+}
+
+export enum UnlockSystemID {
+    NguLmhNoSummon = "ngu_lmh_no_summon",
 }
 
 export interface TreeOfLifeParameter {
@@ -3624,8 +3623,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {

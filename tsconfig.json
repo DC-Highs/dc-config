@@ -12,6 +12,13 @@
     "declaration": true,
     "declarationMap": false,
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "rootDir": "./",
+      "types": ["node"]
+    }
+  },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
