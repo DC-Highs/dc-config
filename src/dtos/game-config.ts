@@ -2374,13 +2374,15 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The0
+    "3":    The3
     "4":    The0
-    "5":    The5
+    "5":    The0
     "6":    The6
-    "7":    The0
-    "8":    The0
-    "9":    The1
+    "7":    The7
+    "8":    The8
+    "9":    The0
+    "10":   The0
+    "11":   The1
     canvas: Canva[]
 }
 
@@ -2475,6 +2477,7 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
+    link_item_id?:              number
     timer?:                     string
     times_to_show?:             number
 }
@@ -2504,12 +2507,33 @@ export interface The2_HudButton {
     viral_icon_tier: number
 }
 
-export interface The5 {
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The5_HudButton
+    filter_category:       null
+    hud_button:            The2_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The6 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The2_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2518,12 +2542,26 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The5_HudButton {
+export interface The7 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The7_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The7_HudButton {
     file:  string
     title: string
 }
 
-export interface The6 {
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2549,6 +2587,7 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
+    priority?:        string
 }
 
 export interface CanvaSlide {
