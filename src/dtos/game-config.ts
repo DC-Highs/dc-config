@@ -2379,10 +2379,9 @@ export interface News {
     "5":    The0
     "6":    The6
     "7":    The7
-    "8":    The8
+    "8":    The0
     "9":    The0
-    "10":   The0
-    "11":   The1
+    "10":   The1
     canvas: Canva[]
 }
 
@@ -2531,9 +2530,8 @@ export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The2_HudButton
+    hud_button:            The6_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2542,26 +2540,12 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    end_ts:                string
-    hud_button:            The7_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The7_HudButton {
+export interface The6_HudButton {
     file:  string
     title: string
 }
 
-export interface The8 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2587,7 +2571,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
