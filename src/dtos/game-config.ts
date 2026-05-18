@@ -1540,6 +1540,7 @@ export enum FightBackgroundID {
     BgBattleBackgroundHrFallFriday = "bg_battle_background_hr_fall_friday",
     BgBattleBackgroundHrNewBeginnings = "bg_battle_background_hr_new_beginnings",
     BgBattleBackgroundHrSaintvalentine26 = "bg_battle_background_hr_saintvalentine_26",
+    BgBattleBackgroundMi14_Anniversary = "bg_battle_background_mi_14_anniversary",
     BgBattleBackgroundMiAprilShowers = "bg_battle_background_mi_april_showers",
     BgBattleBackgroundMiCarnival = "bg_battle_background_mi_carnival",
     BgBattleBackgroundMiDragonmysteries = "bg_battle_background_mi_dragonmysteries",
@@ -2374,14 +2375,13 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The3
+    "3":    The0
     "4":    The0
-    "5":    The0
+    "5":    The5
     "6":    The6
-    "7":    The7
+    "7":    The1
     "8":    The0
     "9":    The0
-    "10":   The1
     canvas: Canva[]
 }
 
@@ -2476,7 +2476,6 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    link_item_id?:              number
     timer?:                     string
     times_to_show?:             number
 }
@@ -2506,32 +2505,12 @@ export interface The2_HudButton {
     viral_icon_tier: number
 }
 
-export interface The3 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The2_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     end_ts:                string
-    hud_button:            The6_HudButton
+    hud_button:            The5_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2540,12 +2519,12 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The6_HudButton {
+export interface The5_HudButton {
     file:  string
     title: string
 }
 
-export interface The7 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -3078,13 +3057,21 @@ export interface Aura {
     parameters:              AuraParameters
     stacks:                  number
     active_turns:            number
-    aura_vfx?:               string
+    aura_vfx?:               AuraVfx
     aura_center_mode:        AuraCenterMode
     level_based_parameters?: number
 }
 
 export enum AuraCenterMode {
     Side = "SIDE",
+}
+
+export enum AuraVfx {
+    EvaderShield4 = "evader_shield_4",
+    EvaderShieldTest = "evader_shield_test",
+    FxBunker = "fx_bunker",
+    GuardShield = "guard_shield",
+    SpikedShield = "spiked_shield",
 }
 
 export interface AuraParameters {
@@ -3194,7 +3181,7 @@ export interface EffectParameters {
     avoidSkills?:                  AvoidSkillElement[]
     destroySkills?:                DestroySkill[]
     element?:                      ElementType
-    giveToDragons?:                string
+    giveToDragons?:                GiveToDragons
     canReceiveElementalDamage?:    boolean
     canReceiveCriticals?:          boolean
 }
@@ -3246,6 +3233,10 @@ export enum FgVfxNodeName {
 
 export enum FgVfxScreenEffectname {
     MegacritSpeedlines = "megacrit_speedlines",
+}
+
+export enum GiveToDragons {
+    Any = "any",
 }
 
 export enum PlayerEffectName {
