@@ -2468,9 +2468,9 @@ export interface The1 {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2569,19 +2569,15 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
+    action:   ContentAction
+    height:   number
+    rotation: number
+    style:    string
+    text_key: string
+    type:     string
+    width:    number
+    x:        number
+    y:        number
 }
 
 export interface ContentAction {
