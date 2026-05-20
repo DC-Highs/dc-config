@@ -2379,9 +2379,10 @@ export interface News {
     "4":    The0
     "5":    The5
     "6":    The6
-    "7":    The1
-    "8":    The0
+    "7":    The7
+    "8":    The1
     "9":    The0
+    "10":   The0
     canvas: Canva[]
 }
 
@@ -2468,9 +2469,9 @@ export interface The1 {
 }
 
 export interface The1_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key?:      string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2509,8 +2510,9 @@ export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The5_HudButton
+    hud_button:            The2_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2519,12 +2521,26 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The5_HudButton {
+export interface The6 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The6_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The6_HudButton {
     file:  string
     title: string
 }
 
-export interface The6 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2569,15 +2585,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    action:   ContentAction
-    height:   number
-    rotation: number
-    style:    string
-    text_key: string
-    type:     string
-    width:    number
-    x:        number
-    y:        number
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
 }
 
 export interface ContentAction {
@@ -3654,8 +3674,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
