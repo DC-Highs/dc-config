@@ -2375,12 +2375,11 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The3
+    "3":    The0
     "4":    The0
-    "5":    The0
-    "6":    The6
+    "5":    The5
+    "6":    The0
     "7":    The0
-    "8":    The0
     canvas: Canva[]
 }
 
@@ -2467,15 +2466,14 @@ export interface The1 {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    link_item_id?:              number
     timer?:                     string
     times_to_show?:             number
 }
@@ -2505,32 +2503,12 @@ export interface The2_HudButton {
     viral_icon_tier: number
 }
 
-export interface The3 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The2_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     end_ts:                string
-    hud_button:            The6_HudButton
+    hud_button:            The5_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -2539,7 +2517,7 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The6_HudButton {
+export interface The5_HudButton {
     file:  string
     title: string
 }
