@@ -1151,7 +1151,7 @@ export interface MatchReward {
     "rank_up_coin.mythical"?: number
     rarity_seeds?:            RewardRaritySeed[]
     skin?:                    number
-    b?:                       number
+    b?:                       number[] | number
     moves?:                   number
     g?:                       number
     "rank_up_coin.heroic"?:   number
@@ -1171,8 +1171,38 @@ export interface MatchReward {
 
 export interface DragonTournamentsReward {
     id:      number
-    reward:  MatchReward[]
+    reward:  IndigoReward[]
     type_id: number
+}
+
+export interface IndigoReward {
+    x?:                       number
+    egg?:                     number
+    chest?:                   number
+    ep?:                      number
+    f?:                       number
+    c?:                       number
+    n_token?:                 number
+    rarity_seeds?:            RewardRaritySeed[]
+    pu_token?:                number
+    moves?:                   number
+    li_token?:                number
+    "rank_up_coin.heroic"?:   number
+    seeds?:                   Seed[]
+    skin?:                    number
+    "rank_up_coin.mythical"?: number
+    "album_pack.s"?:          number
+    "album_pack.m"?:          number
+    "album_pack.xl"?:         number
+    "album_pack.l"?:          number
+    trade_tickets?:           TradeTicket[]
+    "album_pack_aces.4"?:     number
+    "album_pack_aces.2"?:     number
+    "album_pack_aces.1"?:     number
+    "album_pack_aces.3"?:     number
+    en_runner?:               number
+    d_token?:                 number
+    b?:                       number[]
 }
 
 export interface Tournament {
@@ -1871,10 +1901,10 @@ export interface HeroicRacesParameter {
 export interface HeroicRacesReward {
     id:        number
     positions: number[]
-    rewards:   IndigoReward[]
+    rewards:   IndecentReward[]
 }
 
-export interface IndigoReward {
+export interface IndecentReward {
     egg?: number[]
     c?:   number
 }
@@ -2208,11 +2238,11 @@ export interface LiveopsChallengesParameter {
 
 export interface LiveopsChallengesReward {
     id:      number
-    reward:  IndecentReward[]
+    reward:  HilariousReward[]
     type_id: number
 }
 
-export interface IndecentReward {
+export interface HilariousReward {
     b?:                        number[] | number
     chest?:                    number
     seeds?:                    Seed[]
@@ -2377,7 +2407,7 @@ export interface News {
     "2":    The2
     "3":    The0
     "4":    The0
-    "5":    The0
+    "5":    The5
     "6":    The0
     canvas: Canva[]
 }
@@ -2414,7 +2444,7 @@ export interface MultipleButton {
     forceClose:         boolean
     glint:              boolean
     key:                string
-    link:               string
+    link:               Link
     linkItemId:         number
     normalizedPosition: NormalizedPosition
     size:               Size
@@ -2424,6 +2454,12 @@ export interface MultipleButton {
 
 export enum AnimationPlace {
     Foreground = "Foreground",
+}
+
+export enum Link {
+    BattlePass = "BATTLE_PASS",
+    Freebies = "FREEBIES",
+    LoChallenge = "LO_CHALLENGE",
 }
 
 export interface NormalizedPosition {
@@ -2473,6 +2509,7 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
+    timer?:                     string
 }
 
 export interface The2 {
@@ -2498,6 +2535,21 @@ export interface HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
 }
 
 export interface Canva {
@@ -2592,11 +2644,11 @@ export enum PerkType {
 
 export interface PerksReward {
     id:      number
-    reward:  HilariousReward[]
+    reward:  AmbitiousReward[]
     type_id: number
 }
 
-export interface HilariousReward {
+export interface AmbitiousReward {
     perks: RewardPerk[]
 }
 
@@ -2681,12 +2733,12 @@ export interface PuzzleIslandReward {
     id:              number
     required_pieces: number
     colors:          number
-    reward:          AmbitiousReward
+    reward:          CunningReward
     loopable:        number
     new_badge:       number
 }
 
-export interface AmbitiousReward {
+export interface CunningReward {
     chest?:                     number
     rarity_seeds?:              RewardRaritySeed[]
     egg?:                       number
@@ -3246,6 +3298,7 @@ export interface Level1_Armor {
 export interface CriticalChances {
     chance?:            number
     damage_multiplier?: number
+    turns?:             number
 }
 
 export interface TurnChance {
@@ -3578,8 +3631,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
