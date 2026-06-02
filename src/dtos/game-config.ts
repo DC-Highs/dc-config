@@ -657,19 +657,18 @@ export interface Chests {
 }
 
 export interface Chest {
-    id:                number
-    type:              ChestType
-    rewards:           number[]
-    img_name:          string
-    chest_name_key:    string
-    type_name_key:     string
-    level_tiers:       number[]
-    description_key?:  string
-    default_reward:    number
-    pool_size:         number
-    gatcha_ids?:       number[]
-    instant?:          boolean | AnimatedCanvas
-    foreground_asset?: string
+    id:               number
+    type:             ChestType
+    rewards:          number[]
+    img_name:         string
+    chest_name_key:   string
+    type_name_key:    string
+    level_tiers:      number[]
+    description_key?: string
+    default_reward:   number
+    pool_size:        number
+    gatcha_ids?:      number[]
+    instant?:         boolean | AnimatedCanvas
 }
 
 export enum AnimatedCanvas {
