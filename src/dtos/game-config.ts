@@ -1687,7 +1687,7 @@ export interface HelpView {
     id:                  number
     assets_name?:        string
     popup_type:          PopupType
-    size:                PopupType
+    size:                SizeEnum
     title_localized_key: string
     slides:              HelpViewSlide[]
 }
@@ -1696,6 +1696,11 @@ export enum PopupType {
     Default = "Default",
     DefaultCustomSlides = "DefaultCustomSlides",
     HelpViewDeityWorld = "/HelpView/DeityWorld",
+}
+
+export enum SizeEnum {
+    Default = "Default",
+    FullscreenOverlay = "FullscreenOverlay",
 }
 
 export interface HelpViewSlide {
@@ -1708,6 +1713,7 @@ export interface HelpViewSlide {
     custom_title_localized_tidkey?: string
     animatedAssetName?:             string
     animationName?:                 AnimationNameEnum
+    additional_info_img_url?:       string
 }
 
 export enum AnimationNameEnum {
@@ -1720,6 +1726,8 @@ export enum ContentLocalizedKey {
     TidDBCollectionsHelpScreen2 = "tid_db_collections_help_screen_2",
     TidDBMasteryHelpScreen1 = "tid_db_mastery_help_screen_1",
     TidPiggyBankBestDealMessage = "tid_piggy_bank_best_deal_message",
+    TidVipTierHelpSlide1_Content = "tid_vip_tier_help_slide_1_content_{}",
+    TidVipTierHelpSlide2_Content = "tid_vip_tier_help_slide_2_content_{}",
 }
 
 export interface HeroicRaces {
@@ -2428,12 +2436,13 @@ export interface News {
     "4":    The0
     "5":    The5
     "6":    The6
-    "7":    The7
-    "8":    The0
-    "9":    The6
+    "7":    The10
+    "8":    The8
+    "9":    The0
     "10":   The10
-    "11":   The0
+    "11":   The11
     "12":   The0
+    "13":   The0
     canvas: Canva[]
 }
 
@@ -2472,7 +2481,7 @@ export interface MultipleButton {
     link:               string
     linkItemId?:        number
     normalizedPosition: NormalizedPosition
-    size:               Size
+    size:               SizeClass
     spineAsset:         SpineAsset
     style:              Style
 }
@@ -2491,7 +2500,7 @@ export interface NormalizedPosition {
     y: number
 }
 
-export interface Size {
+export interface SizeClass {
     h: number
     w: number
 }
@@ -2533,7 +2542,25 @@ export interface The10 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The10_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2545,7 +2572,7 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface The10_HudButton {
+export interface The11_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
@@ -2605,26 +2632,23 @@ export interface The6 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
+    hud_button:            The11_HudButton
     id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
     min_level:             number
     popup_type:            string
-    priority:              number
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The3_Slide[]
     start_ts:              string
 }
 
-export interface The7 {
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The10_HudButton
+    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -3754,8 +3778,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
