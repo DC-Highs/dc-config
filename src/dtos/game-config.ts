@@ -2435,14 +2435,15 @@ export interface News {
     "3":    The3
     "4":    The0
     "5":    The5
-    "6":    The6
-    "7":    The10
-    "8":    The8
+    "6":    The10
+    "7":    The7
+    "8":    The0
     "9":    The0
     "10":   The10
     "11":   The11
     "12":   The0
     "13":   The0
+    "14":   The0
     canvas: Canva[]
 }
 
@@ -2626,22 +2627,7 @@ export interface The5_HudButton {
     title: string
 }
 
-export interface The6 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The11_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The3_Slide[]
-    start_ts:              string
-}
-
-export interface The8 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -3778,8 +3764,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
