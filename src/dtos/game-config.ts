@@ -2435,15 +2435,16 @@ export interface News {
     "3":    The3
     "4":    The0
     "5":    The5
-    "6":    The6
-    "7":    The0
+    "6":    The10
+    "7":    The7
     "8":    The0
-    "9":    The5
+    "9":    The0
     "10":   The10
-    "11":   The0
-    "12":   The12
-    "13":   The0
+    "11":   The11
+    "12":   The0
+    "13":   The13
     "14":   The0
+    "15":   The0
     canvas: Canva[]
 }
 
@@ -2543,7 +2544,25 @@ export interface The10 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2555,20 +2574,20 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The11_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The12 {
+export interface The13 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2577,20 +2596,22 @@ export interface The12 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The12_Slide[]
+    slides:                The13_Slide[]
     start_ts:              string
 }
 
-export interface The12_Slide {
-    content_localized_key:      string
+export interface The13_Slide {
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
     link_item_id?:              number
     slide_type:                 string
     slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
 }
 
 export interface The3 {
@@ -2605,7 +2626,7 @@ export interface The3 {
     popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The12_Slide[]
+    slides:                The13_Slide[]
     start_ts:              string
 }
 
@@ -2613,28 +2634,29 @@ export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
+    hud_button:            The5_HudButton
     id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
     min_level:             number
     popup_type:            string
-    priority:              number
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The13_Slide[]
     start_ts:              string
 }
 
-export interface The6 {
+export interface The5_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
