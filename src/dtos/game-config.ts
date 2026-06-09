@@ -1167,6 +1167,10 @@ export interface MatchReward {
     "album_pack_aces.2"?:     number
     "album_pack_aces.4"?:     number
     d_token?:                 number
+    wd_token?:                number
+    l_token?:                 number
+    f_token?:                 number
+    w_token?:                 number
 }
 
 export interface DragonTournamentsReward {
@@ -1203,6 +1207,10 @@ export interface IndigoReward {
     en_runner?:               number
     d_token?:                 number
     b?:                       number[]
+    wd_token?:                number
+    l_token?:                 number
+    f_token?:                 number
+    w_token?:                 number
 }
 
 export interface Tournament {
