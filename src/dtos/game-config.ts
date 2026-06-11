@@ -2446,19 +2446,14 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The0
-    "3":    The13
-    "4":    The0
+    "2":    The2
+    "3":    The3
+    "4":    The4
     "5":    The5
-    "6":    The6
-    "7":    The7
+    "6":    The0
+    "7":    The0
     "8":    The8
     "9":    The0
-    "10":   The0
-    "11":   The11
-    "12":   The0
-    "13":   The13
-    "14":   The0
     canvas: Canva[]
 }
 
@@ -2470,7 +2465,7 @@ export interface The0 {
     end_ts:                string
     id:                    number
     min_level:             number
-    popup_frequency:       string
+    popup_frequency?:      string
     popup_type:            string
     show_on_startup:       number
     slides:                The0_Slide[]
@@ -2551,32 +2546,7 @@ export interface The1 {
     start_ts:              string
 }
 
-export interface The11 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The11_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The11_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
-export interface The13 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2585,14 +2555,14 @@ export interface The13 {
     id:                    number
     min_level:             number
     popup_frequency:       string
+    popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The13_Slide[]
+    slides:                The2_Slide[]
     start_ts:              string
-    popup_is_critical?:    boolean
 }
 
-export interface The13_Slide {
+export interface The2_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2605,53 +2575,65 @@ export interface The13_Slide {
     times_to_show?:             number
 }
 
-export interface The5 {
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     end_ts:                string
-    hud_button:            The5_HudButton
+    hud_button:            The3_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
     show_on_startup:       number
-    slides:                The13_Slide[]
+    slides:                The2_Slide[]
     start_ts:              string
 }
 
-export interface The5_HudButton {
+export interface The3_HudButton {
     file:  string
     title: string
 }
 
-export interface The6 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The11_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The13_Slide[]
-    start_ts:              string
-}
-
-export interface The7 {
+export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
+    hud_button:            The4_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The4_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The4_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
     popup_type:            string
-    priority:              number
+    priority:              null
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
@@ -2664,12 +2646,10 @@ export interface The8 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The11_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
-    popup_frequency:       string
     popup_type:            string
     priority:              null
     show_on_startup:       number
@@ -3756,8 +3736,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
