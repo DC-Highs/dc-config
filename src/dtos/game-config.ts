@@ -166,6 +166,7 @@ export enum Dur {
     The14D = "14d",
     The15D = "15d",
     The28D = "28d",
+    The29D = "29d",
     The42D = "42d",
     The7D = "7d",
 }
@@ -1720,7 +1721,7 @@ export enum SizeEnum {
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         ContentLocalizedKey
+    content_localized_key?:         PurpleContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1735,7 +1736,7 @@ export enum AnimationNameEnum {
     Anim1 = "anim1",
 }
 
-export enum ContentLocalizedKey {
+export enum PurpleContentLocalizedKey {
     Empty = "",
     TidDBCollectionsHelpScreen1 = "tid_db_collections_help_screen_1",
     TidDBCollectionsHelpScreen2 = "tid_db_collections_help_screen_2",
@@ -2450,10 +2451,10 @@ export interface News {
     "3":    The3
     "4":    The4
     "5":    The5
-    "6":    The6
+    "6":    The0
     "7":    The0
-    "8":    The0
-    "9":    The9
+    "8":    The8
+    "9":    The0
     "10":   The0
     canvas: Canva[]
 }
@@ -2474,14 +2475,20 @@ export interface The0 {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key:      FluffyContentLocalizedKey
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       string
+    type:                       SlideType
+}
+
+export enum FluffyContentLocalizedKey {
+    Empty = "",
+    TidNewsLegendspassDesc = "tid_news_legendspass_desc",
+    TidNewsSeasidebreakDesc = "tid_news_seasidebreak_desc",
 }
 
 export interface MultipleButton {
@@ -2527,6 +2534,10 @@ export enum Style {
     Transparent = "Transparent",
 }
 
+export enum SlideType {
+    FullImage = "FullImage",
+}
+
 export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2570,7 +2581,6 @@ export interface The2_Slide {
     slide_type_2:               string
     timer?:                     string
     times_to_show?:             number
-    link_item_id?:              number
 }
 
 export interface The3 {
@@ -2637,27 +2647,7 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The6 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The4_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The2_Slide[]
-    start_ts:              string
-}
-
-export interface The9 {
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2690,7 +2680,7 @@ export interface CanvaSlide {
     header_localized_key?:       string
     image_url?:                  string
     times_to_show?:              number
-    type?:                       string
+    type?:                       SlideType
     multiple_buttons?:           MultipleButton[]
     bg?:                         string
     content?:                    Content[]
