@@ -1318,12 +1318,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    ActionElement[]
+    actions:    Action[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface ActionElement {
+export interface Action {
     id:                number
     type:              ActionType
     tid_name:          ActionTidName
@@ -1565,7 +1565,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     GridIslandEnemy[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1588,33 +1588,7 @@ export interface Encounter {
     enemies:                 number[]
     speed_up_price_per_hour: number
     fight_background?:       string
-    fight_background_id:     FightBackgroundID
-}
-
-export enum FightBackgroundID {
-    BgBattleBackgroundGiTreasurehunt = "bg_battle_background_gi_treasurehunt",
-    BgBattleBackgroundHrAnniversary14 = "bg_battle_background_hr_anniversary14",
-    BgBattleBackgroundHrEaster26 = "bg_battle_background_hr_easter26",
-    BgBattleBackgroundHrFallFriday = "bg_battle_background_hr_fall_friday",
-    BgBattleBackgroundHrNewBeginnings = "bg_battle_background_hr_new_beginnings",
-    BgBattleBackgroundHrSaintvalentine26 = "bg_battle_background_hr_saintvalentine_26",
-    BgBattleBackgroundMi14_Anniversary = "bg_battle_background_mi_14_anniversary",
-    BgBattleBackgroundMiAprilShowers = "bg_battle_background_mi_april_showers",
-    BgBattleBackgroundMiCarnival = "bg_battle_background_mi_carnival",
-    BgBattleBackgroundMiDragonmysteries = "bg_battle_background_mi_dragonmysteries",
-    BgBattleBackgroundMiEaster2020 = "bg_battle_background_mi_easter2020",
-    BgBattleBackgroundMiForestOfLife = "bg_battle_background_mi_forest_of_life",
-    BgBattleBackgroundMiMidsummerMisery = "bg_battle_background_mi_midsummer_misery",
-    BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
-    BgBattleBackgroundMiRebornRetold = "bg_battle_background_mi_reborn_retold",
-    BgBattleBackgroundMiSpringB = "bg_battle_background_mi_spring_b",
-    BgBattleBackgroundMiValentinesVault = "bg_battle_background_mi_valentines_vault",
-    BgBattleBackgroundMr101_MythicalElixir = "bg_battle_background_mr_101_mythical_elixir",
-    BgBattleBackgroundMr102_MythicalCryogenic = "bg_battle_background_mr_102_mythical_cryogenic",
-    BgBattleBackgroundMr103_MythicalDracarticpredator = "bg_battle_background_mr_103_mythical_dracarticpredator",
-    BgBattleBackgroundMr104_MythicalUnfaethful = "bg_battle_background_mr_104_mythical_unfaethful",
-    BgBattleBackgroundMr105_MythicalDeepjungle = "bg_battle_background_mr_105_mythical_deepjungle",
-    BgBattleBackgroundMr106_MythicalMidsummer = "bg_battle_background_mr_106_mythical_midsummer",
+    fight_background_id:     string
 }
 
 export interface GridIslandEnemy {
@@ -2344,7 +2318,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        GridIslandEnemy[]
     happy_hours:    any[]
-    actions:        ActionElement[]
+    actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -2451,11 +2425,12 @@ export interface News {
     "3":    The3
     "4":    The4
     "5":    The5
-    "6":    The0
+    "6":    The6
     "7":    The0
-    "8":    The8
-    "9":    The0
+    "8":    The0
+    "9":    The9
     "10":   The0
+    "11":   The0
     canvas: Canva[]
 }
 
@@ -2475,7 +2450,7 @@ export interface The0 {
 }
 
 export interface The0_Slide {
-    content_localized_key:      FluffyContentLocalizedKey
+    content_localized_key?:     FluffyContentLocalizedKey
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2587,6 +2562,7 @@ export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
     hud_button:            The3_HudButton
     id:                    number
@@ -2598,18 +2574,38 @@ export interface The3 {
 }
 
 export interface The3_HudButton {
-    file:  string
-    title: string
+    file:            string
+    title:           string
+    viral_icon_tier: number
 }
 
 export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    end_ts:                string
+    hud_button:            The4_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The2_Slide[]
+    start_ts:              string
+}
+
+export interface The4_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The4_HudButton
+    hud_button:            The3_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2622,20 +2618,14 @@ export interface The4 {
     start_ts:              string
 }
 
-export interface The4_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The4_HudButton
+    hud_button:            The3_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2647,7 +2637,7 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The8 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2666,51 +2656,13 @@ export interface The8 {
 }
 
 export interface Canva {
-    id:               number
-    assets_name:      string
-    start_ts:         number | string
-    end_ts:           number | string
-    min_level?:       number
-    slides:           CanvaSlide[]
-    show_on_startup?: number
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
-}
-
-export interface ContentAction {
-    itemId:        string
-    storeCategory: number
-    type:          string
+    id:              number
+    assets_name:     string
+    start_ts:        number
+    end_ts:          number
+    min_level:       number
+    slides:          The0_Slide[]
+    show_on_startup: number
 }
 
 export interface Perks {
@@ -3561,7 +3513,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
 }
 
 export interface Floor {
@@ -3782,8 +3734,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
