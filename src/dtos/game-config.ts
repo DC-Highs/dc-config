@@ -2426,12 +2426,11 @@ export interface News {
     "4":    The4
     "5":    The5
     "6":    The6
-    "7":    The7
+    "7":    The0
     "8":    The0
     "9":    The0
     "10":   The0
     "11":   The0
-    "12":   The0
     canvas: Canva[]
 }
 
@@ -2530,9 +2529,9 @@ export interface The2 {
 }
 
 export interface The2_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key?:      string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2547,7 +2546,6 @@ export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
     hud_button:            The3_HudButton
     id:                    number
@@ -2559,28 +2557,34 @@ export interface The3 {
 }
 
 export interface The3_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
+    file:  string
+    title: string
 }
 
 export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
+    filter_category:       null
     hud_button:            The4_HudButton
     id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
     min_level:             number
+    popup_frequency:       string
     popup_type:            string
+    priority:              null
     show_on_startup:       number
-    slides:                The2_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
 export interface The4_HudButton {
-    file:  string
-    title: string
+    file:            string
+    title:           string
+    viral_icon_tier: number
 }
 
 export interface The5 {
@@ -2590,12 +2594,11 @@ export interface The5 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The3_HudButton
+    hud_button:            The4_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
-    popup_frequency:       string
     popup_type:            string
     priority:              null
     show_on_startup:       number
@@ -2610,26 +2613,7 @@ export interface The6 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The3_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The3_HudButton
+    hud_button:            The4_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2650,7 +2634,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
