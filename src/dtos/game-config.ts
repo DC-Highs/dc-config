@@ -2424,11 +2424,12 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The0
+    "5":    The5
     "6":    The0
     "7":    The0
     "8":    The0
     "9":    The0
+    "10":   The0
     canvas: Canva[]
 }
 
@@ -2543,24 +2544,45 @@ export interface The2 {
 }
 
 export interface The2_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
 }
 
 export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    end_ts:                string
+    hud_button:            The3_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The2_Slide[]
+    start_ts:              string
+}
+
+export interface The3_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The4 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The4_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2573,20 +2595,20 @@ export interface The3 {
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The4_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The4 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The4_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
