@@ -2424,7 +2424,7 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The0
+    "5":    The1
     "6":    The0
     "7":    The0
     "8":    The0
@@ -2465,7 +2465,7 @@ export interface MultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                string
+    key:                Key
     link:               string
     linkItemId?:        number
     normalizedPosition: NormalizedPosition
@@ -2476,6 +2476,11 @@ export interface MultipleButton {
 
 export enum AnimationPlace {
     Foreground = "Foreground",
+}
+
+export enum Key {
+    AlliancesKeyAlliancesViewController = "AlliancesKey_AlliancesViewController",
+    Empty = "",
 }
 
 export interface NormalizedPosition {
@@ -2511,25 +2516,11 @@ export interface The1 {
     id:                    number
     min_level:             number
     popup_frequency:       string
-    popup_is_critical:     boolean
+    popup_is_critical?:    boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
-}
-
-export interface The1_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    link_item_id?:              number
-    timer?:                     string
-    times_to_show?:             number
 }
 
 export interface The10 {
@@ -2548,7 +2539,7 @@ export interface The10 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2558,38 +2549,53 @@ export interface The10_HudButton {
     viral_icon_tier: number
 }
 
+export interface The10_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    link_item_id?:              number
+    slide_type:                 string
+    slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
+}
+
 export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The2_HudButton
     id:                    number
     min_level:             number
+    popup_frequency:       string
+    popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
-}
-
-export interface The2_HudButton {
-    file:  string
-    title: string
 }
 
 export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The10_HudButton
+    hud_button:            The3_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
+}
+
+export interface The3_HudButton {
+    file:  string
+    title: string
 }
 
 export interface The4 {
@@ -2639,7 +2645,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
