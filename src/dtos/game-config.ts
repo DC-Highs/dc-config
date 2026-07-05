@@ -2437,9 +2437,8 @@ export interface News {
     "9":    The0
     "10":   The10
     "11":   The11
-    "12":   The10
+    "12":   The0
     "13":   The0
-    "14":   The0
     canvas: Canva[]
 }
 
@@ -2549,7 +2548,6 @@ export interface The10 {
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
-    popup_frequency?:      string
 }
 
 export interface The10_HudButton {
