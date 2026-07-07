@@ -2429,12 +2429,11 @@ export interface News {
     "1":    The1
     "2":    The0
     "3":    The3
-    "4":    The4
+    "4":    The0
     "5":    The0
     "6":    The0
-    "7":    The0
-    "8":    The8
-    "9":    The0
+    "7":    The7
+    "8":    The0
     canvas: Canva[]
 }
 
@@ -2531,40 +2530,10 @@ export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    end_ts:                string
-    hud_button:            The3_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The3_Slide[]
-    start_ts:              string
-}
-
-export interface The3_HudButton {
-    file:  string
-    title: string
-}
-
-export interface The3_Slide {
-    custom_title_localized_key: string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
-}
-
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The4_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2577,20 +2546,20 @@ export interface The4 {
     start_ts:              string
 }
 
-export interface The4_HudButton {
+export interface HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The8 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The4_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
