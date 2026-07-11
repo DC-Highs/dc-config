@@ -2428,17 +2428,16 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The3
+    "3":    The0
     "4":    The0
-    "5":    The0
-    "6":    The6
-    "7":    The6
+    "5":    The5
+    "6":    The5
+    "7":    The7
     "8":    The8
     "9":    The9
-    "10":   The10
+    "10":   The0
     "11":   The0
     "12":   The0
-    "13":   The0
     canvas: Canva[]
 }
 
@@ -2458,7 +2457,7 @@ export interface The0 {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2475,7 +2474,7 @@ export interface PurpleMultipleButton {
     glint:              boolean
     key:                string
     link:               string
-    linkItemId?:        number
+    linkItemId:         number
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     spineAsset:         SpineAsset
@@ -2541,37 +2540,11 @@ export interface FluffyMultipleButton {
     glint:              boolean
     key:                string
     link:               string
-    linkItemId:         string
+    linkItemId?:        string
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     spineAsset:         SpineAsset
     style:              Style
-}
-
-export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The10_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The10_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
 }
 
 export interface The2 {
@@ -2594,7 +2567,9 @@ export interface The2_HudButton {
 }
 
 export interface The2_Slide {
+    content_localized_key:      string
     custom_title_localized_key: string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2602,27 +2577,10 @@ export interface The2_Slide {
     slide_type_2:               string
     timer?:                     string
     times_to_show?:             number
-    content_localized_key?:     string
-    header_localized_key?:      string
     link_item_id?:              number
 }
 
-export interface The3 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The10_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The2_Slide[]
-    start_ts:              string
-}
-
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2640,14 +2598,14 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The8 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The10_HudButton
+    hud_button:            The7_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2659,14 +2617,20 @@ export interface The8 {
     start_ts:              string
 }
 
-export interface The9 {
+export interface The7_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The10_HudButton
+    hud_button:            The7_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2679,45 +2643,34 @@ export interface The9 {
     start_ts:              string
 }
 
+export interface The9 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The7_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number | string
-    end_ts:          number | string
+    start_ts:        number
+    end_ts:          number
     min_level:       number
-    slides:          CanvaSlide[]
+    slides:          The0_Slide[]
     show_on_startup: number
-    priority?:       string
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           PurpleMultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:     number
-    rotation:   number
-    stroke:     string
-    text_color: string
-    text_key:   string
-    text_size:  number
-    timer:      number
-    type:       string
-    width:      number
-    x:          number
-    y:          number
 }
 
 export interface Perks {
