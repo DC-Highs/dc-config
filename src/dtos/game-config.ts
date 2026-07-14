@@ -126,6 +126,8 @@ export interface BattlePassElement {
     webstore_iap_elite_upgrade_uid_bonus_percentage?:          number
     webstore_iap_elite_upgrade_discount_uid_product_id?:       number
     webstore_iap_elite_upgrade_discount_uid_bonus_percentage?: number
+    purchased_elite_extra_reward?:                             number
+    purchased_premium_extra_reward?:                           number
 }
 
 export interface BattlePassAvailability {
@@ -1174,6 +1176,8 @@ export interface MatchReward {
     "album_pack_aces.generic"?: number
     "pet_food_pack.s"?:         number
     "pet_food_pack.m"?:         number
+    p_token?:                   number
+    pr_token?:                  number
 }
 
 export interface DragonTournamentsReward {
@@ -1217,6 +1221,8 @@ export interface IndigoReward {
     "album_pack_aces.generic"?: number
     "pet_food_pack.s"?:         number
     "pet_food_pack.m"?:         number
+    p_token?:                   number
+    pr_token?:                  number
 }
 
 export interface Tournament {
@@ -3216,7 +3222,7 @@ export interface Effect {
     parameters:              EffectParameters
     sfx_id?:                 number
     vfx_id?:                 string
-    passive_trigger_type?:   PassiveTriggerType[]
+    passive_trigger_type?:   string[]
     level_based_parameters?: number
     status_effect_data?:     StatusEffectData
 }
@@ -3283,6 +3289,11 @@ export interface EffectParameters {
     giveToDragons?:                GiveToDragons
     canReceiveElementalDamage?:    boolean
     canReceiveCriticals?:          boolean
+    spreadOnDeathChance?:          number
+    mode?:                         string
+    tickMultiplier?:               number
+    bypassList?:                   string[]
+    stackingMode?:                 string
 }
 
 export enum AvoidSkillElement {
@@ -3335,6 +3346,7 @@ export enum FgVfxScreenEffectname {
 }
 
 export enum GiveToDragons {
+    Alive = "alive",
     Any = "any",
 }
 
@@ -3358,34 +3370,17 @@ export enum VfxTextEffectname {
     MegacritSkill = "megacrit_skill",
 }
 
-export enum PassiveTriggerType {
-    Attack = "attack",
-    Defense = "defense",
-    Negative = "negative",
-    OnDie = "onDie",
-    OnEnterCombat = "onEnterCombat",
-}
-
 export interface StatusEffectData {
     statusIcon:         string
     effectName:         StatusEffectDataEffectName
     effectDescription?: string
-    dragonVfx?:         EffectVfxEnum
-}
-
-export enum EffectVfxEnum {
-    GenericHiddenVfx = "generic_hidden_vfx",
-    HighocculttitanShield = "highocculttitan_shield",
-    SkillOverdrive = "skill_overdrive",
-    SpineKarmaSkills = "spine_karma_skills",
-    TitanShield = "titan_shield",
-    VampireTitanShield = "vampire_titan_shield",
-    VoidSkill = "void_skill",
+    dragonVfx?:         string
 }
 
 export enum StatusEffectDataEffectName {
     TidCritEffectName = "tid_crit_effect_name",
     TidDoomSkillEffectName = "tid_doom_skill_effect_name",
+    TidPoisonName = "tid_poison_name",
     TidSkillArmorEffectName = "tid_skill_armor_effect_name",
     TidSkillDrainedEffectName = "tid_skill_drained_effect_name",
     TidSkillExhaustionEffectName = "tid_skill_exhaustion_effect_name",
@@ -3456,7 +3451,7 @@ export interface Passive {
     id:              number
     name:            string
     name_key?:       string
-    effect_vfx?:     EffectVfxEnum
+    effect_vfx?:     EffectVfx
     effect_sfx?:     number
     special_icon?:   number
     skill_id?:       number
@@ -3464,11 +3459,21 @@ export interface Passive {
     can_share:       number
 }
 
+export enum EffectVfx {
+    GenericHiddenVfx = "generic_hidden_vfx",
+    HighocculttitanShield = "highocculttitan_shield",
+    SkillOverdrive = "skill_overdrive",
+    SpineKarmaSkills = "spine_karma_skills",
+    TitanShield = "titan_shield",
+    VampireTitanShield = "vampire_titan_shield",
+    VoidSkill = "void_skill",
+}
+
 export interface Post {
     id:           number
     name:         Name
     name_key:     Name
-    effect_vfx:   EffectVfxEnum
+    effect_vfx:   EffectVfx
     special_icon: number
     skill_id:     number
 }
