@@ -874,11 +874,11 @@ export enum CanvasBg {
 }
 
 export interface CustomBackground {
-    local?:  Local
+    local?:  CustomBackgroundLocal
     remote?: string
 }
 
-export enum Local {
+export enum CustomBackgroundLocal {
     UIGraphicsLablesICDragonSkinBadgePNG = "/ui/graphics/lables/ic-dragon-skin-badge.png",
     UIRetakeGraphicsDragonBookGrColectHrPNG = "UIRetake/Graphics/DragonBook/gr-colect-hr.png",
     UIRetakeGraphicsDragonBookGrColectRegularPNG = "UIRetake/Graphics/DragonBook/gr-colect-regular.png",
@@ -1329,12 +1329,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    ActionElement[]
+    actions:    Action[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface ActionElement {
+export interface Action {
     id:                number
     type:              ActionType
     tid_name:          ActionTidName
@@ -1576,7 +1576,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     GridIslandEnemy[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
     parameters:  FogIslandParameter[]
 }
 
@@ -2329,7 +2329,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        GridIslandEnemy[]
     happy_hours:    any[]
-    actions:        ActionElement[]
+    actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -2434,15 +2434,17 @@ export interface News {
     "1":    The1
     "2":    The2
     "3":    The3
-    "4":    The0
-    "5":    The5
-    "6":    The0
-    "7":    The5
-    "8":    The8
-    "9":    The0
-    "10":   The0
+    "4":    The4
+    "5":    The0
+    "6":    The6
+    "7":    The0
+    "8":    The6
+    "9":    The9
+    "10":   The10
     "11":   The0
     "12":   The0
+    "13":   The0
+    "14":   The0
     canvas: Canva[]
 }
 
@@ -2552,6 +2554,46 @@ export interface FluffyMultipleButton {
     style:              string
 }
 
+export interface The10 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The10_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The10_Slide[]
+    start_ts:              string
+}
+
+export interface The10_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The10_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    link_item_id?:              number
+    slide_type:                 string
+    slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
+}
+
 export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2559,7 +2601,7 @@ export interface The2 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The2_HudButton
+    hud_button:            The10_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2573,12 +2615,6 @@ export interface The2 {
     start_ts:              string
 }
 
-export interface The2_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
 export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2589,7 +2625,7 @@ export interface The3 {
     min_level:             number
     popup_type:            string
     show_on_startup:       number
-    slides:                The3_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2598,20 +2634,22 @@ export interface The3_HudButton {
     title: string
 }
 
-export interface The3_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
+export interface The4 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The10_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The10_Slide[]
+    start_ts:              string
 }
 
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2629,14 +2667,14 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The8 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The2_HudButton
+    hud_button:            The10_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2649,13 +2687,14 @@ export interface The8 {
 }
 
 export interface Canva {
-    id:               number
-    assets_name:      string
-    start_ts:         number | string
-    end_ts:           number | string
-    min_level?:       number
-    slides:           CanvaSlide[]
-    show_on_startup?: number
+    id:              number
+    assets_name:     string
+    start_ts:        number | string
+    end_ts:          number | string
+    min_level:       number
+    slides:          CanvaSlide[]
+    show_on_startup: number
+    priority?:       string
 }
 
 export interface CanvaSlide {
@@ -2675,25 +2714,17 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
-}
-
-export interface ContentAction {
-    itemId:        string
-    storeCategory: number
-    type:          string
+    height:     number
+    rotation:   number
+    stroke:     string
+    text_color: string
+    text_key:   string
+    text_size:  number
+    timer:      number
+    type:       string
+    width:      number
+    x:          number
+    y:          number
 }
 
 export interface Perks {
@@ -3543,7 +3574,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
 }
 
 export interface Floor {
@@ -3769,11 +3800,25 @@ export interface TreeOfLifePowerupRaritySeed {
 }
 
 export interface Visual {
-    id:    number
-    front: string
-    back:  string
-    type:  string
-    grade: number
+    id:             number
+    grade:          number
+    has_frame:      boolean
+    has_glint:      boolean
+    shadow_asset:   Asset
+    star_asset:     Asset
+    disabled_asset: Asset
+    glow_asset:     Asset
+}
+
+export interface Asset {
+    local: DisabledAssetLocal
+}
+
+export enum DisabledAssetLocal {
+    UIFeaturesDragontournamentsGrEmpowerEmptyPNG = "ui/features/dragontournaments/gr-empower-empty.png",
+    UIRetakeIconsTreeOfLifeGrGlowGradePNG = "UIRetake/Icons/TreeOfLife/gr-glow-grade.png",
+    UIRetakeIconsTreeOfLifeICGradeEmptyPNG = "UIRetake/Icons/TreeOfLife/ic-grade-empty.png",
+    UIRetakeIconsTreeOfLifeICGradeFullPNG = "UIRetake/Icons/TreeOfLife/ic-grade-full.png",
 }
 
 export interface TreeOfLifeRecall {

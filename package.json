@@ -1,6 +1,6 @@
 {
   "name": "@dchighs/dc-config",
-  "version": "0.1.82",
+  "version": "0.1.83",
   "description": "A library to handle configuration for Dragon City.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
