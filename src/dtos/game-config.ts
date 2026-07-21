@@ -1069,7 +1069,7 @@ export enum Behaviour {
 export interface BattlesConfigElement {
     id:    number
     name:  string
-    value: ValueClass | number | number
+    value: ValueClass | number
 }
 
 export interface SkinUI {
@@ -2261,7 +2261,7 @@ export interface LiveopsChallengesGoal {
 export interface LiveopsChallengesParameter {
     id:    number
     name:  string
-    value: ValueClass | number | string
+    value: ValueClass | number | number | string
 }
 
 export interface LiveopsChallengesReward {
@@ -2433,15 +2433,16 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The0
+    "3":    The3
     "4":    The0
-    "5":    The5
+    "5":    The0
     "6":    The6
-    "7":    The0
+    "7":    The7
     "8":    The0
     "9":    The0
     "10":   The0
-    "11":   The11
+    "11":   The0
+    "12":   The12
     canvas: Canva[]
 }
 
@@ -2504,9 +2505,7 @@ export enum SpineAsset {
 }
 
 export enum Style {
-    BlueLarge = "BlueLarge",
     Transparent = "Transparent",
-    YellowLarge = "YellowLarge",
 }
 
 export enum SlideType {
@@ -2544,52 +2543,48 @@ export interface FluffyMultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                Key
+    key:                string
     link:               string
     linkItemId?:        number | string
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     spineAsset?:        SpineAsset
-    style:              Style
+    style:              string
 }
 
-export enum Key {
-    Empty = "",
-    TidHelpshiftFAQTitle = "tid_helpshift_faq_title",
-    TidNewsViptiersButton = "tid_news_viptiers_button",
-}
-
-export interface The11 {
+export interface The12 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    hud_button:            HudButton
+    hud_button:            The12_HudButton
     id:                    number
     min_level:             number
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The11_Slide[]
+    slides:                The12_Slide[]
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The12_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The11_Slide {
-    content_localized_key:      string
+export interface The12_Slide {
+    content_localized_key?:     string
     custom_title_localized_key: string
-    header_localized_key:       string
+    header_localized_key?:      string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
+    timer?:                     string
+    times_to_show?:             number
 }
 
 export interface The2 {
@@ -2599,7 +2594,7 @@ export interface The2 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The12_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2613,7 +2608,26 @@ export interface The2 {
     start_ts:              string
 }
 
-export interface The5 {
+export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    end_ts:                string
+    hud_button:            The3_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The12_Slide[]
+    start_ts:              string
+}
+
+export interface The3_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2631,14 +2645,14 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The6 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The12_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -3672,7 +3686,7 @@ export interface TreeOfLifeRaritySeed {
 }
 
 export interface TreeOfLifePowerup {
-    parameters:          BattlesConfigElement[]
+    parameters:          LiveopsChallengesParameter[]
     animation:           AnimationElement[]
     grades_by_rarity:    GradesBy[]
     grades_by_dragon:    GradesBy[]
