@@ -1058,7 +1058,6 @@ export enum ItemsUnitsAttributeModifierAttribute {
 }
 
 export enum Behaviour {
-    AddArray = "ADD_ARRAY",
     Multiply = "MULTIPLY",
     Replace = "REPLACE",
     ReplaceByIndex = "REPLACE_BY_INDEX",
@@ -2402,17 +2401,20 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
-    "3":    The10
+    "2":    The2
+    "3":    The12
     "4":    The12
-    "5":    The12
-    "6":    The10
-    "7":    The10
-    "8":    The10
-    "9":    The9
+    "5":    The14
+    "6":    The14
+    "7":    The12
+    "8":    The12
+    "9":    The12
     "10":   The10
-    "11":   The10
+    "11":   The11
     "12":   The12
+    "13":   The12
+    "14":   The14
+    "15":   The12
     canvas: Canva[]
 }
 
@@ -2464,7 +2466,7 @@ export interface MultipleButton {
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     style:              Style
-    linkItemId?:        number
+    linkItemId?:        number | string
     spineAsset?:        SpineAsset
 }
 
@@ -2524,52 +2526,19 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
+    content_localized_key?:     string
+    header_localized_key?:      string
 }
 
 export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The12 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              number | null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2588,6 +2557,86 @@ export interface The9 {
     start_ts:              string
 }
 
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The0_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The11_Slide[]
+    start_ts:              string
+}
+
+export interface The11_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    link_item_id:               number
+    slide_type:                 string
+    slide_type_2:               string
+}
+
+export interface The12 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The14 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number | null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The0_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
 export interface Canva {
     id:               number
     assets_name:      string
@@ -2596,6 +2645,7 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
+    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2615,19 +2665,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
+    action?:     ContentAction
     height:      number
     rotation:    number
-    stroke?:     string
-    text_color?: string
+    style?:      string
     text_key:    string
-    text_size?:  number
-    timer?:      number
     type:        string
     width:       number
     x:           number
     y:           number
-    action?:     ContentAction
-    style?:      string
+    stroke?:     string
+    text_color?: string
+    text_size?:  number
+    timer?:      number
 }
 
 export interface ContentAction {
