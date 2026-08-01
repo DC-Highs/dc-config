@@ -2401,20 +2401,19 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The2
-    "3":    The12
-    "4":    The12
-    "5":    The14
-    "6":    The14
-    "7":    The12
-    "8":    The12
-    "9":    The12
+    "2":    The11
+    "3":    The11
+    "4":    The13
+    "5":    The13
+    "6":    The11
+    "7":    The11
+    "8":    The11
+    "9":    The9
     "10":   The10
     "11":   The11
-    "12":   The12
-    "13":   The12
-    "14":   The14
-    "15":   The12
+    "12":   The11
+    "13":   The13
+    "14":   The11
     canvas: Canva[]
 }
 
@@ -2526,16 +2525,17 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
+    content_localized_key:      string
     custom_title_localized_key: string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer:                      string
+    timer?:                     string
     times_to_show?:             number
-    content_localized_key?:     string
-    header_localized_key?:      string
+    link_item_id?:              number
 }
 
 export interface The10 {
@@ -2550,10 +2550,11 @@ export interface The10 {
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
+    popup_frequency:       string
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -2563,38 +2564,6 @@ export interface The11 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The11_Slide[]
-    start_ts:              string
-}
-
-export interface The11_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    link_item_id:               number
-    slide_type:                 string
-    slide_type_2:               string
-}
-
-export interface The12 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
     id:                    number
     min_level:             number
     popup_frequency:       string
@@ -2604,7 +2573,7 @@ export interface The12 {
     start_ts:              string
 }
 
-export interface The14 {
+export interface The13 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2622,18 +2591,22 @@ export interface The14 {
     start_ts:              string
 }
 
-export interface The2 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
+    filter_category:       null
     hud_button:            The0_HudButton
     id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
     min_level:             number
     popup_type:            string
+    priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
@@ -2645,7 +2618,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2665,19 +2637,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    action?:     ContentAction
     height:      number
     rotation:    number
-    style?:      string
+    stroke?:     string
+    text_color?: string
     text_key:    string
+    text_size?:  number
+    timer?:      number
     type:        string
     width:       number
     x:           number
     y:           number
-    stroke?:     string
-    text_color?: string
-    text_size?:  number
-    timer?:      number
+    action?:     ContentAction
+    style?:      string
 }
 
 export interface ContentAction {
