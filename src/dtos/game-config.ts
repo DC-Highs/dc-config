@@ -1326,12 +1326,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    ActionElement[]
+    actions:    Action[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface ActionElement {
+export interface Action {
     id:                number
     type:              ActionType
     tid_name:          ActionTidName
@@ -1580,7 +1580,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     GridIslandEnemy[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
     parameters:  FogIslandParameter[]
 }
 
@@ -2298,7 +2298,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        GridIslandEnemy[]
     happy_hours:    any[]
-    actions:        ActionElement[]
+    actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -2403,8 +2403,8 @@ export interface News {
     "1":    The1
     "2":    The11
     "3":    The11
-    "4":    The13
-    "5":    The13
+    "4":    The14
+    "5":    The14
     "6":    The11
     "7":    The11
     "8":    The11
@@ -2412,8 +2412,9 @@ export interface News {
     "10":   The10
     "11":   The11
     "12":   The11
-    "13":   The13
-    "14":   The11
+    "13":   The11
+    "14":   The14
+    "15":   The11
     canvas: Canva[]
 }
 
@@ -2445,7 +2446,7 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2573,7 +2574,7 @@ export interface The11 {
     start_ts:              string
 }
 
-export interface The13 {
+export interface The14 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2611,51 +2612,13 @@ export interface The9 {
 }
 
 export interface Canva {
-    id:               number
-    assets_name:      string
-    start_ts:         number | string
-    end_ts:           number | string
-    min_level?:       number
-    slides:           CanvaSlide[]
-    show_on_startup?: number
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
-}
-
-export interface ContentAction {
-    itemId:        string
-    storeCategory: number
-    type:          string
+    id:              number
+    assets_name:     string
+    start_ts:        number
+    end_ts:          number
+    min_level:       number
+    slides:          The0_Slide[]
+    show_on_startup: number
 }
 
 export interface Perks {
@@ -3505,7 +3468,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
 }
 
 export interface Floor {
