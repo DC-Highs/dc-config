@@ -1058,6 +1058,7 @@ export enum ItemsUnitsAttributeModifierAttribute {
 }
 
 export enum Behaviour {
+    AddArray = "ADD_ARRAY",
     Multiply = "MULTIPLY",
     Replace = "REPLACE",
     ReplaceByIndex = "REPLACE_BY_INDEX",
