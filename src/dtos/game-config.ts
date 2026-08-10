@@ -1059,7 +1059,6 @@ export enum ItemsUnitsAttributeModifierAttribute {
 }
 
 export enum Behaviour {
-    AddArray = "ADD_ARRAY",
     Multiply = "MULTIPLY",
     Replace = "REPLACE",
     ReplaceByIndex = "REPLACE_BY_INDEX",
@@ -2404,18 +2403,17 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
-    "3":    The12
-    "4":    The10
-    "5":    The10
-    "6":    The6
-    "7":    The7
-    "8":    The10
-    "9":    The10
+    "2":    The11
+    "3":    The11
+    "4":    The11
+    "5":    The5
+    "6":    The11
+    "7":    The11
+    "8":    The11
+    "9":    The11
     "10":   The10
-    "11":   The10
-    "12":   The12
-    "13":   The10
+    "11":   The11
+    "12":   The11
     canvas: Canva[]
 }
 
@@ -2535,27 +2533,11 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The12 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2573,7 +2555,22 @@ export interface The12 {
     start_ts:              string
 }
 
-export interface The6 {
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2589,26 +2586,6 @@ export interface The6 {
     priority:              null
     show_on_startup:       number
     slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -3187,7 +3164,7 @@ export interface Effect {
     parameters:              EffectParameters
     sfx_id?:                 number
     vfx_id?:                 string
-    passive_trigger_type?:   string[]
+    passive_trigger_type?:   PassiveTriggerType[]
     level_based_parameters?: number
     status_effect_data?:     StatusEffectData
 }
@@ -3333,6 +3310,15 @@ export enum Vfx {
 
 export enum VfxTextEffectname {
     MegacritSkill = "megacrit_skill",
+}
+
+export enum PassiveTriggerType {
+    Attack = "attack",
+    Defense = "defense",
+    Negative = "negative",
+    OnDie = "onDie",
+    OnEnterCombat = "onEnterCombat",
+    PostAttack = "postAttack",
 }
 
 export interface StatusEffectData {
