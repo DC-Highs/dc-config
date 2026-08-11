@@ -1327,16 +1327,16 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    ActionElement[]
+    actions:    Action[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface ActionElement {
+export interface Action {
     id:                number
-    type:              ActionType
-    tid_name:          ActionTidName
-    image:             Image
+    type:              string
+    tid_name:          string
+    image:             string
     pool_percent:      number
     max_points:        number
     extra_parameters?: ExtraParameters
@@ -1350,51 +1350,10 @@ export interface ExtraParameters {
     max_time?:          number
 }
 
-export enum Image {
-    ICInfoActionBreedPNG = "ic-info-action-breed.png",
-    ICInfoActionCollectFoodPNG = "ic-info-action-collect-food.png",
-    ICInfoActionCollectGoldPNG = "ic-info-action-collect-gold.png",
-    ICInfoActionFeedPNG = "ic-info-action-feed.png",
-    ICInfoActionHatch2ElPNG = "ic-info-action-hatch-2-el.png",
-    ICInfoActionHatch3ElPNG = "ic-info-action-hatch-3-el.png",
-    ICInfoActionHatchLegendaryPNG = "ic-info-action-hatch-legendary.png",
-    ICInfoActionPvpPNG = "ic-info-action-pvp.png",
-}
-
-export enum ActionTidName {
-    TidGridIslandsBreedDragons = "tid_grid_islands_breed_dragons",
-    TidGridIslandsCollectFarmFood = "tid_grid_islands_collect_farm_food",
-    TidGridIslandsCollectGold = "tid_grid_islands_collect_gold",
-    TidGridIslandsFeedDragons = "tid_grid_islands_feed_dragons",
-    TidGridIslandsHatching2_El = "tid_grid_islands_hatching_2_el",
-    TidGridIslandsHatching3_El = "tid_grid_islands_hatching_3_el",
-    TidGridIslandsHatchingLegendary = "tid_grid_islands_hatching_legendary",
-    TidGridIslandsPvpBattle = "tid_grid_islands_pvp_battle",
-}
-
-export enum ActionType {
-    BreedDragons = "BREED_DRAGONS",
-    CollectFarmFood = "COLLECT_FARM_FOOD",
-    CollectGold = "COLLECT_GOLD",
-    CollectGreenhouseFood = "COLLECT_GREENHOUSE_FOOD",
-    FeedDragons = "FEED_DRAGONS",
-    Hatch2 = "HATCH_2",
-    Hatch3 = "HATCH_3",
-    HatchLegend = "HATCH_LEGEND",
-    Pvp = "PVP",
-}
-
 export interface Currency {
     id:       number
-    tid_name: CurrencyTidName
+    tid_name: string
     actions:  number[]
-}
-
-export enum CurrencyTidName {
-    TidFiCurrencyName = "tid_fi_currency_name",
-    TidGiCurrencyName = "tid_gi_currency_name",
-    TidMazeIslandCurrencyName = "tid_maze_island_currency_name",
-    TidTowerIslandCurrencyName = "tid_tower_island_currency_name",
 }
 
 export interface Hint {
@@ -1579,9 +1538,9 @@ export interface GridIsland {
     squares:     GridIslandSquare[]
     decorations: Decoration[]
     encounters:  Encounter[]
-    enemies:     GridIslandEnemy[]
+    enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1604,10 +1563,17 @@ export interface Encounter {
     enemies:                 number[]
     speed_up_price_per_hour: number
     fight_background?:       string
-    fight_background_id:     string
+    fight_background_id:     FightBackgroundID
 }
 
-export interface GridIslandEnemy {
+export enum FightBackgroundID {
+    BgBattleBackgroundGiTreasurehunt = "bg_battle_background_gi_treasurehunt",
+    BgBattleBackgroundHrMedievalholidays = "bg_battle_background_hr_medievalholidays",
+    BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
+    BgBattleBackgroundMr108_MythicalGelbarrier = "bg_battle_background_mr_108_mythical_gelbarrier",
+}
+
+export interface EnemyElement {
     id:                 number
     dragon_ids:         number[]
     handicaps:          number[]
@@ -1659,7 +1625,6 @@ export interface FluffyResource {
     "pet_food_pack.m"?: number
     "pet_food_pack.l"?: number
     b?:                 number[]
-    chest?:             number
 }
 
 export enum Wall {
@@ -1737,19 +1702,10 @@ export interface HeroicRaces {
     nodes_position: NodesPosition[]
     missions:       HeroicRacesMission[]
     encounters:     Encounter[]
-    enemies:        HeroicRacesEnemy[]
+    enemies:        EnemyElement[]
     parameters:     HeroicRacesParameter[]
     spin_rewards:   SpinReward[]
     lap_rewards:    LapRewardElement[]
-}
-
-export interface HeroicRacesEnemy {
-    id:                 number
-    dragon_ids:         Array<number | string>
-    handicaps:          number[]
-    view_type:          ViewTypeEnum
-    elements_view_type: any[]
-    cooldown:           number
 }
 
 export interface HeroicRacesIsland {
@@ -1770,9 +1726,9 @@ export interface HeroicRacesIsland {
     dragon_building_position:           number[]
     dragon_building_scale:              number
     zip_file:                           string
-    canvas_assets_url:                  string
-    island_title_tid:                   IslandTitleTid
-    sound_tag:                          FluffySoundTag
+    canvas_assets_url:                  AnalyticsID
+    island_title_tid:                   string
+    sound_tag:                          string
     level_tiers:                        number[]
     rewards:                            number[]
     dragon_race_id:                     number
@@ -1790,15 +1746,6 @@ export interface HeroicRacesIsland {
     notification_anim_per_day:          number
     notification_anim_duration:         number
     lap_completed_to_hide_notification: number
-}
-
-export enum IslandTitleTid {
-    TidHeroicRaceTitle = "tid_heroic_race_title",
-    TidHrMythicalraceName = "tid_hr_mythicalrace_name",
-}
-
-export enum FluffySoundTag {
-    Heaven = "HEAVEN",
 }
 
 export interface LapRewardElement {
@@ -1823,36 +1770,28 @@ export interface LapRewardValue {
 export interface LimitedReward {
     chest?:               number
     "album_pack_aces.1"?: number
-    b?:                   number[]
     trade_tickets?:       TradeTicket[]
-    "pet_food_pack.l"?:   number
-    "album_pack_aces.5"?: number
     seeds?:               Seed[]
     rarity_seeds?:        RewardRaritySeed[]
 }
 
 export interface LapRewardReward {
-    "rank_up_coin.mythical"?:   number
-    "album_pack.s"?:            number
-    "pet_food_pack.s"?:         number
-    "pet_food_pack.m"?:         number
-    b?:                         number[]
-    chest?:                     number
-    "album_pack_aces.1"?:       number
-    "album_pack.m"?:            number
-    "album_pack.l"?:            number
-    "album_pack_aces.2"?:       number
-    "pet_food_pack.l"?:         number
-    "album_pack.xl"?:           number
-    "album_pack_aces.3"?:       number
-    "album_pack_aces.generic"?: number
-    trade_tickets?:             TradeTicket[]
-    "album_pack_aces.4"?:       number
-    egg?:                       number[] | number
-    seeds?:                     Seed[]
-    "album_pack_aces.5"?:       number
-    skin?:                      number
-    rarity_seeds?:              RewardRaritySeed[]
+    "pet_food_pack.m"?:       number
+    "rank_up_coin.mythical"?: number
+    chest?:                   number
+    b?:                       number[]
+    "album_pack.l"?:          number
+    "album_pack_aces.1"?:     number
+    "pet_food_pack.l"?:       number
+    "album_pack_aces.2"?:     number
+    "album_pack_aces.3"?:     number
+    trade_tickets?:           TradeTicket[]
+    "album_pack_aces.4"?:     number
+    egg?:                     number
+    seeds?:                   Seed[]
+    "album_pack_aces.5"?:     number
+    skin?:                    number
+    rarity_seeds?:            RewardRaritySeed[]
 }
 
 export enum RewardCellType {
@@ -1928,18 +1867,11 @@ export interface IndecentReward {
 
 export interface SpinReward {
     id:           number
-    type:         SpinRewardType
+    type:         string
     value:        number
     analytics_id: string
     weight:       number
     image:        string
-}
-
-export enum SpinRewardType {
-    ExtraSpin = "extra_spin",
-    Mission = "mission",
-    MissionPoint = "mission_point",
-    Node = "node",
 }
 
 export interface Item {
@@ -2298,9 +2230,9 @@ export interface MazeIsland {
     paths:          Path[]
     nodes:          MazeIslandNode[]
     encounters:     Encounter[]
-    enemies:        GridIslandEnemy[]
+    enemies:        EnemyElement[]
     happy_hours:    any[]
-    actions:        ActionElement[]
+    actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -2316,7 +2248,7 @@ export interface Cloud {
 
 export interface MazeIslandIsland {
     id:                               number
-    tid_name:                         PurpleTidName
+    tid_name:                         string
     name:                             string
     availability:                     TimerIntervalElement
     paths:                            number[]
@@ -2339,46 +2271,27 @@ export interface MazeIslandIsland {
     mobile_building_position:         number[]
     active_platforms:                 ValueClass
     help_view_id:                     number
-    sound_tag:                        TentacledSoundTag
-}
-
-export enum TentacledSoundTag {
-    Fantasy = "FANTASY",
-}
-
-export enum PurpleTidName {
-    TidMiGenericName = "tid_mi_generic_name",
+    sound_tag:                        string
 }
 
 export interface MazeIslandNode {
     id:                   number
     position:             number[]
+    highlighted:          boolean
     cost?:                CostClass
     reward_id?:           number
     reward?:              NodeReward[]
-    highlighted?:         boolean
     key?:                 number
     encounter?:           number
     encounter_skip_cost?: CostClass
 }
 
 export interface NodeReward {
-    g?:                         number
-    b?:                         number[] | number
-    chest?:                     number
-    f?:                         number
-    skin?:                      number
-    "album_pack.s"?:            number
-    "album_pack.m"?:            number
-    "album_pack.l"?:            number
-    "album_pack.xl"?:           number
-    "album_pack_aces.generic"?: number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.4"?:       number
-    egg?:                       number
-    "pet_food_pack.s"?:         number
-    "pet_food_pack.m"?:         number
-    "pet_food_pack.l"?:         number
+    g?:     number
+    f?:     number
+    b?:     number[]
+    chest?: number
+    egg?:   number
 }
 
 export interface Path {
@@ -2394,26 +2307,25 @@ export interface Path {
 }
 
 export interface MazeIslandReward {
-    id:                    number
-    reward:                NodeReward[]
-    type_id:               number
-    double_with_video_ad?: number
+    id:                   number
+    reward:               NodeReward[]
+    type_id:              number
+    double_with_video_ad: number
 }
 
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The11
-    "3":    The11
-    "4":    The11
-    "5":    The5
-    "6":    The11
-    "7":    The11
-    "8":    The11
-    "9":    The11
-    "10":   The10
-    "11":   The11
-    "12":   The11
+    "2":    The1
+    "3":    The1
+    "4":    The4
+    "5":    The1
+    "6":    The1
+    "7":    The1
+    "8":    The1
+    "9":    The9
+    "10":   The1
+    "11":   The1
     canvas: Canva[]
 }
 
@@ -2424,7 +2336,7 @@ export interface The0 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2438,14 +2350,14 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface The0_HudButton {
+export interface HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2509,35 +2421,37 @@ export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The1_HudButton
     id:                    number
     min_level:             number
+    popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
-export interface The1_HudButton {
-    file:  string
-    title: string
+export interface The4 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
 }
 
-export interface The1_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    slide_type:                 string
-    slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
-}
-
-export interface The10 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2555,86 +2469,14 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface The11 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The5 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
 export interface Canva {
-    id:               number
-    assets_name:      string
-    start_ts:         number | string
-    end_ts:           number | string
-    min_level?:       number
-    slides:           CanvaSlide[]
-    show_on_startup?: number
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
-}
-
-export interface ContentAction {
-    itemId:        string
-    storeCategory: number
-    type:          string
+    id:              number
+    assets_name:     string
+    start_ts:        number
+    end_ts:          number
+    min_level:       number
+    slides:          The0_Slide[]
+    show_on_startup: number
 }
 
 export interface Perks {
@@ -2863,7 +2705,7 @@ export interface RunnerIslandIsland {
     zip_file:                  PurpleZipFile
     help_id:                   number
     run_cost:                  number
-    sound_tag:                 StickySoundTag
+    sound_tag:                 FluffySoundTag
     mission_pool:              number[]
     sections:                  number[]
     building_tooltip_position: number[]
@@ -2871,7 +2713,7 @@ export interface RunnerIslandIsland {
     milestone_rewards:         number[]
 }
 
-export enum StickySoundTag {
+export enum FluffySoundTag {
     Aquatic = "AQUATIC",
 }
 
@@ -3493,7 +3335,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
 }
 
 export interface Floor {
@@ -3529,7 +3371,7 @@ export interface HappyHour {
 export interface TowerIslandIsland {
     id:                                number
     analytics_id:                      string
-    tid_name:                          FluffyTidName
+    tid_name:                          TidName
     start_ts:                          number
     end_ts:                            number
     initial_square_id:                 number
@@ -3544,7 +3386,7 @@ export interface TowerIslandIsland {
     building_position:                 number[]
     tower_size:                        number[]
     zip_file:                          FluffyZipFile
-    sound_tag:                         IndigoSoundTag
+    sound_tag:                         TentacledSoundTag
     canvas_assets_url:                 AnalyticsID
     mobile_first_floor_position:       number[]
     mobile_floor_height:               number
@@ -3557,11 +3399,11 @@ export interface TowerIslandIsland {
     active_platforms:                  ValueClass
 }
 
-export enum IndigoSoundTag {
+export enum TentacledSoundTag {
     RuinedTower = "RUINED_TOWER",
 }
 
-export enum FluffyTidName {
+export enum TidName {
     TidTIGenericName = "tid_ti_generic_name",
 }
 
