@@ -2317,14 +2317,15 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The2
-    "3":    The2
-    "4":    The2
+    "2":    The10
+    "3":    The10
+    "4":    The10
     "5":    The5
-    "6":    The2
-    "7":    The2
-    "8":    The2
-    "9":    The2
+    "6":    The6
+    "7":    The10
+    "8":    The10
+    "9":    The10
+    "10":   The10
     canvas: Canva[]
 }
 
@@ -2335,7 +2336,7 @@ export interface The0 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2349,14 +2350,14 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface The0_HudButton {
+export interface HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
 export interface The0_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2420,19 +2421,15 @@ export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The1_HudButton
+    hud_button:            HudButton
     id:                    number
     min_level:             number
     popup_type:            string
     show_on_startup:       number
     slides:                The1_Slide[]
     start_ts:              string
-}
-
-export interface The1_HudButton {
-    file:  string
-    title: string
 }
 
 export interface The1_Slide {
@@ -2444,11 +2441,11 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
+    timer?:                     string
+    link_item_id?:              number
 }
 
-export interface The2 {
+export interface The10 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2470,7 +2467,7 @@ export interface The5 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2482,14 +2479,65 @@ export interface The5 {
     start_ts:              string
 }
 
+export interface The6 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number
-    end_ts:          number
+    start_ts:        number | string
+    end_ts:          number | string
     min_level:       number
-    slides:          The0_Slide[]
+    slides:          CanvaSlide[]
     show_on_startup: number
+    priority?:       string
+}
+
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       SlideType
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:     number
+    rotation:   number
+    stroke:     string
+    text_color: string
+    text_key:   string
+    text_size:  number
+    timer:      number
+    type:       string
+    width:      number
+    x:          number
+    y:          number
 }
 
 export interface Perks {
