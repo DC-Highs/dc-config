@@ -1059,7 +1059,6 @@ export enum ItemsUnitsAttributeModifierAttribute {
 }
 
 export enum Behaviour {
-    AddArray = "ADD_ARRAY",
     Multiply = "MULTIPLY",
     Replace = "REPLACE",
     ReplaceByIndex = "REPLACE_BY_INDEX",
@@ -2320,11 +2319,10 @@ export interface News {
     "2":    The2
     "3":    The2
     "4":    The4
-    "5":    The5
+    "5":    The2
     "6":    The2
     "7":    The2
     "8":    The2
-    "9":    The2
     canvas: Canva[]
 }
 
@@ -2443,17 +2441,14 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The2 {
@@ -2487,26 +2482,6 @@ export interface The4 {
     priority:              null
     show_on_startup:       number
     slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The5 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The1_Slide[]
     start_ts:              string
 }
 
