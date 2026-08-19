@@ -1176,6 +1176,7 @@ export interface MatchReward {
     "pet_food_pack.m"?:         number
     p_token?:                   number
     pr_token?:                  number
+    gacha_event_tickets?:       number
 }
 
 export interface DragonTournamentsReward {
@@ -1221,6 +1222,7 @@ export interface IndigoReward {
     "pet_food_pack.m"?:         number
     p_token?:                   number
     pr_token?:                  number
+    gacha_event_tickets?:       number
 }
 
 export interface Tournament {
@@ -1669,7 +1671,7 @@ export enum SizeEnum {
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         PurpleContentLocalizedKey
+    content_localized_key?:         ContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1684,7 +1686,7 @@ export enum AnimationNameEnum {
     Anim1 = "anim1",
 }
 
-export enum PurpleContentLocalizedKey {
+export enum ContentLocalizedKey {
     Empty = "",
     TidDBCollectionsHelpScreen1 = "tid_db_collections_help_screen_1",
     TidDBCollectionsHelpScreen2 = "tid_db_collections_help_screen_2",
@@ -2316,12 +2318,14 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The1
+    "2":    The2
     "3":    The3
-    "4":    The1
-    "5":    The1
-    "6":    The1
-    "7":    The1
+    "4":    The3
+    "5":    The5
+    "6":    The3
+    "7":    The3
+    "8":    The3
+    "9":    The3
     canvas: Canva[]
 }
 
@@ -2332,7 +2336,7 @@ export interface The0 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The0_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2346,14 +2350,14 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The0_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
 export interface The0_Slide {
-    content_localized_key?:     FluffyContentLocalizedKey
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2361,13 +2365,6 @@ export interface The0_Slide {
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
-}
-
-export enum FluffyContentLocalizedKey {
-    Empty = "",
-    TidNewsEternalabyssDesc = "tid_news_eternalabyss_desc",
-    TidNewsSparklercollectionDesc = "tid_news_sparklercollection_desc",
-    TidNewsTropicalretreatDesc = "tid_news_tropicalretreat_desc",
 }
 
 export interface MultipleButton {
@@ -2424,6 +2421,53 @@ export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    end_ts:                string
+    hud_button:            The1_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The1_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The1_Slide {
+    custom_title_localized_key: string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+    timer:                      string
+    times_to_show?:             number
+    content_localized_key?:     string
+    header_localized_key?:      string
+}
+
+export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The0_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     id:                    number
@@ -2435,14 +2479,14 @@ export interface The1 {
     start_ts:              string
 }
 
-export interface The3 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The0_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -3555,8 +3599,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
