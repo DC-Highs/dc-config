@@ -1059,6 +1059,7 @@ export enum ItemsUnitsAttributeModifierAttribute {
 }
 
 export enum Behaviour {
+    AddArray = "ADD_ARRAY",
     Multiply = "MULTIPLY",
     Replace = "REPLACE",
     ReplaceByIndex = "REPLACE_BY_INDEX",
@@ -2319,16 +2320,17 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The10
+    "3":    The3
     "4":    The10
     "5":    The10
     "6":    The10
     "7":    The10
-    "8":    The8
-    "9":    The10
+    "8":    The10
+    "9":    The9
     "10":   The10
-    "11":   The11
-    "12":   The10
+    "11":   The10
+    "12":   The12
+    "13":   The10
     canvas: Canva[]
 }
 
@@ -2449,7 +2451,7 @@ export interface The1_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
 }
 
 export interface The10 {
@@ -2467,7 +2469,7 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface The11 {
+export interface The12 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2491,6 +2493,21 @@ export interface The2 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
+    hud_button:            The0_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
     filter_category:       null
     hud_button:            The0_HudButton
     id:                    number
@@ -2504,7 +2521,7 @@ export interface The2 {
     start_ts:              string
 }
 
-export interface The8 {
+export interface The9 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -3663,8 +3680,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
