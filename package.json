@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "update-dto": "ts-node scripts/update-dto.ts"
+    "update-dto": "tsx scripts/update-dto.ts"
   },
   "author": "Marcuth",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "@types/node": "^26.3.0",
     "dotenv": "^17.4.2",
     "quicktype-core": "^26.0.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   },
   "dependencies": {
