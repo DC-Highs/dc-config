@@ -9,6 +9,10 @@
     "dist/*",
     "!/**/__tests__"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DC-Highs/dc-config.git"
+  },
   "keywords": [
     "dragon city",
     "dc",
