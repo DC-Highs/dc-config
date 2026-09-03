@@ -62,11 +62,7 @@ export interface BuildingElement {
     asset_version: number
 }
 
-export enum Format {
-    Efk = "efk",
-    Spine = "spine",
-    Tween = "tween",
-}
+export type Format = "spine" | "tween" | "efk"
 
 export interface ConfigBattlePass {
     battle_pass:          BattlePassElement[]
@@ -146,26 +142,9 @@ export interface IapDiscountUidAvailability {
     to?:  string
 }
 
-export enum Dur {
-    The10D = "10d",
-    The11D = "11d",
-    The14D = "14d",
-    The15D = "15d",
-    The25D = "25d",
-    The28D = "28d",
-    The29D = "29d",
-    The32D = "32d",
-    The42D = "42d",
-    The7D = "7d",
-    The91D = "91d",
-}
+export type Dur = "15d" | "7d" | "10d" | "14d" | "28d" | "29d" | "42d" | "32d" | "25d" | "11d" | "91d"
 
-export enum IapDiscountUidIap {
-    BattlePass19_99 = "battle_pass_19_99",
-    BattlePass7_99 = "battle_pass_7_99",
-    BattlePassTier9_99 = "battle_pass_tier_9_99",
-    Blackfriday9_99 = "blackfriday_9_99",
-}
+export type IapDiscountUidIap = "battle_pass_tier_9_99" | "battle_pass_7_99" | "battle_pass_19_99" | "blackfriday_9_99"
 
 export interface DiscountUid {
     iap:            IapEliteDiscountUidIap
@@ -177,76 +156,19 @@ export interface IapEliteDiscountUidAvailability {
     dur:  Dur
 }
 
-export enum IapEliteDiscountUidIap {
-    BattlePass19_99 = "battle_pass_19_99",
-    BattlePass7_99 = "battle_pass_7_99",
-    Blackfriday21_99 = "blackfriday_21_99",
-    Blackfriday31_99 = "blackfriday_31_99",
-    ElitePass59_99 = "elite_pass_59_99",
-    ElitePassPromo31_99 = "elite_pass_promo_31_99",
-    EliteUpgradePromo23_99 = "elite_upgrade_promo_23_99",
-    SpecialEbpUpgradeDiscount39_99 = "special_ebp_upgrade_discount_39_99",
-}
+export type IapEliteDiscountUidIap = "elite_pass_promo_31_99" | "elite_pass_59_99" | "blackfriday_31_99" | "elite_upgrade_promo_23_99" | "special_ebp_upgrade_discount_39_99" | "blackfriday_21_99" | "battle_pass_19_99" | "battle_pass_7_99"
 
-export enum IapEliteUid {
-    BattlePass29_99 = "battle_pass_29_99",
-    Blackfriday49_99 = "blackfriday_49_99",
-    ElitePass39_99 = "elite_pass_39_99",
-    ElitePass89_99 = "elite_pass_89_99",
-    ElitePassPromo31_99 = "elite_pass_promo_31_99",
-    EliteUpgrade19_99 = "elite_upgrade_19_99",
-}
+export type IapEliteUid = "battle_pass_29_99" | "elite_upgrade_19_99" | "elite_pass_39_99" | "elite_pass_89_99" | "blackfriday_49_99" | "elite_pass_promo_31_99"
 
-export enum IapEliteUpgradeUid {
-    BattlePass19_99 = "battle_pass_19_99",
-    BattlePass39_99 = "battle_pass_39_99",
-    Blackfriday34_99 = "blackfriday_34_99",
-    ElitePassPromo23_99 = "elite_pass_promo_23_99",
-    EliteUpgrade29_99 = "elite_upgrade_29_99",
-    SpecialEbpUpgrade59_99 = "special_ebp_upgrade_59_99",
-}
+export type IapEliteUpgradeUid = "battle_pass_19_99" | "battle_pass_39_99" | "elite_upgrade_29_99" | "special_ebp_upgrade_59_99" | "blackfriday_34_99" | "elite_pass_promo_23_99"
 
-export enum IapUid {
-    BattlePass29_99 = "battle_pass_29_99",
-    BattlePassTier9_99 = "battle_pass_tier_9_99",
-    Blackfriday14_99 = "blackfriday_14_99",
-    MktOffer199 = "mkt_offer_199",
-    NguBp6_99 = "ngu_bp_6_99",
-    NguBp7_99 = "ngu_bp_7_99",
-    NguBp9_99 = "ngu_bp_9_99",
-}
+export type IapUid = "mkt_offer_199" | "battle_pass_tier_9_99" | "battle_pass_29_99" | "blackfriday_14_99" | "ngu_bp_6_99" | "ngu_bp_7_99" | "ngu_bp_9_99"
 
-export enum IconID {
-    Icon1 = "icon_1",
-    Icon10 = "icon_10",
-    Icon11 = "icon_11",
-    Icon12 = "icon_12",
-    Icon13 = "icon_13",
-    Icon14 = "icon_14",
-    Icon15 = "icon_15",
-    Icon16 = "icon_16",
-    Icon17 = "icon_17",
-    Icon18 = "icon_18",
-    Icon19 = "icon_19",
-    Icon2 = "icon_2",
-    Icon3 = "icon_3",
-    Icon4 = "icon_4",
-    Icon5 = "icon_5",
-    Icon6 = "icon_6",
-    Icon7 = "icon_7",
-    Icon8 = "icon_8",
-    Icon9 = "icon_9",
-}
+export type IconID = "icon_1" | "icon_2" | "icon_3" | "icon_4" | "icon_5" | "icon_8" | "icon_10" | "icon_12" | "icon_14" | "icon_18" | "icon_7" | "icon_15" | "icon_16" | "icon_19" | "icon_6" | "icon_9" | "icon_11" | "icon_13" | "icon_17"
 
-export enum BattlePassSoundTag {
-    Holy = "HOLY",
-    Mysterious = "MYSTERIOUS",
-}
+export type BattlePassSoundTag = "MYSTERIOUS" | "HOLY"
 
-export enum TypeElement {
-    Global = "global",
-    Ngu = "ngu",
-}
+export type TypeElement = "global" | "ngu"
 
 export interface CollectibleAction {
     id:     number
@@ -262,76 +184,11 @@ export interface Rules {
     rarity?:           Rarity
 }
 
-export enum ElementType {
-    BT = "bt",
-    Ch = "ch",
-    D = "d",
-    DR = "dr",
-    E = "e",
-    El = "el",
-    ElementType = "*",
-    Empty = "-",
-    F = "f",
-    HP = "hp",
-    I = "i",
-    L = "l",
-    Large = "LARGE",
-    Li = "li",
-    M = "m",
-    Medium = "MEDIUM",
-    Mg = "mg",
-    N = "n",
-    P = "p",
-    PR = "pr",
-    Ph = "ph",
-    Pu = "pu",
-    Small = "SMALL",
-    So = "so",
-    Super = "SUPER",
-    TI = "ti",
-    W = "w",
-    Wd = "wd",
-    Wr = "wr",
-}
+export type ElementType = "w" | "e" | "f" | "el" | "m" | "p" | "i" | "d" | "wd" | "li" | "wr" | "pr" | "l" | "pu" | "bt" | "so" | "mg" | "ch" | "hp" | "dr" | "ti" | "-" | "*" | "SMALL" | "MEDIUM" | "LARGE" | "SUPER" | "n" | "ph"
 
-export enum Rarity {
-    C = "C",
-    E = "E",
-    H = "H",
-    L = "L",
-    M = "M",
-    R = "R",
-    V = "V",
-}
+export type Rarity = "C" | "R" | "V" | "E" | "L" | "H" | "M"
 
-export enum CollectibleActionType {
-    ActivateDragonTower = "ACTIVATE_DRAGON_TOWER",
-    Breed = "BREED",
-    ClaimAllianceChest = "CLAIM_ALLIANCE_CHEST",
-    CollectFood = "COLLECT_FOOD",
-    CollectGold = "COLLECT_GOLD",
-    CombatArena = "COMBAT_ARENA",
-    CombatLeague = "COMBAT_LEAGUE",
-    CombatQuest = "COMBAT_QUEST",
-    CompleteHeroicNode = "COMPLETE_HEROIC_NODE",
-    CompleteMdrNode = "COMPLETE_MDR_NODE",
-    DragonPowerUpUpgrade = "DRAGON_POWER_UP_UPGRADE",
-    Feed = "FEED",
-    FinishTraining = "FINISH_TRAINING",
-    HatchEgg = "HATCH_EGG",
-    LevelupDragon = "LEVELUP_DRAGON",
-    ReachStageOnWizardsCave = "REACH_STAGE_ON_WIZARDS_CAVE",
-    RecallDragon = "RECALL_DRAGON",
-    RenameDragon = "RENAME_DRAGON",
-    SpendEventPoints = "SPEND_EVENT_POINTS",
-    SpendGemsOnWizardsCave = "SPEND_GEMS_ON_WIZARDS_CAVE",
-    SpendPuzzleTokens = "SPEND_PUZZLE_TOKENS",
-    SpendRunnerTokens = "SPEND_RUNNER_TOKENS",
-    StartWizardsCaveTry = "START_WIZARDS_CAVE_TRY",
-    SummonDragon = "SUMMON_DRAGON",
-    UpgradeHabitat = "UPGRADE_HABITAT",
-    WatchDragontvAd = "WATCH_DRAGONTV_AD",
-}
+export type CollectibleActionType = "COMBAT_ARENA" | "BREED" | "COLLECT_FOOD" | "LEVELUP_DRAGON" | "COLLECT_GOLD" | "FEED" | "HATCH_EGG" | "SPEND_EVENT_POINTS" | "SPEND_PUZZLE_TOKENS" | "SPEND_RUNNER_TOKENS" | "COMPLETE_HEROIC_NODE" | "WATCH_DRAGONTV_AD" | "FINISH_TRAINING" | "UPGRADE_HABITAT" | "CLAIM_ALLIANCE_CHEST" | "SUMMON_DRAGON" | "RECALL_DRAGON" | "DRAGON_POWER_UP_UPGRADE" | "COMPLETE_MDR_NODE" | "ACTIVATE_DRAGON_TOWER" | "RENAME_DRAGON" | "COMBAT_QUEST" | "COMBAT_LEAGUE" | "START_WIZARDS_CAVE_TRY" | "SPEND_GEMS_ON_WIZARDS_CAVE" | "REACH_STAGE_ON_WIZARDS_CAVE"
 
 export interface ElitePass {
     id:    number
@@ -416,31 +273,17 @@ export interface PurchasePopup {
     popup_frequency?:                 string
 }
 
-export enum DescriptionElementsStyleEnum {
-    H7 = "H7",
-}
+export type DescriptionElementsStyleEnum = "H7"
 
-export enum LeftRewardsDescriptionTid {
-    TidBattlePassLeftRewardsDescGeneric = "tid_battle_pass_left_rewards_desc_generic",
-    TidBattlePassLeftRewardsDescNGU28 = "tid_battle_pass_left_rewards_desc_NGU28",
-}
+export type LeftRewardsDescriptionTid = "tid_battle_pass_left_rewards_desc_generic" | "tid_battle_pass_left_rewards_desc_NGU28"
 
-export enum PurchasePopupMainTitleStyle {
-    H6 = "H6",
-}
+export type PurchasePopupMainTitleStyle = "H6"
 
-export enum MoreTitleStyle {
-    B4 = "B4",
-}
+export type MoreTitleStyle = "B4"
 
-export enum QuantityLabelStyleEnum {
-    B6 = "B6",
-}
+export type QuantityLabelStyleEnum = "B6"
 
-export enum RightRewardsDescriptionTid {
-    TidBattlePassRightRewardsDescGeneric = "tid_battle_pass_right_rewards_desc_generic",
-    TidBattlePassRightRewardsDescNGU7 = "tid_battle_pass_right_rewards_desc_NGU7",
-}
+export type RightRewardsDescriptionTid = "tid_battle_pass_right_rewards_desc_generic" | "tid_battle_pass_right_rewards_desc_NGU7"
 
 export interface PurchasePopupElite {
     id:                                number
@@ -468,45 +311,23 @@ export interface PurchasePopupElite {
     show_on_startup:                   boolean
 }
 
-export enum BadgeTid {
-    BestValue = "BEST VALUE",
-}
+export type BadgeTid = "BEST VALUE"
 
-export enum ElitePriceStyle {
-    S7 = "S7",
-}
+export type ElitePriceStyle = "S7"
 
-export enum EliteReward1_Tid {
-    The02 = "0.2",
-    The20 = "+20%",
-}
+export type EliteReward1_Tid = "+20%" | "0.2" | "+40%"
 
-export enum EliteReward3_Tid {
-    The03 = "0.3",
-    The20 = "+20%",
-    The30 = "+30%",
-}
+export type EliteReward3_Tid = "+30%" | "+20%" | "0.3" | "+40%"
 
-export enum PurchasePopupEliteMainTitleStyle {
-    T3 = "T3",
-}
+export type PurchasePopupEliteMainTitleStyle = "T3"
 
-export enum PremiumDescriptionStyle {
-    H1 = "H1",
-}
+export type PremiumDescriptionStyle = "H1"
 
-export enum PremiumDiscountPriceStyle {
-    H4 = "H4",
-}
+export type PremiumDiscountPriceStyle = "H4"
 
-export enum PremiumPriceStyle {
-    S1 = "S1",
-}
+export type PremiumPriceStyle = "S1"
 
-export enum PremiumReward2_Tid {
-    The1M = "1 M+",
-    TidChestName643 = "tid_chest_name_643",
-}
+export type PremiumReward2_Tid = "1 M+" | "tid_chest_name_643"
 
 export interface BattlePassReward {
     id:      number
@@ -515,50 +336,53 @@ export interface BattlePassReward {
 }
 
 export interface PurpleReward {
-    b?:                         number[] | number
-    g?:                         number
-    chest?:                     number
-    pp?:                        number
-    egg?:                       number
-    c?:                         number
-    f?:                         number
-    "rank_up_coin.common"?:     number
-    oph_token?:                 number
-    seeds?:                     Seed[]
-    perks?:                     RewardPerk[]
-    w_token?:                   number
-    li_token?:                  number
-    i_token?:                   number
-    pr_token?:                  number
-    f_token?:                   number
-    wr_token?:                  number
-    p_token?:                   number
-    l_token?:                   number
-    wd_token?:                  number
-    e_token?:                   number
-    el_token?:                  number
-    d_token?:                   number
-    m_token?:                   number
-    pu_token?:                  number
-    n_token?:                   number
-    skin?:                      number
-    trade_tickets?:             TradeTicket[]
-    rarity_seeds?:              RewardRaritySeed[]
-    "album_pack.s"?:            number
-    "album_pack.m"?:            number
-    "album_pack.l"?:            number
-    "album_pack.xl"?:           number
-    "album_pack_aces.4"?:       number
-    "album_pack_aces.1"?:       number
-    "album_pack_aces.3"?:       number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.5"?:       number
-    "album_pack_aces.generic"?: number
-    "rank_up_coin.legendary"?:  number
-    "pet_food_pack.s"?:         number
-    "pet_food_pack.m"?:         number
-    "pet_food_pack.l"?:         number
-    gacha_event_tickets?:       number
+    b?:                           number[] | number
+    g?:                           number
+    chest?:                       number
+    pp?:                          number
+    egg?:                         number
+    c?:                           number
+    f?:                           number
+    "rank_up_coin.common"?:       number
+    oph_token?:                   number
+    seeds?:                       Seed[]
+    perks?:                       RewardPerk[]
+    w_token?:                     number
+    li_token?:                    number
+    i_token?:                     number
+    pr_token?:                    number
+    f_token?:                     number
+    wr_token?:                    number
+    p_token?:                     number
+    l_token?:                     number
+    wd_token?:                    number
+    e_token?:                     number
+    el_token?:                    number
+    d_token?:                     number
+    m_token?:                     number
+    pu_token?:                    number
+    n_token?:                     number
+    skin?:                        number
+    trade_tickets?:               TradeTicket[]
+    rarity_seeds?:                RewardRaritySeed[]
+    "album_pack.s"?:              number
+    "album_pack.m"?:              number
+    "album_pack.l"?:              number
+    "album_pack.xl"?:             number
+    "album_pack_aces.4"?:         number
+    "album_pack_aces.1"?:         number
+    "album_pack_aces.3"?:         number
+    "album_pack_aces.2"?:         number
+    "album_pack_aces.5"?:         number
+    "album_pack_aces.generic"?:   number
+    "rank_up_coin.legendary"?:    number
+    "pet_food_pack.s"?:           number
+    "pet_food_pack.m"?:           number
+    "pet_food_pack.l"?:           number
+    gacha_event_tickets?:         number
+    "permanent_gacha.mythical"?:  number
+    "permanent_gacha.legendary"?: number
+    "permanent_gacha.heroic"?:    number
 }
 
 export interface RewardPerk {
@@ -672,14 +496,9 @@ export interface Chest {
     instant?:         boolean | AnimatedCanvas
 }
 
-export enum AnimatedCanvas {
-    Empty = "\u000d",
-}
+export type AnimatedCanvas = "\u000d"
 
-export enum ChestType {
-    BrandChest = "BRAND_CHEST",
-    Chest = "CHEST",
-}
+export type ChestType = "CHEST" | "BRAND_CHEST"
 
 export interface ChestsReward {
     id:         number
@@ -755,9 +574,7 @@ export interface CollectiblesReward {
     subcategory: number
 }
 
-export enum CategoryEnum {
-    PremiumIsland = "premium_island",
-}
+export type CategoryEnum = "premium_island"
 
 export interface TentacledReward {
     chest?:        number
@@ -806,28 +623,9 @@ export interface Dragon {
     description_tid:              string
 }
 
-export enum AttributeElement {
-    An = "an",
-    BT = "bt",
-    Ch = "ch",
-    D = "d",
-    DR = "dr",
-    E = "e",
-    El = "el",
-    F = "f",
-    HP = "hp",
-    I = "i",
-    Li = "li",
-    M = "m",
-    Mg = "mg",
-    P = "p",
-    So = "so",
-    W = "w",
-}
+export type AttributeElement = "an" | "bt" | "e" | "mg" | "w" | "ch" | "p" | "f" | "el" | "m" | "i" | "li" | "d" | "hp" | "dr" | "so"
 
-export enum DragonGroupType {
-    Dwdragon = "DWDRAGON",
-}
+export type DragonGroupType = "DWDRAGON"
 
 export interface ProductionPerHour {
     p: number
@@ -865,23 +663,14 @@ export interface Collection {
     availability?:            BattlePassAvailability | number
 }
 
-export enum CanvasBg {
-    GrColectHrV1PNG = "gr-colect-hr_v1.png",
-    GrColectRegularV1PNG = "gr-colect-regular_v1.png",
-    GrColectVipV1PNG = "gr-colect-vip_v1.png",
-}
+export type CanvasBg = "gr-colect-regular_v1.png" | "gr-colect-vip_v1.png" | "gr-colect-hr_v1.png"
 
 export interface CustomBackground {
     local?:  CustomBackgroundLocal
     remote?: string
 }
 
-export enum CustomBackgroundLocal {
-    UIGraphicsLablesICDragonSkinBadgePNG = "/ui/graphics/lables/ic-dragon-skin-badge.png",
-    UIRetakeGraphicsDragonBookGrColectHrPNG = "UIRetake/Graphics/DragonBook/gr-colect-hr.png",
-    UIRetakeGraphicsDragonBookGrColectRegularPNG = "UIRetake/Graphics/DragonBook/gr-colect-regular.png",
-    UIRetakeGraphicsDragonBookGrColectVipPNG = "UIRetake/Graphics/DragonBook/gr-colect-vip.png",
-}
+export type CustomBackgroundLocal = "UIRetake/Graphics/DragonBook/gr-colect-regular.png" | "UIRetake/Graphics/DragonBook/gr-colect-vip.png" | "UIRetake/Graphics/DragonBook/gr-colect-hr.png" | "/ui/graphics/lables/ic-dragon-skin-badge.png"
 
 export interface CustomForeground {
     remote: string
@@ -933,22 +722,13 @@ export interface DragonMasteryGoal {
     task_increase:        TaskIncrease
 }
 
-export enum DescTid {
-    TidDmGoalDesc1 = "tid_dm_goal_desc_1",
-}
+export type DescTid = "tid_dm_goal_desc_1"
 
-export enum TaskIncrease {
-    Mid = "mid",
-}
+export type TaskIncrease = "mid"
 
-export enum TaskType {
-    Breeding = "breeding",
-    Volume = "volume",
-}
+export type TaskType = "volume" | "breeding"
 
-export enum TitleTid {
-    TidDmGoalTitle1 = "tid_dm_goal_title_1",
-}
+export type TitleTid = "tid_dm_goal_title_1"
 
 export interface Loop {
     id:                number
@@ -969,12 +749,7 @@ export interface DragonMasteryParameter {
     value: Array<DifficultyEnum | number> | boolean | ValueClass | number | number
 }
 
-export enum DifficultyEnum {
-    Easy = "easy",
-    Hard = "hard",
-    Impossible = "impossible",
-    Normal = "normal",
-}
+export type DifficultyEnum = "easy" | "normal" | "hard" | "impossible"
 
 export interface DragonMasteryReward {
     id:      number
@@ -1028,10 +803,7 @@ export interface Achievement {
     goal: number
 }
 
-export enum AchievementType {
-    BreedingByType = "breeding_by_type",
-    DragonLevelUp = "dragon_level_up",
-}
+export type AchievementType = "dragon_level_up" | "breeding_by_type"
 
 export interface CostElement {
     c: number
@@ -1046,24 +818,9 @@ export interface ItemsUnitsAttributeModifier {
     index?:           number
 }
 
-export enum ItemsUnitsAttributeModifierAttribute {
-    Attacks = "attacks",
-    BackgroundVfx = "background_vfx",
-    BaseAttack = "base_attack",
-    BaseLife = "base_life",
-    ForegroundVfx = "foreground_vfx",
-    PassiveSkills = "passive_skills",
-    PostSkills = "post_skills",
-    Speed = "speed",
-    TrainableAttacks = "trainable_attacks",
-}
+export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
-export enum Behaviour {
-    AddArray = "ADD_ARRAY",
-    Multiply = "MULTIPLY",
-    Replace = "REPLACE",
-    ReplaceByIndex = "REPLACE_BY_INDEX",
-}
+export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY" | "ADD_ARRAY"
 
 export interface BattlesConfigElement {
     id:    number
@@ -1178,6 +935,7 @@ export interface MatchReward {
     p_token?:                   number
     pr_token?:                  number
     gacha_event_tickets?:       number
+    i_token?:                   number
 }
 
 export interface DragonTournamentsReward {
@@ -1224,6 +982,7 @@ export interface IndigoReward {
     p_token?:                   number
     pr_token?:                  number
     gacha_event_tickets?:       number
+    i_token?:                   number
 }
 
 export interface Tournament {
@@ -1248,10 +1007,7 @@ export interface TimerIntervalElement {
     to:   number
 }
 
-export enum UIAsset {
-    EventTournaments = "event_tournaments",
-    PermanentTournaments = "permanent_tournaments",
-}
+export type UIAsset = "permanent_tournaments" | "event_tournaments"
 
 export interface DragonWars {
     battles_config: BattlesConfigElement[]
@@ -1399,14 +1155,14 @@ export interface FogIslandIsland {
     sound_tag:                  PurpleSoundTag
     canvas_assets_url:          AnalyticsID
     background_plist:           BackgroundPlist
-    foregrounds_plists:         any[]
+    foregrounds_plists:         unknown[]
     particles_position?:        number[]
     tutorial_claim_cells?:      number[]
     ui_configuration?:          UIConfiguration
     active_platforms?:          PurpleActivePlatforms
     episodes?:                  number[]
     backgrounds?:               number[]
-    foregrounds?:               any[]
+    foregrounds?:               unknown[]
 }
 
 export interface PurpleActivePlatforms {
@@ -1417,24 +1173,13 @@ export interface PurpleActivePlatforms {
     windows: number
 }
 
-export enum AnalyticsID {
-    NotNeeded = "NOT_NEEDED",
-    X = "x",
-}
+export type AnalyticsID = "x" | "NOT_NEEDED"
 
-export enum BackgroundPlist {
-    GridBackground = "grid-background",
-}
+export type BackgroundPlist = "grid-background"
 
-export enum PurpleSoundTag {
-    Apocalypse = "APOCALYPSE",
-    PartyPlanning = "PARTY_PLANNING",
-}
+export type PurpleSoundTag = "APOCALYPSE" | "PARTY_PLANNING"
 
-export enum Tid {
-    TidFiGenericName = "tid_fi_generic_name",
-    TidGiGenericName = "tid_gi_generic_name",
-}
+export type Tid = "tid_fi_generic_name" | "tid_gi_generic_name"
 
 export interface UIConfiguration {
     cell_contents_config:            CellContentsConfig
@@ -1508,14 +1253,7 @@ export interface FogIslandReward {
     show_new_badge:  number
 }
 
-export enum ViewTypeEnum {
-    Chest = "CHEST",
-    Dragon = "DRAGON",
-    DragonPiece = "DRAGON_PIECE",
-    None = "NONE",
-    Resource = "RESOURCE",
-    Step = "STEP",
-}
+export type ViewTypeEnum = "DRAGON_PIECE" | "CHEST" | "NONE" | "STEP" | "RESOURCE" | "DRAGON"
 
 export interface FogIslandSquare {
     id:             number
@@ -1556,10 +1294,7 @@ export interface Decoration {
     episode_id: number
 }
 
-export enum File {
-    The1X1Slot1 = "1x1_slot1",
-    The1X1Slot2 = "1x1_slot2",
-}
+export type File = "1x1_slot1" | "1x1_slot2"
 
 export interface Encounter {
     id:                      number
@@ -1569,19 +1304,14 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export enum FightBackgroundID {
-    BgBattleBackgroundGiTreasurehunt = "bg_battle_background_gi_treasurehunt",
-    BgBattleBackgroundHrMedievalholidays = "bg_battle_background_hr_medievalholidays",
-    BgBattleBackgroundMiMysteryInParadise = "bg_battle_background_mi_mystery_in_paradise",
-    BgBattleBackgroundMr108_MythicalGelbarrier = "bg_battle_background_mr_108_mythical_gelbarrier",
-}
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_mi_mystery_in_paradise"
 
 export interface EnemyElement {
     id:                 number
     dragon_ids:         number[]
     handicaps:          number[]
     view_type:          ViewTypeEnum
-    elements_view_type: any[]
+    elements_view_type: unknown[]
     cooldown:           number
 }
 
@@ -1597,16 +1327,12 @@ export interface Episode {
     canvas_background:        AnalyticsID
     backgrounds:              BackgroundElement[]
     background_plist:         BackgroundPlist
-    foregrounds:              any[]
-    foregrounds_plists:       any[]
+    foregrounds:              unknown[]
+    foregrounds_plists:       unknown[]
     squares:                  number[]
 }
 
-export enum BackgroundElement {
-    GridIslandAssetsBackgroundPart001Jpg = "GridIsland/Assets/background-part001.jpg",
-    GridIslandAssetsBackgroundPart002Jpg = "GridIsland/Assets/background-part002.jpg",
-    GridIslandAssetsBackgroundPart003Jpg = "GridIsland/Assets/background-part003.jpg",
-}
+export type BackgroundElement = "GridIsland/Assets/background-part001.jpg" | "GridIsland/Assets/background-part002.jpg" | "GridIsland/Assets/background-part003.jpg"
 
 export interface GridIslandSquare {
     id:           number
@@ -1630,15 +1356,9 @@ export interface FluffyResource {
     b?:                 number[]
 }
 
-export enum Wall {
-    H = "H",
-    HV = "H+V",
-    V = "V",
-}
+export type Wall = "V" | "H" | "H+V"
 
-export enum WallSuffix {
-    Rock = "rock",
-}
+export type WallSuffix = "rock"
 
 export interface HabitatTokens {
     multipliers: Multiplier[]
@@ -1659,16 +1379,9 @@ export interface HelpView {
     slides:              HelpViewSlide[]
 }
 
-export enum PopupType {
-    Default = "Default",
-    DefaultCustomSlides = "DefaultCustomSlides",
-    HelpViewDeityWorld = "/HelpView/DeityWorld",
-}
+export type PopupType = "/HelpView/DeityWorld" | "Default" | "DefaultCustomSlides"
 
-export enum SizeEnum {
-    Default = "Default",
-    FullscreenOverlay = "FullscreenOverlay",
-}
+export type SizeEnum = "Default" | "FullscreenOverlay"
 
 export interface HelpViewSlide {
     header_localized_key?:          string
@@ -1683,19 +1396,9 @@ export interface HelpViewSlide {
     additional_info_img_url?:       string
 }
 
-export enum AnimationNameEnum {
-    Anim1 = "anim1",
-}
+export type AnimationNameEnum = "anim1"
 
-export enum ContentLocalizedKey {
-    Empty = "",
-    TidDBCollectionsHelpScreen1 = "tid_db_collections_help_screen_1",
-    TidDBCollectionsHelpScreen2 = "tid_db_collections_help_screen_2",
-    TidDBMasteryHelpScreen1 = "tid_db_mastery_help_screen_1",
-    TidPiggyBankBestDealMessage = "tid_piggy_bank_best_deal_message",
-    TidVipTierHelpSlide1_Content = "tid_vip_tier_help_slide_1_content_{}",
-    TidVipTierHelpSlide2_Content = "tid_vip_tier_help_slide_2_content_{}",
-}
+export type ContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}"
 
 export interface HeroicRaces {
     islands:        HeroicRacesIsland[]
@@ -1797,11 +1500,7 @@ export interface LapRewardReward {
     rarity_seeds?:            RewardRaritySeed[]
 }
 
-export enum RewardCellType {
-    Big = "big",
-    Medium = "medium",
-    Small = "small",
-}
+export type RewardCellType = "medium" | "small" | "big"
 
 export interface Lap {
     id:    number
@@ -1822,15 +1521,7 @@ export interface HeroicRacesMission {
     energy?:                 number
 }
 
-export enum MissionType {
-    Breed = "breed",
-    Feed = "feed",
-    Fight = "fight",
-    Food = "food",
-    Gold = "gold",
-    Hatch = "hatch",
-    Pvp = "pvp",
-}
+export type MissionType = "feed" | "gold" | "food" | "fight" | "pvp" | "breed" | "hatch"
 
 export interface HeroicRacesNode {
     id:               number
@@ -1846,10 +1537,7 @@ export interface NodesPosition {
     y:         number
 }
 
-export enum NodesPositionType {
-    Node = "node",
-    Path = "path",
-}
+export type NodesPositionType = "node" | "path"
 
 export interface HeroicRacesParameter {
     id:    number
@@ -1890,7 +1578,7 @@ export interface Item {
     element_type?:                 ElementType
     xp:                            number
     min_level?:                    number
-    costs:                         any[] | CostsElement
+    costs:                         unknown[] | CostsElement
     display_order:                 number
     boost_modifier?:               BoostModifierClass | number
     gift_level:                    number
@@ -1915,7 +1603,7 @@ export interface Item {
     description?:                  string
     properties?:                   Properties
     building_ownership_id?:        number
-    sell_price?:                   any[] | MultipleSellPriceElement
+    sell_price?:                   unknown[] | MultipleSellPriceElement
     deco_seg_id?:                  number
     inventory_ids?:                number
     elements?:                     ElementType[]
@@ -1988,78 +1676,14 @@ export interface BoostModifierClass {
     mg?: number
 }
 
-export enum CollectTypeEnum {
-    F = "f",
-    G = "g",
-    O = "o",
-    S = "s",
-    W = "w",
-    X = "x",
-}
+export type CollectTypeEnum = "g" | "w" | "o" | "s" | "f" | "x"
 
 export interface CostsCh {
     g?: number
     c?: number
 }
 
-export enum ItemGroupType {
-    AlliancePortal = "ALLIANCE_PORTAL",
-    AllianceRace = "ALLIANCE_RACE",
-    Atrezzo = "ATREZZO",
-    Booster = "BOOSTER",
-    BrandDeco = "BRAND_DECO",
-    BreedingIsland = "BREEDING_ISLAND",
-    Building = "BUILDING",
-    Burrow = "BURROW",
-    Chestcontainer = "CHESTCONTAINER",
-    Collectible = "COLLECTIBLE",
-    Collectisland = "COLLECTISLAND",
-    CollectorsHunt = "COLLECTORS_HUNT",
-    Crosspromotion = "CROSSPROMOTION",
-    CumCalendarIsland = "CUM_CALENDAR_ISLAND",
-    Deco = "DECO",
-    Deusisland = "DEUSISLAND",
-    Dragon = "DRAGON",
-    DragonCinema = "DRAGON_CINEMA",
-    DragonObstacle = "DRAGON_OBSTACLE",
-    DragonPets = "DRAGON_PETS",
-    DragonTrails = "DRAGON_TRAILS",
-    DragonTv = "DRAGON_TV",
-    Dragonarium = "DRAGONARIUM",
-    Dwportal = "DWPORTAL",
-    EventIsland = "EVENT_ISLAND",
-    Farm = "FARM",
-    FogIsland = "FOG_ISLAND",
-    GdTower = "GD_TOWER",
-    Greenhouse = "GREENHOUSE",
-    GridIsland = "GRID_ISLAND",
-    Habitat = "HABITAT",
-    HalloweenIsland = "HALLOWEEN_ISLAND",
-    HeroicRace = "HEROIC_RACE",
-    Kindergarten = "KINDERGARTEN",
-    Land = "LAND",
-    Lostitem = "LOSTITEM",
-    MageShrine = "MAGE_SHRINE",
-    MazeIsland = "MAZE_ISLAND",
-    MemeGenerator = "MEME_GENERATOR",
-    MisteryEgg = "MISTERY_EGG",
-    ORBHabitat = "ORB_HABITAT",
-    Obstacle = "OBSTACLE",
-    Offerwall = "OFFERWALL",
-    Popup = "POPUP",
-    ProgressiveIsland = "PROGRESSIVE_ISLAND",
-    Promo = "PROMO",
-    Promoisland = "PROMOISLAND",
-    PuzzleIsland = "PUZZLE_ISLAND",
-    RunnerIsland = "RUNNER_ISLAND",
-    SocialBuilding = "SOCIAL BUILDING",
-    TeaserIsland = "TEASER_ISLAND",
-    TowerIsland = "TOWER_ISLAND",
-    TraderIsland = "TRADER_ISLAND",
-    TreeOfLife = "TREE_OF_LIFE",
-    Unit = "UNIT",
-    WizardsCave = "WIZARDS_CAVE",
-}
+export type ItemGroupType = "DRAGON" | "BUILDING" | "BOOSTER" | "FARM" | "DECO" | "HABITAT" | "OBSTACLE" | "LAND" | "SOCIAL BUILDING" | "KINDERGARTEN" | "LOSTITEM" | "CROSSPROMOTION" | "PROMOISLAND" | "COLLECTISLAND" | "DRAGONARIUM" | "ATREZZO" | "MISTERY_EGG" | "PROMO" | "UNIT" | "POPUP" | "DEUSISLAND" | "CHESTCONTAINER" | "HALLOWEEN_ISLAND" | "DWPORTAL" | "PROGRESSIVE_ISLAND" | "MEME_GENERATOR" | "MAGE_SHRINE" | "GD_TOWER" | "GRID_ISLAND" | "CUM_CALENDAR_ISLAND" | "TRADER_ISLAND" | "DRAGON_CINEMA" | "FOG_ISLAND" | "HEROIC_RACE" | "MAZE_ISLAND" | "TOWER_ISLAND" | "EVENT_ISLAND" | "TREE_OF_LIFE" | "ALLIANCE_PORTAL" | "BURROW" | "ALLIANCE_RACE" | "COLLECTIBLE" | "GREENHOUSE" | "PUZZLE_ISLAND" | "BREEDING_ISLAND" | "DRAGON_OBSTACLE" | "RUNNER_ISLAND" | "DRAGON_TV" | "OFFERWALL" | "ORB_HABITAT" | "WIZARDS_CAVE" | "TEASER_ISLAND" | "BRAND_DECO" | "COLLECTORS_HUNT" | "DRAGON_PETS" | "DRAGON_TRAILS"
 
 export interface MultipleCost {
     g?:        number
@@ -2093,42 +1717,9 @@ export interface Properties {
     ft_flying?:         number
 }
 
-export enum Tag {
-    Apex = "Apex",
-    Apocalypse = "Apocalypse",
-    Armor = "Armor",
-    Astro = "Astro",
-    Berserker = "Berserker",
-    CritCrew = "CritCrew",
-    Critcrew = "Critcrew",
-    Divinepass = "Divinepass",
-    Doom = "Doom",
-    Dual = "Dual",
-    Eternal = "Eternal",
-    Evader = "Evader",
-    HasSkill = "hasSkill",
-    Karma = "Karma",
-    Mythical = "Mythical",
-    Originals = "Originals",
-    Plasma = "Plasma",
-    Silencer = "Silencer",
-    Spikes = "Spikes",
-    Stained = "Stained",
-    Strategist = "Strategist",
-    Titan = "Titan",
-    TitanVamp = "TitanVamp",
-    Twd = "TWD",
-    Vampire = "Vampire",
-    Vip = "VIP",
-    Void = "Void",
-    Youtuber = "Youtuber",
-}
+export type Tag = "VIP" | "Youtuber" | "hasSkill" | "Mythical" | "Titan" | "Vampire" | "TitanVamp" | "Divinepass" | "Karma" | "Dual" | "TWD" | "Eternal" | "Plasma" | "Berserker" | "Spikes" | "Strategist" | "CritCrew" | "Evader" | "Critcrew" | "Silencer" | "Originals" | "Armor" | "Apocalypse" | "Doom" | "Astro" | "Apex" | "Void" | "Stained"
 
-export enum ItemType {
-    B = "b",
-    L = "l",
-    U = "u",
-}
+export type ItemType = "b" | "l" | "u"
 
 export interface Level {
     id:          number
@@ -2171,9 +1762,7 @@ export interface Challenge {
     user_min_level:   number
 }
 
-export enum ChallengeBackground {
-    BgLoChallengesTest = "bg-lo-challenges-test",
-}
+export type ChallengeBackground = "bg-lo-challenges-test"
 
 export interface LiveopsChallengesCollectible {
     id:               number
@@ -2182,10 +1771,7 @@ export interface LiveopsChallengesCollectible {
     amount:           number
 }
 
-export enum CollectibleType {
-    Dragon = "DRAGON",
-    Item = "ITEM",
-}
+export type CollectibleType = "ITEM" | "DRAGON"
 
 export interface LiveopsChallengesGoal {
     id:           number
@@ -2234,7 +1820,7 @@ export interface MazeIsland {
     nodes:          MazeIslandNode[]
     encounters:     Encounter[]
     enemies:        EnemyElement[]
-    happy_hours:    any[]
+    happy_hours:    unknown[]
     actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
@@ -2255,12 +1841,12 @@ export interface MazeIslandIsland {
     name:                             string
     availability:                     TimerIntervalElement
     paths:                            number[]
-    happy_hours:                      any[]
+    happy_hours:                      unknown[]
     currency_id:                      number
     pool_size:                        number
     pool_time:                        number
     initial_points:                   number
-    clouds:                           any[]
+    clouds:                           unknown[]
     cloud_radius:                     number
     dragon_radius:                    number
     min_level:                        number
@@ -2322,15 +1908,7 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The10
-    "6":    The10
-    "7":    The10
-    "8":    The10
-    "9":    The10
-    "10":   The10
-    "11":   The10
-    "12":   The12
-    "13":   The10
+    "5":    The4
     canvas: Canva[]
 }
 
@@ -2362,7 +1940,7 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2377,25 +1955,16 @@ export interface MultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                Key
+    key:                string
     link:               string
     normalizedPosition: NormalizedPosition
     size:               SizeClass
-    style:              Style
+    style:              string
     linkItemId?:        number
     spineAsset?:        SpineAsset
 }
 
-export enum AnimationPlace {
-    Foreground = "Foreground",
-}
-
-export enum Key {
-    Empty = "",
-    TidHelpshiftFAQTitle = "tid_helpshift_faq_title",
-    TidNewsHighHollowCrown01Button = "tid_news_HighHollowCrown01_button",
-    TidNewsViptiersButton = "tid_news_viptiers_button",
-}
+export type AnimationPlace = "Foreground"
 
 export interface NormalizedPosition {
     x: number
@@ -2407,20 +1976,9 @@ export interface SizeClass {
     w: number
 }
 
-export enum SpineAsset {
-    PointerAnimationV2 = "pointer_animation_v2",
-}
+export type SpineAsset = "pointer_animation_v2"
 
-export enum Style {
-    BlueLarge = "BlueLarge",
-    PurpleMedium = "PurpleMedium",
-    Transparent = "Transparent",
-    YellowLarge = "YellowLarge",
-}
-
-export enum SlideType {
-    FullImage = "FullImage",
-}
+export type SlideType = "FullImage"
 
 export interface The1 {
     active_platforms:      ValueClass
@@ -2450,12 +2008,11 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
-export interface The10 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2467,39 +2024,6 @@ export interface The10 {
     popup_type:            string
     show_on_startup:       number
     slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The12 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              number
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The2 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The0_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -2529,58 +2053,25 @@ export interface The4 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
-    popup_frequency:       string
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number | string
-    end_ts:          number | string
+    start_ts:        number
+    end_ts:          number
     min_level:       number
-    slides:          CanvaSlide[]
+    slides:          The0_Slide[]
     show_on_startup: number
-    priority?:       string
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       SlideType
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:     number
-    rotation:   number
-    stroke:     string
-    text_color: string
-    text_key:   string
-    text_size:  number
-    timer:      number
-    type:       string
-    width:      number
-    x:          number
-    y:          number
 }
 
 export interface Perks {
@@ -2604,13 +2095,7 @@ export interface AbilityParameters {
     passiveSkillId?: number
 }
 
-export enum AbilityType {
-    DragonAttackBoost = "dragon_attack_boost",
-    DragonLifeBoost = "dragon_life_boost",
-    IncreaseBreedingChances = "increase_breeding_chances",
-    PhoenixSkill = "phoenix_skill",
-    ReaperSkill = "reaper_skill",
-}
+export type AbilityType = "increase_breeding_chances" | "dragon_life_boost" | "dragon_attack_boost" | "phoenix_skill" | "reaper_skill"
 
 export interface PerksParameter {
     id:    number
@@ -2657,11 +2142,7 @@ export interface MaxPerk {
     max:    number
 }
 
-export enum PerkType {
-    Character = "character",
-    Combat = "combat",
-    SpecificDragonCombat = "specific_dragon_combat",
-}
+export type PerkType = "character" | "combat" | "specific_dragon_combat"
 
 export interface PerksReward {
     id:      number
@@ -2739,16 +2220,7 @@ export interface PuzzleIslandMission {
     specific?:       ElementType[]
 }
 
-export enum ActivityType {
-    BreedElements = "BREED_ELEMENTS",
-    CollectFood = "COLLECT_FOOD",
-    CollectGold = "COLLECT_GOLD",
-    FeedDragon = "FEED_DRAGON",
-    HatchElements = "HATCH_ELEMENTS",
-    Leagues = "LEAGUES",
-    PvpArenas = "PVP_ARENAS",
-    TournamentMatch = "TOURNAMENT_MATCH",
-}
+export type ActivityType = "COLLECT_GOLD" | "COLLECT_FOOD" | "TOURNAMENT_MATCH" | "LEAGUES" | "PVP_ARENAS" | "HATCH_ELEMENTS" | "BREED_ELEMENTS" | "FEED_DRAGON"
 
 export interface PuzzleIslandReward {
     id:              number
@@ -2817,17 +2289,9 @@ export interface RunnerIslandIsland {
     milestone_rewards:         number[]
 }
 
-export enum FluffySoundTag {
-    Aquatic = "AQUATIC",
-}
+export type FluffySoundTag = "AQUATIC"
 
-export enum PurpleZipFile {
-    MobileUIRunnerIslandsOceanRunnerIslandBZip = "/mobile/ui/runner_islands/ocean-runner-island_b.zip",
-    MobileUIRunnerIslandsOceanRunnerIslandZip = "/mobile/ui/runner_islands/ocean-runner-island.zip",
-    MobileUIRunnerIslandsRunnerIslandMrbeastZip = "/mobile/ui/runner_islands/runner-island-mrbeast.zip",
-    MobileUIRunnerIslandsRunnerIslandTestDZip = "/mobile/ui/runner_islands/runner-island-test_d.zip",
-    MobileUIRunnerIslandsSeaRunnerIslandCZip = "/mobile/ui/runner_islands/sea-runner-island_c.zip",
-}
+export type PurpleZipFile = "/mobile/ui/runner_islands/runner-island-mrbeast.zip" | "/mobile/ui/runner_islands/runner-island-test_d.zip" | "/mobile/ui/runner_islands/sea-runner-island_c.zip" | "/mobile/ui/runner_islands/ocean-runner-island_b.zip" | "/mobile/ui/runner_islands/ocean-runner-island.zip"
 
 export interface RunnerIslandLevelChunk {
     id:     number
@@ -2844,15 +2308,7 @@ export interface Lane {
     obstacle_id?: number
 }
 
-export enum RewardEnum {
-    Filler = "filler",
-    Legacy = "legacy",
-    Main = "main",
-    ORB = "orb",
-    Point = "point",
-    Ro = "ro",
-    Token = "token",
-}
+export type RewardEnum = "point" | "filler" | "ro" | "token" | "orb" | "main" | "legacy"
 
 export interface LevelReward {
     id:              number
@@ -2932,26 +2388,7 @@ export interface BackgroundLayer {
     positionY: number
 }
 
-export enum Texture {
-    RunnerIslandAssetsBgLvl1PNG = "runner_island/Assets/bg-lvl1.png",
-    RunnerIslandAssetsBgLvl2PNG = "runner_island/Assets/bg-lvl2.png",
-    RunnerIslandAssetsBgLvl3PNG = "runner_island/Assets/bg-lvl3.png",
-    RunnerIslandAssetsGrParalaxLvl11PNG = "runner_island/Assets/gr-paralax-lvl1-1.png",
-    RunnerIslandAssetsGrParalaxLvl12PNG = "runner_island/Assets/gr-paralax-lvl1-2.png",
-    RunnerIslandAssetsGrParalaxLvl21PNG = "runner_island/Assets/gr-paralax-lvl2-1.png",
-    RunnerIslandAssetsGrParalaxLvl22PNG = "runner_island/Assets/gr-paralax-lvl2-2.png",
-    RunnerIslandAssetsGrParalaxLvl31PNG = "runner_island/Assets/gr-paralax-lvl3-1.png",
-    RunnerIslandAssetsGrParalaxLvl32PNG = "runner_island/Assets/gr-paralax-lvl3-2.png",
-    RunnerIslandAssetsGrPath1Lvl1PNG = "runner_island/Assets/gr_path1_lvl1.png",
-    RunnerIslandAssetsGrPath1Lvl2PNG = "runner_island/Assets/gr_path1_lvl2.png",
-    RunnerIslandAssetsGrPath1Lvl3PNG = "runner_island/Assets/gr_path1_lvl3.png",
-    RunnerIslandAssetsGrPath2Lvl1PNG = "runner_island/Assets/gr_path2_lvl1.png",
-    RunnerIslandAssetsGrPath2Lvl2PNG = "runner_island/Assets/gr_path2_lvl2.png",
-    RunnerIslandAssetsGrPath2Lvl3PNG = "runner_island/Assets/gr_path2_lvl3.png",
-    RunnerIslandAssetsGrPath3Lvl1PNG = "runner_island/Assets/gr_path3_lvl1.png",
-    RunnerIslandAssetsGrPath3Lvl2PNG = "runner_island/Assets/gr_path3_lvl2.png",
-    RunnerIslandAssetsGrPath3Lvl3PNG = "runner_island/Assets/gr_path3_lvl3.png",
-}
+export type Texture = "runner_island/Assets/gr_path1_lvl1.png" | "runner_island/Assets/gr_path2_lvl1.png" | "runner_island/Assets/gr_path3_lvl1.png" | "runner_island/Assets/gr-paralax-lvl1-1.png" | "runner_island/Assets/gr-paralax-lvl1-2.png" | "runner_island/Assets/bg-lvl1.png" | "runner_island/Assets/gr_path1_lvl2.png" | "runner_island/Assets/gr_path2_lvl2.png" | "runner_island/Assets/gr_path3_lvl2.png" | "runner_island/Assets/gr-paralax-lvl2-1.png" | "runner_island/Assets/gr-paralax-lvl2-2.png" | "runner_island/Assets/bg-lvl2.png" | "runner_island/Assets/gr_path1_lvl3.png" | "runner_island/Assets/gr_path2_lvl3.png" | "runner_island/Assets/gr_path3_lvl3.png" | "runner_island/Assets/gr-paralax-lvl3-1.png" | "runner_island/Assets/gr-paralax-lvl3-2.png" | "runner_island/Assets/bg-lvl3.png"
 
 export interface SectionLevelChunk {
     id:     number
@@ -3019,30 +2456,7 @@ export interface SkillsAttack {
     skill_id?:     number
 }
 
-export enum AttackType {
-    Beauty = "beauty",
-    Chaos = "chaos",
-    Dark = "dark",
-    Dream = "dream",
-    Earth = "earth",
-    Electric = "electric",
-    Fire = "fire",
-    Happy = "happy",
-    Ice = "ice",
-    Legend = "legend",
-    Light = "light",
-    Magic = "magic",
-    Metal = "metal",
-    Physical = "physical",
-    Plant = "plant",
-    Primal = "primal",
-    Pure = "pure",
-    Soul = "soul",
-    Time = "time",
-    War = "war",
-    Water = "water",
-    Wind = "wind",
-}
+export type AttackType = "physical" | "fire" | "plant" | "earth" | "water" | "ice" | "electric" | "dark" | "metal" | "legend" | "pure" | "light" | "war" | "beauty" | "magic" | "chaos" | "happy" | "dream" | "soul" | "primal" | "wind" | "time"
 
 export interface Aura {
     id:                      number
@@ -3055,17 +2469,9 @@ export interface Aura {
     level_based_parameters?: number
 }
 
-export enum AuraCenterMode {
-    Side = "SIDE",
-}
+export type AuraCenterMode = "SIDE"
 
-export enum AuraVfx {
-    EvaderShield4 = "evader_shield_4",
-    EvaderShieldTest = "evader_shield_test",
-    FxBunker = "fx_bunker",
-    GuardShield = "guard_shield",
-    SpikedShield = "spiked_shield",
-}
+export type AuraVfx = "fx_bunker" | "guard_shield" | "spiked_shield" | "evader_shield_test" | "evader_shield_4"
 
 export interface AuraParameters {
     damageReduction?:    number
@@ -3079,9 +2485,7 @@ export interface AuraParameters {
     effectName?:         Level1_EffectName
 }
 
-export enum DeployText {
-    TidSkillImpalerBattlefield = "tid_skill_impaler_battlefield",
-}
+export type DeployText = "tid_skill_impaler_battlefield"
 
 export interface DeployTextColor {
     r: number
@@ -3090,17 +2494,9 @@ export interface DeployTextColor {
     a: number
 }
 
-export enum Level1_EffectName {
-    TidCritEffectDamageName = "tid_crit_effect_damage_name",
-    TidCritEffectName = "tid_crit_effect_name",
-}
+export type Level1_EffectName = "tid_crit_effect_name" | "tid_crit_effect_damage_name"
 
-export enum AuraType {
-    Bunker = "BUNKER",
-    CriticalChance = "CRITICAL_CHANCE",
-    Evasion = "EVASION",
-    Impaler = "IMPALER",
-}
+export type AuraType = "BUNKER" | "IMPALER" | "EVASION" | "CRITICAL_CHANCE"
 
 export interface Effect {
     id:                      number
@@ -3142,7 +2538,7 @@ export interface EffectParameters {
     extraTurnMessageTid?:          string
     effectName?:                   PurpleEffectName
     counterMessageTid?:            string
-    dodgeSkills?:                  AvoidSkillElement[]
+    dodgeSkills?:                  AvoidSkill[]
     bg_vfx_node_name?:             BgVfxNodeName
     fg_vfx_node_name?:             FgVfxNodeName
     damage_multiplier?:            number
@@ -3171,8 +2567,8 @@ export interface EffectParameters {
     shieldMultiplier?:             number
     armorMultiplier?:              number
     carryDamage?:                  boolean
-    avoidSkills?:                  AvoidSkillElement[]
-    destroySkills?:                DestroySkill[]
+    avoidSkills?:                  AvoidSkill[]
+    destroySkills?:                AvoidSkill[]
     element?:                      ElementType
     giveToDragons?:                GiveToDragons
     canReceiveElementalDamage?:    boolean
@@ -3180,118 +2576,54 @@ export interface EffectParameters {
     spreadOnDeathChance?:          number
     mode?:                         string
     tickMultiplier?:               number
-    bypassList?:                   string[]
+    bypassList?:                   AvoidSkill[]
     stackingMode?:                 string
 }
 
-export enum AvoidSkillElement {
-    Evasion = "EVASION",
-    Shield = "SHIELD",
-    Vengeful = "VENGEFUL",
-}
+export type AvoidSkill = "VENGEFUL" | "EVASION" | "SHIELD" | "BUNKER" | "ARMOR"
 
-export enum BenchTargetMode {
-    Sequential = "sequential",
-}
+export type BenchTargetMode = "sequential"
 
-export enum BgVfxNodeName {
-    BgBerserkVortex = "bg_berserk_vortex",
-}
+export type BgVfxNodeName = "bg_berserk_vortex"
 
-export enum CounterAttackEffectName {
-    PlasmaSkillImpact = "plasma_skill_impact",
-}
+export type CounterAttackEffectName = "plasma_skill_impact"
 
-export enum DestroySkill {
-    Bunker = "BUNKER",
-    Shield = "SHIELD",
-}
+export type DragonAnimation = "special1"
 
-export enum DragonAnimation {
-    Special1 = "special1",
-}
+export type DragonLife = "receiver"
 
-export enum DragonLife {
-    Receiver = "receiver",
-}
+export type PurpleEffectName = "plasma_skill_main" | "tid_crit_effect_name" | "tid_skill_armor_effect_name"
 
-export enum PurpleEffectName {
-    PlasmaSkillMain = "plasma_skill_main",
-    TidCritEffectName = "tid_crit_effect_name",
-    TidSkillArmorEffectName = "tid_skill_armor_effect_name",
-}
+export type EffectTid = "tid_skill_description_250_battlefield"
 
-export enum EffectTid {
-    TidSkillDescription250_Battlefield = "tid_skill_description_250_battlefield",
-}
+export type FgVfxNodeName = "fg_berserk_vortex"
 
-export enum FgVfxNodeName {
-    FgBerserkVortex = "fg_berserk_vortex",
-}
+export type FgVfxScreenEffectname = "megacrit_speedlines"
 
-export enum FgVfxScreenEffectname {
-    MegacritSpeedlines = "megacrit_speedlines",
-}
+export type GiveToDragons = "any" | "alive"
 
-export enum GiveToDragons {
-    Alive = "alive",
-    Any = "any",
-}
+export type PlayerEffectName = "emergency_damage"
 
-export enum PlayerEffectName {
-    EmergencyDamage = "emergency_damage",
-}
+export type TidDamageMultiplier = "DAMAGE INCREASED!!!"
 
-export enum TidDamageMultiplier {
-    DamageIncreased = "DAMAGE INCREASED!!!",
-}
+export type Vfx = "silenced_shield_3" | "doom-mark_skill" | "" | "testVfx" | "void_skill"
 
-export enum Vfx {
-    DoomMarkSkill = "doom-mark_skill",
-    Empty = "",
-    SilencedShield3 = "silenced_shield_3",
-    TestVfx = "testVfx",
-    VoidSkill = "void_skill",
-}
+export type VfxTextEffectname = "megacrit_skill"
 
-export enum VfxTextEffectname {
-    MegacritSkill = "megacrit_skill",
-}
-
-export enum PassiveTriggerType {
-    Attack = "attack",
-    Defense = "defense",
-    Negative = "negative",
-    OnDie = "onDie",
-    OnEnterCombat = "onEnterCombat",
-    PostAttack = "postAttack",
-}
+export type PassiveTriggerType = "attack" | "defense" | "onEnterCombat" | "onDie" | "negative" | "postAttack"
 
 export interface StatusEffectData {
     statusIcon:         string
     effectName:         StatusEffectDataEffectName
     effectDescription?: string
-    dragonVfx?:         string
+    dragonVfx?:         DragonVfx
 }
 
-export enum StatusEffectDataEffectName {
-    TidCritEffectName = "tid_crit_effect_name",
-    TidDoomSkillEffectName = "tid_doom_skill_effect_name",
-    TidPoisonName = "tid_poison_name",
-    TidSkillArmorEffectName = "tid_skill_armor_effect_name",
-    TidSkillDrainedEffectName = "tid_skill_drained_effect_name",
-    TidSkillExhaustionEffectName = "tid_skill_exhaustion_effect_name",
-}
+export type DragonVfx = "skill_overdrive" | "poison_skill"
 
-export enum Target {
-    AllyTeam = "ALLY_TEAM",
-    Enemy = "ENEMY",
-    EnemyRandom1 = "ENEMY_RANDOM_1",
-    EnemyTeam = "ENEMY_TEAM",
-    None = "NONE",
-    Self = "SELF",
-    SelfAlliesOnly = "SELF_ALLIES_ONLY",
-}
+export type StatusEffectDataEffectName = "tid_crit_effect_name" | "tid_skill_armor_effect_name" | "tid_skill_exhaustion_effect_name" | "tid_doom_skill_effect_name" | "tid_skill_drained_effect_name" | "tid_poison_name"
+
+export type Target = "ENEMY" | "NONE" | "ENEMY_TEAM" | "SELF" | "ENEMY_RANDOM_1" | "ALLY_TEAM" | "SELF_ALLIES_ONLY"
 
 export interface LevelBasedParameter {
     id:        number
@@ -3356,15 +2688,7 @@ export interface Passive {
     can_share:       number
 }
 
-export enum EffectVfx {
-    GenericHiddenVfx = "generic_hidden_vfx",
-    HighocculttitanShield = "highocculttitan_shield",
-    SkillOverdrive = "skill_overdrive",
-    SpineKarmaSkills = "spine_karma_skills",
-    TitanShield = "titan_shield",
-    VampireTitanShield = "vampire_titan_shield",
-    VoidSkill = "void_skill",
-}
+export type EffectVfx = "titan_shield" | "generic_hidden_vfx" | "highocculttitan_shield" | "vampire_titan_shield" | "spine_karma_skills" | "skill_overdrive" | "void_skill"
 
 export interface Post {
     id:           number
@@ -3375,10 +2699,7 @@ export interface Post {
     skill_id:     number
 }
 
-export enum Name {
-    OnKillBuff = "On Kill Buff",
-    SoulExtraction = "Soul extraction",
-}
+export type Name = "On Kill Buff" | "Soul extraction"
 
 export interface Skill {
     id:              number
@@ -3452,18 +2773,7 @@ export interface Floor {
     roll_die_price: CostClass
 }
 
-export enum FloorImage {
-    Floor10PNG = "floor-10.png",
-    Floor1PNG = "floor-1.png",
-    Floor2PNG = "floor-2.png",
-    Floor3PNG = "floor-3.png",
-    Floor4PNG = "floor-4.png",
-    Floor5PNG = "floor-5.png",
-    Floor6PNG = "floor-6.png",
-    Floor7PNG = "floor-7.png",
-    Floor8PNG = "floor-8.png",
-    Floor9PNG = "floor-9.png",
-}
+export type FloorImage = "floor-1.png" | "floor-2.png" | "floor-3.png" | "floor-4.png" | "floor-5.png" | "floor-10.png" | "floor-8.png" | "floor-9.png" | "floor-6.png" | "floor-7.png"
 
 export interface HappyHour {
     id:           number
@@ -3503,19 +2813,11 @@ export interface TowerIslandIsland {
     active_platforms:                  ValueClass
 }
 
-export enum TentacledSoundTag {
-    RuinedTower = "RUINED_TOWER",
-}
+export type TentacledSoundTag = "RUINED_TOWER"
 
-export enum TidName {
-    TidTIGenericName = "tid_ti_generic_name",
-}
+export type TidName = "tid_ti_generic_name"
 
-export enum FluffyZipFile {
-    MobileUITowerIslandsTIEnergysourceCZip = "/mobile/ui/tower_islands/ti_energysource_c.zip",
-    MobileUITowerIslandsTINorsegodsBZip = "/mobile/ui/tower_islands/ti_norsegods_b.zip",
-    MobileUITowerIslandsTIWoodenTowerCZip = "/mobile/ui/tower_islands/ti_wooden_tower_c.zip",
-}
+export type FluffyZipFile = "/mobile/ui/tower_islands/ti_norsegods_b.zip" | "/mobile/ui/tower_islands/ti_energysource_c.zip" | "/mobile/ui/tower_islands/ti_wooden_tower_c.zip"
 
 export interface TowerIslandReward {
     id:               number
@@ -3541,13 +2843,7 @@ export interface TowerIslandSquare {
     piece_reward_id?:                number
 }
 
-export enum PurpleType {
-    Catapult = "CATAPULT",
-    Empty = "EMPTY",
-    FinalDragonSquare = "FINAL_DRAGON_SQUARE",
-    SingleDragonPiece = "SINGLE_DRAGON_PIECE",
-    SingleReward = "SINGLE_REWARD",
-}
+export type PurpleType = "SINGLE_REWARD" | "CATAPULT" | "EMPTY" | "SINGLE_DRAGON_PIECE" | "FINAL_DRAGON_SQUARE"
 
 export interface TreasureItem {
     id:               number
@@ -3565,17 +2861,9 @@ export interface TreasureItem {
     badgeText?:       string
 }
 
-export enum Feature {
-    MissingDragonRescue = "missing_dragon_rescue",
-    PacksShop = "packs_shop",
-}
+export type Feature = "packs_shop" | "missing_dragon_rescue"
 
-export enum TreasureItemType {
-    F = "f",
-    G = "g",
-    Keys = "keys",
-    P = "p",
-}
+export type TreasureItemType = "g" | "f" | "p" | "keys"
 
 export interface TreeOfLife {
     parameters:             TreeOfLifeParameter[]
@@ -3597,13 +2885,12 @@ export interface SummonTime {
 }
 
 export interface NonSummonableDragon {
-    dragon_id:         number
-    unlock_system_id?: UnlockSystemID
+    dragon_id:           number
+    unlock_system_id?:   UnlockSystemID
+    unlock_system_id_b?: UnlockSystemID
 }
 
-export enum UnlockSystemID {
-    NguLmhNoSummon = "ngu_lmh_no_summon",
-}
+export type UnlockSystemID = "ngu_lmh_no_summon"
 
 export interface TreeOfLifeParameter {
     id:    number
@@ -3693,12 +2980,7 @@ export interface Asset {
     local: DisabledAssetLocal
 }
 
-export enum DisabledAssetLocal {
-    UIFeaturesDragontournamentsGrEmpowerEmptyPNG = "ui/features/dragontournaments/gr-empower-empty.png",
-    UIRetakeIconsTreeOfLifeGrGlowGradePNG = "UIRetake/Icons/TreeOfLife/gr-glow-grade.png",
-    UIRetakeIconsTreeOfLifeICGradeEmptyPNG = "UIRetake/Icons/TreeOfLife/ic-grade-empty.png",
-    UIRetakeIconsTreeOfLifeICGradeFullPNG = "UIRetake/Icons/TreeOfLife/ic-grade-full.png",
-}
+export type DisabledAssetLocal = "ui/features/dragontournaments/gr-empower-empty.png" | "UIRetake/Icons/TreeOfLife/gr-glow-grade.png" | "UIRetake/Icons/TreeOfLife/ic-grade-empty.png" | "UIRetake/Icons/TreeOfLife/ic-grade-full.png"
 
 export interface TreeOfLifeRecall {
     parameters:       BattlesConfigElement[]
