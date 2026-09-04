@@ -820,7 +820,7 @@ export interface ItemsUnitsAttributeModifier {
 
 export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
-export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY" | "ADD_ARRAY"
+export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY"
 
 export interface BattlesConfigElement {
     id:    number
@@ -1304,7 +1304,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_mi_mystery_in_paradise"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries"
 
 export interface EnemyElement {
     id:                 number
@@ -1490,6 +1490,7 @@ export interface LapRewardReward {
     "album_pack_aces.1"?:     number
     "pet_food_pack.l"?:       number
     "album_pack_aces.2"?:     number
+    "album_pack.xl"?:         number
     "album_pack_aces.3"?:     number
     trade_tickets?:           TradeTicket[]
     "album_pack_aces.4"?:     number
@@ -1876,11 +1877,18 @@ export interface MazeIslandNode {
 }
 
 export interface NodeReward {
-    g?:     number
-    f?:     number
-    b?:     number[]
-    chest?: number
-    egg?:   number
+    g?:                         number
+    f?:                         number
+    b?:                         number[]
+    chest?:                     number
+    egg?:                       number
+    "album_pack.s"?:            number
+    "album_pack.m"?:            number
+    "album_pack.l"?:            number
+    "album_pack.xl"?:           number
+    "album_pack_aces.generic"?: number
+    "album_pack_aces.2"?:       number
+    "album_pack_aces.4"?:       number
 }
 
 export interface Path {
@@ -1908,7 +1916,8 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The4
+    "5":    The5
+    "6":    The5
     canvas: Canva[]
 }
 
@@ -1919,7 +1928,7 @@ export interface The0 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -1933,21 +1942,21 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface The0_HudButton {
+export interface HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
 export interface The0_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       SlideType
+    type:                       string
 }
 
 export interface MultipleButton {
@@ -1978,25 +1987,19 @@ export interface SizeClass {
 
 export type SpineAsset = "pointer_animation_v2"
 
-export type SlideType = "FullImage"
-
 export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The1_HudButton
+    hud_button:            HudButton
     id:                    number
     min_level:             number
     popup_type:            string
     show_on_startup:       number
     slides:                The1_Slide[]
     start_ts:              string
-}
-
-export interface The1_HudButton {
-    file:  string
-    title: string
 }
 
 export interface The1_Slide {
@@ -2008,8 +2011,8 @@ export interface The1_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
+    timer?:                     string
+    link_item_id?:              number
 }
 
 export interface The2 {
@@ -2034,7 +2037,7 @@ export interface The3 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2047,6 +2050,26 @@ export interface The3 {
 }
 
 export interface The4 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2067,11 +2090,42 @@ export interface The4 {
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number
-    end_ts:          number
+    start_ts:        number | string
+    end_ts:          number | string
     min_level:       number
-    slides:          The0_Slide[]
+    slides:          CanvaSlide[]
     show_on_startup: number
+    priority?:       string
+}
+
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       string
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:     number
+    rotation:   number
+    stroke:     string
+    text_color: string
+    text_key:   string
+    text_size:  number
+    timer:      number
+    type:       string
+    width:      number
+    x:          number
+    y:          number
 }
 
 export interface Perks {
@@ -2857,6 +2911,7 @@ export interface TreasureItem {
     use_formula:      number
     active_platforms: ValueClass
     feature?:         Feature
+    amount_by_level:  string
     amount:           number
     badgeText?:       string
 }
