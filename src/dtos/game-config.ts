@@ -1086,12 +1086,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    ActionElement[]
+    actions:    Action[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface ActionElement {
+export interface Action {
     id:                number
     type:              string
     tid_name:          string
@@ -1281,7 +1281,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1822,7 +1822,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        EnemyElement[]
     happy_hours:    unknown[]
-    actions:        ActionElement[]
+    actions:        Action[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -1877,18 +1877,19 @@ export interface MazeIslandNode {
 }
 
 export interface NodeReward {
-    g?:                         number
-    f?:                         number
-    b?:                         number[]
-    chest?:                     number
-    egg?:                       number
-    "album_pack.s"?:            number
-    "album_pack.m"?:            number
-    "album_pack.l"?:            number
-    "album_pack.xl"?:           number
-    "album_pack_aces.generic"?: number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.4"?:       number
+    g?:                           number
+    f?:                           number
+    b?:                           number[]
+    chest?:                       number
+    egg?:                         number
+    "album_pack.s"?:              number
+    "permanent_gacha.legendary"?: number
+    "album_pack.m"?:              number
+    "album_pack.l"?:              number
+    "permanent_gacha.mythical"?:  number
+    "album_pack_aces.generic"?:   number
+    "album_pack_aces.2"?:         number
+    "album_pack_aces.4"?:         number
 }
 
 export interface Path {
@@ -1914,7 +1915,7 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The2
+    "3":    The3
     "4":    The4
     "5":    The5
     "6":    The5
@@ -1949,14 +1950,14 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       string
+    type:                       SlideType
 }
 
 export interface MultipleButton {
@@ -1987,6 +1988,8 @@ export interface SizeClass {
 
 export type SpineAsset = "pointer_animation_v2"
 
+export type SlideType = "FullImage"
+
 export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2016,10 +2019,25 @@ export interface The1_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
 }
 
 export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The0_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2072,51 +2090,13 @@ export interface The5 {
 }
 
 export interface Canva {
-    id:               number
-    assets_name:      string
-    start_ts:         number | string
-    end_ts:           number | string
-    min_level?:       number
-    slides:           CanvaSlide[]
-    show_on_startup?: number
-}
-
-export interface CanvaSlide {
-    custom_title_localized_key?: string
-    header_localized_key?:       string
-    image_url?:                  string
-    times_to_show?:              number
-    type?:                       string
-    multiple_buttons?:           MultipleButton[]
-    bg?:                         string
-    content?:                    Content[]
-    edit_mode?:                  number
-    id?:                         number
-    title_key?:                  string
-    viral_icon_key?:             string
-    viral_icon_timer?:           string
-}
-
-export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
-}
-
-export interface ContentAction {
-    itemId:        string
-    storeCategory: number
-    type:          string
+    id:              number
+    assets_name:     string
+    start_ts:        number
+    end_ts:          number
+    min_level:       number
+    slides:          The0_Slide[]
+    show_on_startup: number
 }
 
 export interface Perks {
@@ -2805,7 +2785,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     ActionElement[]
+    actions:     Action[]
 }
 
 export interface Floor {
@@ -3007,8 +2987,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
