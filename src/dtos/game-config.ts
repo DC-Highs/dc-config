@@ -820,7 +820,7 @@ export interface ItemsUnitsAttributeModifier {
 
 export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
-export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY"
+export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY" | "ADD_ARRAY"
 
 export interface BattlesConfigElement {
     id:    number
@@ -1086,12 +1086,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    Action[]
+    actions:    ActionElement[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface Action {
+export interface ActionElement {
     id:                number
     type:              string
     tid_name:          string
@@ -1281,7 +1281,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1822,7 +1822,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        EnemyElement[]
     happy_hours:    unknown[]
-    actions:        Action[]
+    actions:        ActionElement[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -1917,8 +1917,9 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The5
-    "6":    The5
+    "5":    The3
+    "6":    The4
+    "7":    The4
     canvas: Canva[]
 }
 
@@ -1950,14 +1951,14 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       SlideType
+    type:                       string
 }
 
 export interface MultipleButton {
@@ -1965,16 +1966,18 @@ export interface MultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                string
+    key:                Key
     link:               string
     normalizedPosition: NormalizedPosition
     size:               SizeClass
-    style:              string
+    style:              Style
     linkItemId?:        number
     spineAsset?:        SpineAsset
 }
 
 export type AnimationPlace = "Foreground"
+
+export type Key = "tid_news_viptiers_button" | "tid_helpshift_faq_title" | ""
 
 export interface NormalizedPosition {
     x: number
@@ -1988,7 +1991,7 @@ export interface SizeClass {
 
 export type SpineAsset = "pointer_animation_v2"
 
-export type SlideType = "FullImage"
+export type Style = "YellowLarge" | "BlueLarge" | "Transparent"
 
 export interface The1 {
     active_platforms:      ValueClass
@@ -2019,7 +2022,7 @@ export interface The1_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show?:             number
+    times_to_show:              number
 }
 
 export interface The2 {
@@ -2028,16 +2031,38 @@ export interface The2 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
+    filter_category:       null
     hud_button:            The0_HudButton
     id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
     min_level:             number
     popup_type:            string
+    priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
 export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number | null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2052,51 +2077,52 @@ export interface The3 {
     start_ts:              string
 }
 
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The5 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
 export interface Canva {
-    id:              number
-    assets_name:     string
-    start_ts:        number
-    end_ts:          number
-    min_level:       number
-    slides:          The0_Slide[]
-    show_on_startup: number
+    id:               number
+    assets_name:      string
+    start_ts:         number | string
+    end_ts:           number | string
+    min_level?:       number
+    slides:           CanvaSlide[]
+    show_on_startup?: number
+}
+
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       string
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
+}
+
+export interface ContentAction {
+    itemId:        string
+    storeCategory: number
+    type:          string
 }
 
 export interface Perks {
@@ -2785,7 +2811,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
 }
 
 export interface Floor {
@@ -2987,8 +3013,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
