@@ -820,7 +820,7 @@ export interface ItemsUnitsAttributeModifier {
 
 export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
-export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY" | "ADD_ARRAY"
+export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY"
 
 export interface BattlesConfigElement {
     id:    number
@@ -1917,11 +1917,10 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The5
+    "5":    The3
     "6":    The4
-    "7":    The5
-    "8":    The5
-    "9":    The5
+    "7":    The4
+    "8":    The4
     canvas: Canva[]
 }
 
@@ -2017,17 +2016,14 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The2 {
@@ -2056,26 +2052,6 @@ export interface The3 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2087,7 +2063,7 @@ export interface The4 {
     start_ts:              string
 }
 
-export interface The5 {
+export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
