@@ -1917,13 +1917,12 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The3
-    "4":    The4
-    "5":    The4
-    "6":    The4
-    "7":    The4
-    "8":    The8
-    "9":    The4
+    "3":    The2
+    "4":    The2
+    "5":    The2
+    "6":    The2
+    "7":    The7
+    "8":    The2
     canvas: Canva[]
 }
 
@@ -1955,9 +1954,8 @@ export interface The0_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -1993,7 +1991,7 @@ export interface The1_Slide {
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       string
+    type:                       SlideType
 }
 
 export interface MultipleButton {
@@ -2028,50 +2026,14 @@ export type SpineAsset = "pointer_animation_v2"
 
 export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
 
+export type SlideType = "FullImage"
+
 export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
-    hud_button:            The1_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The3 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              number
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
     id:                    number
     min_level:             number
     popup_frequency:       string
@@ -2081,7 +2043,7 @@ export interface The4 {
     start_ts:              string
 }
 
-export interface The8 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2117,7 +2079,7 @@ export interface CanvaSlide {
     header_localized_key?:       string
     image_url?:                  string
     times_to_show?:              number
-    type?:                       string
+    type?:                       SlideType
     multiple_buttons?:           MultipleButton[]
     bg?:                         string
     content?:                    Content[]
@@ -2691,11 +2653,13 @@ export type PassiveTriggerType = "attack" | "defense" | "onEnterCombat" | "onDie
 export interface StatusEffectData {
     statusIcon:         string
     effectName:         StatusEffectDataEffectName
-    effectDescription?: string
+    effectDescription?: EffectDescription
     dragonVfx?:         DragonVfx
 }
 
 export type DragonVfx = "skill_overdrive" | "poison_skill"
+
+export type EffectDescription = "tid_skill_exhaustion_effect_description" | "tid_doom_skill_effect_description" | "tid_skill_drained_effect_description" | "tid_poison_desc"
 
 export type StatusEffectDataEffectName = "tid_crit_effect_name" | "tid_skill_armor_effect_name" | "tid_skill_exhaustion_effect_name" | "tid_doom_skill_effect_name" | "tid_skill_drained_effect_name" | "tid_poison_name"
 
