@@ -138,11 +138,9 @@ export interface IapDiscountUid {
 
 export interface IapDiscountUidAvailability {
     from: string
-    dur?: Dur
+    dur?: string
     to?:  string
 }
-
-export type Dur = "15d" | "7d" | "10d" | "14d" | "28d" | "29d" | "42d" | "32d" | "25d" | "11d" | "91d"
 
 export type IapDiscountUidIap = "battle_pass_tier_9_99" | "battle_pass_7_99" | "battle_pass_19_99" | "blackfriday_9_99"
 
@@ -155,6 +153,8 @@ export interface IapEliteDiscountUidAvailability {
     from: string
     dur:  Dur
 }
+
+export type Dur = "7d" | "10d" | "14d" | "15d" | "28d" | "29d" | "42d"
 
 export type IapEliteDiscountUidIap = "elite_pass_promo_31_99" | "elite_pass_59_99" | "blackfriday_31_99" | "elite_upgrade_promo_23_99" | "special_ebp_upgrade_discount_39_99" | "blackfriday_21_99" | "battle_pass_19_99" | "battle_pass_7_99"
 
@@ -1304,7 +1304,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace"
 
 export interface EnemyElement {
     id:                 number
@@ -1482,23 +1482,25 @@ export interface LimitedReward {
 }
 
 export interface LapRewardReward {
-    "pet_food_pack.m"?:       number
-    "rank_up_coin.mythical"?: number
-    chest?:                   number
-    b?:                       number[]
-    "album_pack.l"?:          number
-    "album_pack_aces.1"?:     number
-    "pet_food_pack.l"?:       number
-    "album_pack_aces.2"?:     number
-    "album_pack.xl"?:         number
-    "album_pack_aces.3"?:     number
-    trade_tickets?:           TradeTicket[]
-    "album_pack_aces.4"?:     number
-    egg?:                     number
-    seeds?:                   Seed[]
-    "album_pack_aces.5"?:     number
-    skin?:                    number
-    rarity_seeds?:            RewardRaritySeed[]
+    "pet_food_pack.m"?:           number
+    "rank_up_coin.mythical"?:     number
+    chest?:                       number
+    b?:                           number[]
+    "album_pack.l"?:              number
+    "album_pack_aces.1"?:         number
+    "pet_food_pack.l"?:           number
+    "album_pack_aces.2"?:         number
+    "permanent_gacha.legendary"?: number
+    "album_pack.xl"?:             number
+    "permanent_gacha.mythical"?:  number
+    "album_pack_aces.3"?:         number
+    trade_tickets?:               TradeTicket[]
+    "album_pack_aces.4"?:         number
+    egg?:                         number
+    seeds?:                       Seed[]
+    "album_pack_aces.5"?:         number
+    skin?:                        number
+    rarity_seeds?:                RewardRaritySeed[]
 }
 
 export type RewardCellType = "medium" | "small" | "big"
@@ -1749,7 +1751,7 @@ export interface LiveopsChallenges {
 
 export interface Challenge {
     id:               number
-    availability:     IapEliteDiscountUidAvailability[]
+    availability:     IapDiscountUidAvailability[]
     goals:            number[]
     title_tid:        string
     hud_icon_tid:     HudIconTid
@@ -1922,7 +1924,6 @@ export interface News {
     "5":    The2
     "6":    The2
     "7":    The7
-    "8":    The2
     canvas: Canva[]
 }
 
@@ -1946,9 +1947,7 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -1991,7 +1990,7 @@ export interface The1_Slide {
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       SlideType
+    type:                       string
 }
 
 export interface MultipleButton {
@@ -2025,8 +2024,6 @@ export interface SizeClass {
 export type SpineAsset = "pointer_animation_v2"
 
 export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
-
-export type SlideType = "FullImage"
 
 export interface The2 {
     active_platforms:      ValueClass
@@ -2079,7 +2076,7 @@ export interface CanvaSlide {
     header_localized_key?:       string
     image_url?:                  string
     times_to_show?:              number
-    type?:                       SlideType
+    type?:                       string
     multiple_buttons?:           MultipleButton[]
     bg?:                         string
     content?:                    Content[]
@@ -2091,19 +2088,15 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
+    action:   ContentAction
+    height:   number
+    rotation: number
+    style:    string
+    text_key: string
+    type:     string
+    width:    number
+    x:        number
+    y:        number
 }
 
 export interface ContentAction {
