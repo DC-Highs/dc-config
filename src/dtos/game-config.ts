@@ -820,7 +820,7 @@ export interface ItemsUnitsAttributeModifier {
 
 export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
-export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY"
+export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY" | "ADD_ARRAY"
 
 export interface BattlesConfigElement {
     id:    number
@@ -1919,11 +1919,12 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The2
-    "4":    The2
-    "5":    The2
-    "6":    The2
-    "7":    The7
+    "3":    The3
+    "4":    The3
+    "5":    The3
+    "6":    The3
+    "7":    The3
+    "8":    The8
     canvas: Canva[]
 }
 
@@ -1947,17 +1948,40 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
+    content_localized_key:      string
     custom_title_localized_key: string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
 }
 
 export interface The1 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The1_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The1_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -1972,17 +1996,11 @@ export interface The1 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The2_Slide[]
     start_ts:              string
 }
 
-export interface The1_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
-export interface The1_Slide {
+export interface The2_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
@@ -2025,7 +2043,7 @@ export type SpineAsset = "pointer_animation_v2"
 
 export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
 
-export interface The2 {
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2036,11 +2054,11 @@ export interface The2 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The2_Slide[]
     start_ts:              string
 }
 
-export interface The7 {
+export interface The8 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2057,7 +2075,7 @@ export interface The7 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The2_Slide[]
     start_ts:              string
 }
 
@@ -2088,15 +2106,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    action:   ContentAction
-    height:   number
-    rotation: number
-    style:    string
-    text_key: string
-    type:     string
-    width:    number
-    x:        number
-    y:        number
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
 }
 
 export interface ContentAction {
@@ -2993,8 +3015,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
