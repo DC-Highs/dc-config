@@ -1094,8 +1094,8 @@ export interface FogIsland {
 export interface Action {
     id:                number
     type:              string
-    tid_name:          string
-    image:             string
+    tid_name:          ActionTidName
+    image:             Image
     pool_percent:      number
     max_points:        number
     extra_parameters?: ExtraParameters
@@ -1108,6 +1108,10 @@ export interface ExtraParameters {
     max_level?:         number
     max_time?:          number
 }
+
+export type Image = "ic-info-action-collect-gold.png" | "ic-info-action-collect-food.png" | "ic-info-action-feed.png" | "ic-info-action-pvp.png" | "ic-info-action-breed.png" | "ic-info-action-hatch-2-el.png" | "ic-info-action-hatch-3-el.png" | "ic-info-action-hatch-legendary.png"
+
+export type ActionTidName = "tid_grid_islands_collect_gold" | "tid_grid_islands_collect_farm_food" | "tid_grid_islands_feed_dragons" | "tid_grid_islands_pvp_battle" | "tid_grid_islands_breed_dragons" | "tid_grid_islands_hatching_2_el" | "tid_grid_islands_hatching_3_el" | "tid_grid_islands_hatching_legendary"
 
 export interface Currency {
     id:       number
@@ -1304,7 +1308,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_fi_brightest_mirror"
 
 export interface EnemyElement {
     id:                 number
@@ -1919,9 +1923,10 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The2
-    "4":    The2
-    "5":    The5
+    "3":    The3
+    "4":    The3
+    "5":    The3
+    "6":    The6
     canvas: Canva[]
 }
 
@@ -1929,8 +1934,9 @@ export interface The0 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
-    hud_button:            The0_HudButton
+    hud_button:            HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -1939,9 +1945,10 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface The0_HudButton {
-    file:  string
-    title: string
+export interface HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
 }
 
 export interface The0_Slide {
@@ -1953,8 +1960,8 @@ export interface The0_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
+    timer?:                     string
+    link_item_id?:              number
 }
 
 export interface The1 {
@@ -1964,7 +1971,7 @@ export interface The1 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The1_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -1976,21 +1983,15 @@ export interface The1 {
     start_ts:              string
 }
 
-export interface The1_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
 export interface The1_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       SlideType
+    type:                       string
 }
 
 export interface MultipleButton {
@@ -2025,9 +2026,27 @@ export type SpineAsset = "pointer_animation_v2"
 
 export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
 
-export type SlideType = "FullImage"
-
 export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2042,14 +2061,14 @@ export interface The2 {
     start_ts:              string
 }
 
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            The1_HudButton
+    hud_button:            HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2066,11 +2085,42 @@ export interface The5 {
 export interface Canva {
     id:              number
     assets_name:     string
-    start_ts:        number
-    end_ts:          number
+    start_ts:        number | string
+    end_ts:          number | string
     min_level:       number
-    slides:          The1_Slide[]
+    slides:          CanvaSlide[]
     show_on_startup: number
+    priority?:       string
+}
+
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       string
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:     number
+    rotation:   number
+    stroke:     string
+    text_color: string
+    text_key:   string
+    text_size:  number
+    timer:      number
+    type:       string
+    width:      number
+    x:          number
+    y:          number
 }
 
 export interface Perks {
@@ -2786,7 +2836,7 @@ export interface HappyHour {
 export interface TowerIslandIsland {
     id:                                number
     analytics_id:                      string
-    tid_name:                          TidName
+    tid_name:                          IslandTidName
     start_ts:                          number
     end_ts:                            number
     initial_square_id:                 number
@@ -2816,7 +2866,7 @@ export interface TowerIslandIsland {
 
 export type TentacledSoundTag = "RUINED_TOWER"
 
-export type TidName = "tid_ti_generic_name"
+export type IslandTidName = "tid_ti_generic_name"
 
 export interface TowerIslandReward {
     id:               number
