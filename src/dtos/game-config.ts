@@ -1308,7 +1308,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_fi_brightest_mirror"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_mi_norsegods"
 
 export interface EnemyElement {
     id:                 number
@@ -1923,10 +1923,9 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The3
-    "4":    The3
-    "5":    The3
-    "6":    The6
+    "3":    The2
+    "4":    The2
+    "5":    The5
     canvas: Canva[]
 }
 
@@ -1950,17 +1949,14 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -2039,26 +2035,6 @@ export interface The2 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
-    hud_button:            The1_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The3 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
     id:                    number
     min_level:             number
     popup_frequency:       string
@@ -2068,7 +2044,7 @@ export interface The3 {
     start_ts:              string
 }
 
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
