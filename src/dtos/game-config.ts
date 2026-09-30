@@ -1922,13 +1922,47 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The1
-    "3":    The1
-    "4":    The4
+    "2":    The2
+    "3":    The2
+    "4":    The2
+    "5":    The5
     canvas: Canva[]
 }
 
 export interface The0 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
+}
+
+export interface The0_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+    timer:                      string
+}
+
+export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -1943,17 +1977,11 @@ export interface The0 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
-}
-
-export interface The0_Slide {
+export interface The1_Slide {
     content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
@@ -1961,7 +1989,7 @@ export interface The0_Slide {
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
-    type:                       SlideType
+    type:                       string
 }
 
 export interface MultipleButton {
@@ -1974,7 +2002,7 @@ export interface MultipleButton {
     linkItemId?:        number
     normalizedPosition: NormalizedPosition
     size:               SizeClass
-    spineAsset?:        SpineAsset
+    spineAsset?:        string
     style:              Style
 }
 
@@ -1992,13 +2020,9 @@ export interface SizeClass {
     w: number
 }
 
-export type SpineAsset = "pointer_animation_v2"
-
 export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
 
-export type SlideType = "FullImage"
-
-export interface The1 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2009,11 +2033,11 @@ export interface The1 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The4 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2030,7 +2054,7 @@ export interface The4 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -2040,7 +2064,7 @@ export interface Canva {
     start_ts:        number
     end_ts:          number
     min_level:       number
-    slides:          The0_Slide[]
+    slides:          The1_Slide[]
     show_on_startup: number
 }
 
@@ -2932,8 +2956,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
