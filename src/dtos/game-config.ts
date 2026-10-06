@@ -1086,12 +1086,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    Action[]
+    actions:    ActionElement[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface Action {
+export interface ActionElement {
     id:                number
     type:              string
     tid_name:          ActionTidName
@@ -1285,7 +1285,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1298,7 +1298,7 @@ export interface Decoration {
     episode_id: number
 }
 
-export type File = "1x1_slot1" | "1x1_slot2"
+export type File = "1x1_slot1" | "1x1_slot2" | "1x1_mushroom1" | "1x1_mushroom2" | "1x1_lake_rock" | "2X1_plant2"
 
 export interface Encounter {
     id:                      number
@@ -1830,7 +1830,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        EnemyElement[]
     happy_hours:    unknown[]
-    actions:        Action[]
+    actions:        ActionElement[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -1922,15 +1922,16 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The2
+    "2":    The10
     "3":    The10
     "4":    The10
-    "5":    The10
+    "5":    The5
     "6":    The6
-    "7":    The7
+    "7":    The10
     "8":    The10
     "9":    The9
     "10":   The10
+    "11":   The10
     canvas: Canva[]
 }
 
@@ -1962,9 +1963,8 @@ export interface The0_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -1993,7 +1993,7 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key?:     string
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2052,27 +2052,7 @@ export interface The10 {
     start_ts:              string
 }
 
-export interface The2 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The1_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2093,7 +2073,7 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The7 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2132,13 +2112,51 @@ export interface The9 {
 }
 
 export interface Canva {
-    id:              number
-    assets_name:     string
-    start_ts:        number
-    end_ts:          number
-    min_level:       number
-    slides:          The1_Slide[]
-    show_on_startup: number
+    id:               number
+    assets_name:      string
+    start_ts:         number | string
+    end_ts:           number | string
+    min_level?:       number
+    slides:           CanvaSlide[]
+    show_on_startup?: number
+}
+
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       SlideType
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
+}
+
+export interface ContentAction {
+    itemId:        string
+    storeCategory: number
+    type:          string
 }
 
 export interface Perks {
@@ -2645,6 +2663,11 @@ export interface EffectParameters {
     tickMultiplier?:               number
     bypassList?:                   AvoidSkill[]
     stackingMode?:                 string
+    calloutTid?:                   string
+    duration?:                     number
+    missTid?:                      string
+    procChance?:                   number
+    vfxAttachedToTarget?:          string
 }
 
 export type AvoidSkill = "VENGEFUL" | "EVASION" | "SHIELD" | "BUNKER" | "ARMOR"
@@ -2673,7 +2696,7 @@ export type PlayerEffectName = "emergency_damage"
 
 export type TidDamageMultiplier = "DAMAGE INCREASED!!!"
 
-export type Vfx = "silenced_shield_3" | "doom-mark_skill" | "" | "testVfx" | "void_skill"
+export type Vfx = "silenced_shield_3" | "doom-mark_skill" | "" | "testVfx" | "void_skill" | "mindbreak_skill_apply" | "mindbreak_skill_hit"
 
 export type VfxTextEffectname = "megacrit_skill"
 
@@ -2682,15 +2705,13 @@ export type PassiveTriggerType = "attack" | "defense" | "onEnterCombat" | "onDie
 export interface StatusEffectData {
     statusIcon:         string
     effectName:         StatusEffectDataEffectName
-    effectDescription?: EffectDescription
+    effectDescription?: string
     dragonVfx?:         DragonVfx
 }
 
-export type DragonVfx = "skill_overdrive" | "poison_skill"
+export type DragonVfx = "skill_overdrive" | "poison_skill" | "mindbreak_skill_apply"
 
-export type EffectDescription = "tid_skill_exhaustion_effect_description" | "tid_doom_skill_effect_description" | "tid_skill_drained_effect_description" | "tid_poison_desc"
-
-export type StatusEffectDataEffectName = "tid_crit_effect_name" | "tid_skill_armor_effect_name" | "tid_skill_exhaustion_effect_name" | "tid_doom_skill_effect_name" | "tid_skill_drained_effect_name" | "tid_poison_name"
+export type StatusEffectDataEffectName = "tid_crit_effect_name" | "tid_skill_armor_effect_name" | "tid_skill_exhaustion_effect_name" | "tid_doom_skill_effect_name" | "tid_skill_drained_effect_name" | "tid_poison_name" | "tid_mindbreak_skill_effect_name"
 
 export type Target = "ENEMY" | "NONE" | "ENEMY_TEAM" | "SELF" | "ENEMY_RANDOM_1" | "ALLY_TEAM" | "SELF_ALLIES_ONLY"
 
@@ -2829,7 +2850,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
 }
 
 export interface Floor {
