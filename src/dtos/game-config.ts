@@ -1724,7 +1724,7 @@ export interface Properties {
     ft_flying?:         number
 }
 
-export type Tag = "VIP" | "Youtuber" | "hasSkill" | "Mythical" | "Titan" | "Vampire" | "TitanVamp" | "Divinepass" | "Karma" | "Dual" | "TWD" | "Eternal" | "Plasma" | "Berserker" | "Spikes" | "Strategist" | "CritCrew" | "Evader" | "Critcrew" | "Silencer" | "Originals" | "Armor" | "Apocalypse" | "Doom" | "Astro" | "Apex" | "Void" | "Stained" | "Hypno"
+export type Tag = "VIP" | "Family" | "Youtuber" | "hasSkill" | "Mythical" | "Titan" | "Vampire" | "TitanVamp" | "Divinepass" | "Karma" | "Dual" | "TWD" | "Eternal" | "Plasma" | "Berserker" | "Spikes" | "Strategist" | "CritCrew" | "Evader" | "Critcrew" | "Silencer" | "Originals" | "Armor" | "Apocalypse" | "Doom" | "Astro" | "Apex" | "Void" | "Stained" | "Hypno"
 
 export type ItemType = "b" | "l" | "u"
 
@@ -1922,16 +1922,17 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
-    "3":    The10
-    "4":    The10
-    "5":    The5
+    "2":    The2
+    "3":    The11
+    "4":    The11
+    "5":    The11
     "6":    The6
-    "7":    The10
-    "8":    The10
-    "9":    The9
+    "7":    The7
+    "8":    The11
+    "9":    The11
     "10":   The10
-    "11":   The10
+    "11":   The11
+    "12":   The11
     canvas: Canva[]
 }
 
@@ -1964,7 +1965,7 @@ export interface The0_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
 }
 
 export interface The1 {
@@ -1973,16 +1974,12 @@ export interface The1 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
     hud_button:            The1_HudButton
     id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
     min_level:             number
     popup_type:            string
-    priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
@@ -1992,15 +1989,33 @@ export interface The1_HudButton {
     viral_icon_tier: number
 }
 
-export interface The1_Slide {
+export interface The10 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number
+    show_on_startup:       number
+    slides:                The10_Slide[]
+    start_ts:              string
+}
+
+export interface The10_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
-    forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
     multiple_buttons:           MultipleButton[]
     times_to_show:              number
     type:                       SlideType
+    forceClose?:                boolean
 }
 
 export interface MultipleButton {
@@ -2037,7 +2052,7 @@ export type Style = "Transparent" | "YellowLarge" | "BlueLarge"
 
 export type SlideType = "FullImage"
 
-export interface The10 {
+export interface The11 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2048,11 +2063,11 @@ export interface The10 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
-export interface The5 {
+export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2064,12 +2079,10 @@ export interface The5 {
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
-    popup_frequency:       string
-    popup_is_critical:     number
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2086,28 +2099,31 @@ export interface The6 {
     label_title_tid:       null
     min_level:             number
     popup_frequency:       string
+    popup_is_critical:     number
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
-export interface The9 {
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
     min_level:             number
+    popup_frequency:       string
     popup_type:            string
-    priority:              number
+    priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
@@ -2789,7 +2805,7 @@ export interface Post {
     skill_id:     number
 }
 
-export type Name = "On Kill Buff" | "Soul extraction"
+export type Name = "On Kill Buff" | "Soul extraction" | "Soul extraction Skin Mindbreak"
 
 export interface Skill {
     id:              number
@@ -3050,8 +3066,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
