@@ -1924,16 +1924,15 @@ export interface MazeIslandReward {
 export interface News {
     "0":    The0
     "1":    The1
-    "2":    The10
-    "3":    The10
-    "4":    The10
+    "2":    The1
+    "3":    The1
+    "4":    The4
     "5":    The5
-    "6":    The6
-    "7":    The10
-    "8":    The10
-    "9":    The9
+    "6":    The1
+    "7":    The1
+    "8":    The1
+    "9":    The1
     "10":   The10
-    "11":   The10
     canvas: Canva[]
 }
 
@@ -2013,30 +2012,13 @@ export interface The1 {
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
-    hud_button:            HudButton
     id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
     min_level:             number
     popup_frequency:       string
     popup_type:            string
-    priority:              null
     show_on_startup:       number
-    slides:                The1_Slide[]
+    slides:                The0_Slide[]
     start_ts:              string
-}
-
-export interface The1_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    link:                       string
-    link_button_key:            string
-    link_item_id:               number
-    slide_type:                 string
-    slide_type_2:               string
 }
 
 export interface The10 {
@@ -2050,11 +2032,22 @@ export interface The10 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The10_Slide[]
     start_ts:              string
 }
 
-export interface The5 {
+export interface The10_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+}
+
+export interface The4 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2075,7 +2068,7 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The6 {
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2090,24 +2083,6 @@ export interface The6 {
     popup_frequency:       string
     popup_type:            string
     priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The9 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              number
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
