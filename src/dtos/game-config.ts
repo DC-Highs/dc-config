@@ -897,46 +897,47 @@ export interface Requirements {
 }
 
 export interface MatchReward {
-    x?:                         number
-    egg?:                       number
-    chest?:                     number
-    ep?:                        number
-    f?:                         number
-    trade_tickets?:             TradeTicket[]
-    en_runner?:                 number
-    c?:                         number
-    seeds?:                     Seed[]
-    "rank_up_coin.mythical"?:   number
-    rarity_seeds?:              RewardRaritySeed[]
-    skin?:                      number
-    b?:                         number[] | number
-    moves?:                     number
-    g?:                         number
-    "rank_up_coin.heroic"?:     number
-    n_token?:                   number
-    "album_pack.m"?:            number
-    pu_token?:                  number
-    "album_pack.l"?:            number
-    li_token?:                  number
-    "album_pack.xl"?:           number
-    "album_pack_aces.1"?:       number
-    "album_pack_aces.3"?:       number
-    "album_pack.s"?:            number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.4"?:       number
-    d_token?:                   number
-    wd_token?:                  number
-    l_token?:                   number
-    f_token?:                   number
-    w_token?:                   number
-    "album_pack_aces.generic"?: number
-    "pet_food_pack.s"?:         number
-    "pet_food_pack.m"?:         number
-    p_token?:                   number
-    pr_token?:                  number
-    gacha_event_tickets?:       number
-    i_token?:                   number
-    el_token?:                  number
+    x?:                           number
+    egg?:                         number
+    chest?:                       number
+    ep?:                          number
+    f?:                           number
+    trade_tickets?:               TradeTicket[]
+    en_runner?:                   number
+    c?:                           number
+    seeds?:                       Seed[]
+    "rank_up_coin.mythical"?:     number
+    rarity_seeds?:                RewardRaritySeed[]
+    skin?:                        number
+    b?:                           number[] | number
+    moves?:                       number
+    g?:                           number
+    "rank_up_coin.heroic"?:       number
+    n_token?:                     number
+    "album_pack.m"?:              number
+    pu_token?:                    number
+    "album_pack.l"?:              number
+    li_token?:                    number
+    "album_pack.xl"?:             number
+    "album_pack_aces.1"?:         number
+    "album_pack_aces.3"?:         number
+    "album_pack.s"?:              number
+    "album_pack_aces.2"?:         number
+    "album_pack_aces.4"?:         number
+    d_token?:                     number
+    wd_token?:                    number
+    l_token?:                     number
+    f_token?:                     number
+    w_token?:                     number
+    "album_pack_aces.generic"?:   number
+    "pet_food_pack.s"?:           number
+    "pet_food_pack.m"?:           number
+    p_token?:                     number
+    pr_token?:                    number
+    gacha_event_tickets?:         number
+    i_token?:                     number
+    el_token?:                    number
+    "permanent_gacha.legendary"?: number
 }
 
 export interface DragonTournamentsReward {
@@ -946,45 +947,46 @@ export interface DragonTournamentsReward {
 }
 
 export interface IndigoReward {
-    x?:                         number
-    egg?:                       number
-    chest?:                     number
-    ep?:                        number
-    f?:                         number
-    c?:                         number
-    n_token?:                   number
-    rarity_seeds?:              RewardRaritySeed[]
-    pu_token?:                  number
-    moves?:                     number
-    li_token?:                  number
-    "rank_up_coin.heroic"?:     number
-    seeds?:                     Seed[]
-    skin?:                      number
-    "rank_up_coin.mythical"?:   number
-    "album_pack.s"?:            number
-    "album_pack.m"?:            number
-    "album_pack.xl"?:           number
-    "album_pack.l"?:            number
-    trade_tickets?:             TradeTicket[]
-    "album_pack_aces.4"?:       number
-    "album_pack_aces.2"?:       number
-    "album_pack_aces.1"?:       number
-    "album_pack_aces.3"?:       number
-    en_runner?:                 number
-    d_token?:                   number
-    b?:                         number[]
-    wd_token?:                  number
-    l_token?:                   number
-    f_token?:                   number
-    w_token?:                   number
-    "album_pack_aces.generic"?: number
-    "pet_food_pack.s"?:         number
-    "pet_food_pack.m"?:         number
-    p_token?:                   number
-    pr_token?:                  number
-    gacha_event_tickets?:       number
-    i_token?:                   number
-    el_token?:                  number
+    x?:                           number
+    egg?:                         number
+    chest?:                       number
+    ep?:                          number
+    f?:                           number
+    c?:                           number
+    n_token?:                     number
+    rarity_seeds?:                RewardRaritySeed[]
+    pu_token?:                    number
+    moves?:                       number
+    li_token?:                    number
+    "rank_up_coin.heroic"?:       number
+    seeds?:                       Seed[]
+    skin?:                        number
+    "rank_up_coin.mythical"?:     number
+    "album_pack.s"?:              number
+    "album_pack.m"?:              number
+    "album_pack.xl"?:             number
+    "album_pack.l"?:              number
+    trade_tickets?:               TradeTicket[]
+    "album_pack_aces.4"?:         number
+    "album_pack_aces.2"?:         number
+    "album_pack_aces.1"?:         number
+    "album_pack_aces.3"?:         number
+    en_runner?:                   number
+    d_token?:                     number
+    b?:                           number[]
+    wd_token?:                    number
+    l_token?:                     number
+    f_token?:                     number
+    w_token?:                     number
+    "album_pack_aces.generic"?:   number
+    "pet_food_pack.s"?:           number
+    "pet_food_pack.m"?:           number
+    p_token?:                     number
+    pr_token?:                    number
+    gacha_event_tickets?:         number
+    i_token?:                     number
+    el_token?:                    number
+    "permanent_gacha.legendary"?: number
 }
 
 export interface Tournament {
@@ -1310,7 +1312,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_mi_norsegods"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_mi_norsegods" | "bg_battle_background_mi_halloween25"
 
 export interface EnemyElement {
     id:                 number
@@ -1898,6 +1900,8 @@ export interface NodeReward {
     "album_pack_aces.generic"?:   number
     "album_pack_aces.2"?:         number
     "album_pack_aces.4"?:         number
+    "album_pack.xl"?:             number
+    "permanent_gacha.heroic"?:    number
 }
 
 export interface Path {
@@ -1923,17 +1927,12 @@ export interface News {
     "0":    The0
     "1":    The1
     "2":    The2
-    "3":    The10
-    "4":    The10
-    "5":    The10
+    "3":    The3
+    "4":    The4
+    "5":    The5
     "6":    The6
-    "7":    The7
-    "8":    The10
-    "9":    The10
-    "10":   The10
-    "11":   The10
-    "12":   The12
-    "13":   The13
+    "7":    The5
+    "8":    The8
     canvas: Canva[]
 }
 
@@ -1941,7 +1940,6 @@ export interface The0 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
     hud_button:            The0_HudButton
     id:                    number
@@ -1953,9 +1951,8 @@ export interface The0 {
 }
 
 export interface The0_HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
+    file:  string
+    title: string
 }
 
 export interface The0_Slide {
@@ -1967,45 +1964,38 @@ export interface The0_Slide {
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    times_to_show?:             number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The1 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    direct_to_shop:        number
     end_ts:                string
+    filter_category:       null
     hud_button:            The1_HudButton
     id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
     min_level:             number
+    popup_frequency:       string
+    popup_is_critical:     number
     popup_type:            string
+    priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
 export interface The1_HudButton {
-    file:  string
-    title: string
+    file:            string
+    title:           string
+    viral_icon_tier: number
 }
 
-export interface The10 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
-}
-
-export interface The10_Slide {
+export interface The1_Slide {
     content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
@@ -2021,18 +2011,16 @@ export interface MultipleButton {
     animationPlace:     AnimationPlace
     forceClose:         boolean
     glint:              boolean
-    key:                Key
+    key:                string
     link:               string
-    linkItemId?:        number
     normalizedPosition: NormalizedPosition
     size:               SizeClass
-    spineAsset?:        SpineAsset
     style:              Style
+    spineAsset?:        SpineAsset
+    linkItemId?:        number | string
 }
 
 export type AnimationPlace = "Foreground"
-
-export type Key = "" | "tid_news_titan_collection_teaser_button" | "tid_news_viptiers_button" | "tid_helpshift_faq_title"
 
 export interface NormalizedPosition {
     x: number
@@ -2046,11 +2034,96 @@ export interface SizeClass {
 
 export type SpineAsset = "pointer_animation_v2" | ""
 
-export type Style = "Transparent" | "BlueLarge" | "YellowLarge"
+export type Style = "YellowLarge" | "BlueLarge" | "Transparent"
 
 export type SlideType = "FullImage"
 
-export interface The12 {
+export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The4 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number
+    show_on_startup:       number
+    slides:                The4_Slide[]
+    start_ts:              string
+}
+
+export interface The4_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    multiple_buttons:           MultipleButton[]
+    times_to_show:              number
+    type:                       SlideType
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              number | null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2061,12 +2134,12 @@ export interface The12 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The13 {
-    active_platforms:      The13_ActivePlatforms
+export interface The8 {
+    active_platforms:      The8_ActivePlatforms
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
@@ -2077,73 +2150,13 @@ export interface The13 {
     popup_is_critical:     boolean
     popup_type:            string
     show_on_startup:       number
-    slides:                The10_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The13_ActivePlatforms {
+export interface The8_ActivePlatforms {
     android: number[]
     ios:     number[]
-}
-
-export interface The2 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
-}
-
-export interface The6 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_is_critical:     number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
-}
-
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            The0_HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The10_Slide[]
-    start_ts:              string
 }
 
 export interface Canva {
@@ -2152,7 +2165,7 @@ export interface Canva {
     start_ts:        number
     end_ts:          number
     min_level:       number
-    slides:          The10_Slide[]
+    slides:          The1_Slide[]
     show_on_startup: number
 }
 
@@ -3050,8 +3063,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
