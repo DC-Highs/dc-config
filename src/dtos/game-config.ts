@@ -1090,12 +1090,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    Action[]
+    actions:    ActionElement[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface Action {
+export interface ActionElement {
     id:                number
     type:              string
     tid_name:          ActionTidName
@@ -1289,7 +1289,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1832,7 +1832,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        EnemyElement[]
     happy_hours:    unknown[]
-    actions:        Action[]
+    actions:        ActionElement[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -1941,9 +1941,8 @@ export interface The0 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
-    direct_to_shop:        number
     end_ts:                string
-    hud_button:            HudButton
+    hud_button:            The0_HudButton
     id:                    number
     min_level:             number
     popup_type:            string
@@ -1952,23 +1951,20 @@ export interface The0 {
     start_ts:              string
 }
 
-export interface HudButton {
-    file:            string
-    title:           string
-    viral_icon_tier: number
+export interface The0_HudButton {
+    file:  string
+    title: string
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer?:                     string
-    link_item_id?:              number
+    timer:                      string
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -1978,7 +1974,7 @@ export interface The1 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -1990,6 +1986,12 @@ export interface The1 {
     show_on_startup:       number
     slides:                The1_Slide[]
     start_ts:              string
+}
+
+export interface The1_HudButton {
+    file:            string
+    title:           string
+    viral_icon_tier: number
 }
 
 export interface The1_Slide {
@@ -2040,7 +2042,7 @@ export interface The2 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2060,7 +2062,7 @@ export interface The3 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2079,7 +2081,7 @@ export interface The4 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2088,8 +2090,20 @@ export interface The4 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The4_Slide[]
     start_ts:              string
+}
+
+export interface The4_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    link_item_id:               number
+    slide_type:                 string
+    slide_type_2:               string
 }
 
 export interface The5 {
@@ -2175,14 +2189,13 @@ export interface The9_ActivePlatforms {
 }
 
 export interface Canva {
-    id:              number
-    assets_name:     string
-    start_ts:        number | string
-    end_ts:          number | string
-    min_level:       number
-    slides:          CanvaSlide[]
-    show_on_startup: number
-    priority?:       string
+    id:               number
+    assets_name:      string
+    start_ts:         number | string
+    end_ts:           number | string
+    min_level?:       number
+    slides:           CanvaSlide[]
+    show_on_startup?: number
 }
 
 export interface CanvaSlide {
@@ -2202,17 +2215,21 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:     number
-    rotation:   number
-    stroke:     string
-    text_color: string
-    text_key:   string
-    text_size:  number
-    timer:      number
-    type:       string
-    width:      number
-    x:          number
-    y:          number
+    action:   ContentAction
+    height:   number
+    rotation: number
+    style:    string
+    text_key: string
+    type:     string
+    width:    number
+    x:        number
+    y:        number
+}
+
+export interface ContentAction {
+    itemId:        string
+    storeCategory: number
+    type:          string
 }
 
 export interface Perks {
@@ -2909,7 +2926,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
 }
 
 export interface Floor {
