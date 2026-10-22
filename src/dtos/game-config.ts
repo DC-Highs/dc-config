@@ -1090,12 +1090,12 @@ export interface FogIsland {
     squares:    FogIslandSquare[]
     currencies: Currency[]
     rewards:    FogIslandReward[]
-    actions:    Action[]
+    actions:    ActionElement[]
     hints:      Hint[]
     parameters: FogIslandParameter[]
 }
 
-export interface Action {
+export interface ActionElement {
     id:                number
     type:              ActionType
     tid_name:          ActionTidName
@@ -1291,7 +1291,7 @@ export interface GridIsland {
     encounters:  Encounter[]
     enemies:     EnemyElement[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
     parameters:  FogIslandParameter[]
 }
 
@@ -1395,7 +1395,7 @@ export type SizeEnum = "Default" | "FullscreenOverlay"
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         ContentLocalizedKey
+    content_localized_key?:         PurpleContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1408,7 +1408,7 @@ export interface HelpViewSlide {
 
 export type AnimationNameEnum = "anim1"
 
-export type ContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
+export type PurpleContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
 
 export interface HeroicRaces {
     islands:        HeroicRacesIsland[]
@@ -1834,7 +1834,7 @@ export interface MazeIsland {
     encounters:     Encounter[]
     enemies:        EnemyElement[]
     happy_hours:    unknown[]
-    actions:        Action[]
+    actions:        ActionElement[]
     clouds:         Cloud[]
     currencies:     Currency[]
     parameters:     FogIslandParameter[]
@@ -1933,9 +1933,9 @@ export interface News {
     "4":    The4
     "5":    The5
     "6":    The6
-    "7":    The5
-    "8":    The6
-    "9":    The9
+    "7":    The6
+    "8":    The5
+    "9":    The6
     canvas: Canva[]
 }
 
@@ -1968,7 +1968,7 @@ export interface The0_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show?:             number
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -1999,7 +1999,7 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key?:     string
+    content_localized_key:      FluffyContentLocalizedKey
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2008,6 +2008,8 @@ export interface The1_Slide {
     times_to_show:              number
     type:                       SlideType
 }
+
+export type FluffyContentLocalizedKey = "" | "tid_news_rhinodillo_desc" | "tid_news_flyingbroomsticks_desc"
 
 export interface MultipleButton {
     animation:          AnimationNameEnum
@@ -2143,29 +2145,52 @@ export interface The6 {
     start_ts:              string
 }
 
-export interface The9 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The1_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
+export interface Canva {
+    id:               number
+    assets_name:      string
+    start_ts:         number | string
+    end_ts:           number | string
+    min_level?:       number
+    slides:           CanvaSlide[]
+    show_on_startup?: number
 }
 
-export interface Canva {
-    id:              number
-    assets_name:     string
-    start_ts:        number
-    end_ts:          number
-    min_level:       number
-    slides:          The1_Slide[]
-    show_on_startup: number
+export interface CanvaSlide {
+    custom_title_localized_key?: string
+    header_localized_key?:       string
+    image_url?:                  string
+    times_to_show?:              number
+    type?:                       SlideType
+    multiple_buttons?:           MultipleButton[]
+    bg?:                         string
+    content?:                    Content[]
+    edit_mode?:                  number
+    id?:                         number
+    title_key?:                  string
+    viral_icon_key?:             string
+    viral_icon_timer?:           string
+}
+
+export interface Content {
+    height:      number
+    rotation:    number
+    stroke?:     string
+    text_color?: string
+    text_key:    string
+    text_size?:  number
+    timer?:      number
+    type:        string
+    width:       number
+    x:           number
+    y:           number
+    action?:     ContentAction
+    style?:      string
+}
+
+export interface ContentAction {
+    itemId:        string
+    storeCategory: number
+    type:          string
 }
 
 export interface Perks {
@@ -2862,7 +2887,7 @@ export interface TowerIsland {
     happy_hours: HappyHour[]
     parameters:  FogIslandParameter[]
     currencies:  Currency[]
-    actions:     Action[]
+    actions:     ActionElement[]
 }
 
 export interface Floor {
@@ -3063,8 +3088,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
