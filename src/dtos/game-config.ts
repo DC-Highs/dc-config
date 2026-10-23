@@ -44,6 +44,7 @@ export interface GameDataConfig {
     dragon_mastery:       DragonMastery
     runner_island:        RunnerIsland
     perks:                Perks
+    unlock_system:        UnlockSystem
 }
 
 export interface AssetVersioning {
@@ -151,10 +152,10 @@ export interface DiscountUid {
 
 export interface IapEliteDiscountUidAvailability {
     from: string
-    dur:  Dur
+    dur:  PurpleDur
 }
 
-export type Dur = "7d" | "10d" | "14d" | "15d" | "28d" | "29d" | "42d"
+export type PurpleDur = "7d" | "10d" | "14d" | "15d" | "28d" | "29d" | "42d"
 
 export type IapEliteDiscountUidIap = "elite_pass_promo_31_99" | "elite_pass_59_99" | "blackfriday_31_99" | "elite_upgrade_promo_23_99" | "special_ebp_upgrade_discount_39_99" | "blackfriday_21_99" | "battle_pass_19_99" | "battle_pass_7_99"
 
@@ -184,7 +185,7 @@ export interface Rules {
     rarity?:           Rarity
 }
 
-export type ElementType = "w" | "e" | "f" | "el" | "m" | "p" | "i" | "d" | "wd" | "li" | "wr" | "pr" | "l" | "pu" | "bt" | "so" | "mg" | "ch" | "hp" | "dr" | "ti" | "-" | "*" | "SMALL" | "MEDIUM" | "LARGE" | "SUPER" | "n" | "ph"
+export type ElementType = "e" | "w" | "f" | "el" | "m" | "p" | "i" | "d" | "wd" | "li" | "wr" | "l" | "ti" | "pu" | "mg" | "hp" | "pr" | "ch" | "bt" | "dr" | "so" | "an" | "-" | "*" | "SMALL" | "MEDIUM" | "LARGE" | "SUPER" | "n" | "ph"
 
 export type Rarity = "C" | "R" | "V" | "E" | "L" | "H" | "M"
 
@@ -598,7 +599,7 @@ export interface Dragon {
     group_type:                   DragonGroupType
     order:                        number
     level:                        number
-    attributes:                   AttributeElement[]
+    attributes:                   ElementType[]
     production_per_hour:          ProductionPerHour
     summon_enabled:               number
     summon_min_level:             number
@@ -622,8 +623,6 @@ export interface Dragon {
     description:                  string
     description_tid:              string
 }
-
-export type AttributeElement = "an" | "bt" | "e" | "mg" | "w" | "ch" | "p" | "f" | "el" | "m" | "i" | "li" | "d" | "hp" | "dr" | "so"
 
 export type DragonGroupType = "DWDRAGON"
 
@@ -812,13 +811,13 @@ export interface CostElement {
 export interface ItemsUnitsAttributeModifier {
     id:               number
     behaviour:        Behaviour
-    attribute:        ItemsUnitsAttributeModifierAttribute
+    attribute:        Attribute
     value:            number[] | number
     only_if_equipped: boolean
     index?:           number
 }
 
-export type ItemsUnitsAttributeModifierAttribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
+export type Attribute = "attacks" | "base_attack" | "trainable_attacks" | "base_life" | "passive_skills" | "post_skills" | "speed" | "background_vfx" | "foreground_vfx"
 
 export type Behaviour = "REPLACE" | "REPLACE_BY_INDEX" | "MULTIPLY"
 
@@ -1314,7 +1313,7 @@ export interface Encounter {
     fight_background_id:     FightBackgroundID
 }
 
-export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_hr_halloween26" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_mi_norsegods" | "bg_battle_background_mi_halloween25"
+export type FightBackgroundID = "bg_battle_background_gi_treasurehunt" | "bg_battle_background_hr_medievalholidays" | "bg_battle_background_mr_108_mythical_gelbarrier" | "bg_battle_background_hr_clashofthenorth" | "bg_battle_background_mr_109_mythical_porpoise" | "bg_battle_background_mr_110_mythical_imperviousdiamond" | "bg_battle_background_hr_halloween26" | "bg_battle_background_mi_mystery_in_paradise" | "bg_battle_background_mi_dragonmysteries" | "bg_battle_background_mi_fall_from_grace" | "bg_battle_background_mi_norsegods" | "bg_battle_background_mi_halloween25"
 
 export interface EnemyElement {
     id:                 number
@@ -1933,9 +1932,11 @@ export interface News {
     "4":    The4
     "5":    The5
     "6":    The6
-    "7":    The6
-    "8":    The5
+    "7":    The10
+    "8":    The10
     "9":    The6
+    "10":   The10
+    "11":   The11
     canvas: Canva[]
 }
 
@@ -1959,16 +1960,17 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
     slide_type:                 string
     slide_type_2:               string
-    timer:                      string
-    times_to_show:              number
+    timer?:                     string
+    times_to_show?:             number
+    content_localized_key?:     string
+    header_localized_key?:      string
+    link_item_id?:              number
 }
 
 export interface The1 {
@@ -2021,8 +2023,8 @@ export interface MultipleButton {
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     style:              Style
-    spineAsset?:        SpineAsset
     linkItemId?:        number | string
+    spineAsset?:        SpineAsset
 }
 
 export type AnimationPlace = "Foreground"
@@ -2044,6 +2046,36 @@ export type SpineAsset = "pointer_animation_v2"
 export type Style = "YellowLarge" | "BlueLarge" | "Transparent"
 
 export type SlideType = "FullImage"
+
+export interface The10 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The11 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The1_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
 
 export interface The2 {
     active_platforms:      ValueClass
@@ -2091,6 +2123,26 @@ export interface The4 {
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -2098,11 +2150,11 @@ export interface The4 {
     popup_type:            string
     priority:              number
     show_on_startup:       number
-    slides:                The4_Slide[]
+    slides:                The5_Slide[]
     start_ts:              string
 }
 
-export interface The4_Slide {
+export interface The5_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2112,7 +2164,7 @@ export interface The4_Slide {
     type:                       SlideType
 }
 
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2130,21 +2182,6 @@ export interface The5 {
     start_ts:              string
 }
 
-export interface The6 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The1_Slide[]
-    start_ts:              string
-}
-
 export interface Canva {
     id:               number
     assets_name:      string
@@ -2153,6 +2190,7 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
+    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2172,19 +2210,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
+    action?:     ContentAction
     height:      number
     rotation:    number
-    stroke?:     string
-    text_color?: string
+    style?:      string
     text_key:    string
-    text_size?:  number
-    timer?:      number
     type:        string
     width:       number
     x:           number
     y:           number
-    action?:     ContentAction
-    style?:      string
+    stroke?:     string
+    text_color?: string
+    text_size?:  number
+    timer?:      number
 }
 
 export interface ContentAction {
@@ -3114,4 +3152,32 @@ export interface TreeOfLifeRecall {
     recall_seeds:     { [key: string]: number }[]
     multiplier_times: MultiplierTime[]
 }
+
+export interface UnlockSystem {
+    unlocks: Unlock[]
+}
+
+export interface Unlock {
+    id:                        string
+    enabled:                   boolean
+    availability?:             UnlockAvailability[]
+    player_segmentation:       number
+    user_level?:               number
+    obtain_currency?:          { [key: string]: number }[]
+    segmentation_operator?:    string
+    live_segmentation?:        string
+    player_segmentation_type?: string
+}
+
+export interface UnlockAvailability {
+    from:   string
+    to?:    string
+    dur?:   FluffyDur
+    cycle?: Cycle
+    until?: string
+}
+
+export type Cycle = "42d" | "1d"
+
+export type FluffyDur = "1d" | "1w" | "28d" | "7d" | "196d" | "8d" | "4d" | "10d" | "14d" | "180d" | "84d" | "3d"
 
