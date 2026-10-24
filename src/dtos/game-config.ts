@@ -1936,7 +1936,6 @@ export interface News {
     "8":    The10
     "9":    The6
     "10":   The10
-    "11":   The11
     canvas: Canva[]
 }
 
@@ -1960,7 +1959,9 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
+    content_localized_key:      string
     custom_title_localized_key: string
+    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -1968,8 +1969,6 @@ export interface The0_Slide {
     slide_type_2:               string
     timer?:                     string
     times_to_show?:             number
-    content_localized_key?:     string
-    header_localized_key?:      string
     link_item_id?:              number
 }
 
@@ -2059,21 +2058,6 @@ export interface The10 {
     popup_type:            string
     show_on_startup:       number
     slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The11 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The1_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
     start_ts:              string
 }
 
@@ -2190,7 +2174,6 @@ export interface Canva {
     min_level?:       number
     slides:           CanvaSlide[]
     show_on_startup?: number
-    priority?:        string
 }
 
 export interface CanvaSlide {
@@ -2210,19 +2193,19 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    action?:     ContentAction
     height:      number
     rotation:    number
-    style?:      string
+    stroke?:     string
+    text_color?: string
     text_key:    string
+    text_size?:  number
+    timer?:      number
     type:        string
     width:       number
     x:           number
     y:           number
-    stroke?:     string
-    text_color?: string
-    text_size?:  number
-    timer?:      number
+    action?:     ContentAction
+    style?:      string
 }
 
 export interface ContentAction {
