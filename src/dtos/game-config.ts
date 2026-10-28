@@ -1483,11 +1483,12 @@ export interface LapRewardValue {
 }
 
 export interface LimitedReward {
-    chest?:               number
-    "album_pack_aces.1"?: number
-    trade_tickets?:       TradeTicket[]
-    seeds?:               Seed[]
-    rarity_seeds?:        RewardRaritySeed[]
+    chest?:                      number
+    "album_pack_aces.1"?:        number
+    trade_tickets?:              TradeTicket[]
+    seeds?:                      Seed[]
+    rarity_seeds?:               RewardRaritySeed[]
+    "permanent_gacha.mythical"?: number
 }
 
 export interface LapRewardReward {
@@ -1929,11 +1930,14 @@ export interface News {
     "1":    The1
     "2":    The2
     "3":    The3
-    "4":    The4
+    "4":    The11
     "5":    The5
-    "6":    The5
-    "7":    The4
+    "6":    The6
+    "7":    The6
     "8":    The5
+    "9":    The6
+    "10":   The10
+    "11":   The11
     canvas: Canva[]
 }
 
@@ -1941,10 +1945,42 @@ export interface The0 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
+    end_ts:                string
+    hud_button:            The0_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
+    start_ts:              string
+}
+
+export interface The0_HudButton {
+    file:  string
+    title: string
+}
+
+export interface The0_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+    timer:                      string
+    times_to_show?:             number
+}
+
+export interface The1 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
     direct_to_shop:        number
     end_ts:                string
     filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
     label_text_tid:        null
     label_title_tid:       null
@@ -1954,17 +1990,17 @@ export interface The0 {
     popup_type:            string
     priority:              null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface HudButton {
+export interface The1_HudButton {
     file:            string
     title:           string
     viral_icon_tier: number
 }
 
-export interface The0_Slide {
+export interface The1_Slide {
     content_localized_key?:     FluffyContentLocalizedKey
     custom_title_localized_key: string
     forceClose?:                boolean
@@ -1987,8 +2023,8 @@ export interface MultipleButton {
     normalizedPosition: NormalizedPosition
     size:               SizeClass
     style:              Style
-    spineAsset?:        SpineAsset
     linkItemId?:        number | string
+    spineAsset?:        SpineAsset
 }
 
 export type AnimationPlace = "Foreground"
@@ -2011,46 +2047,22 @@ export type Style = "YellowLarge" | "BlueLarge" | "Transparent"
 
 export type SlideType = "FullImage"
 
-export interface The1 {
+export interface The10 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
     direct_to_shop:        number
     end_ts:                string
-    filter_category:       null
-    hud_button:            HudButton
+    hud_button:            The1_HudButton
     id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
     min_level:             number
-    popup_frequency:       string
     popup_type:            string
-    priority:              null
     show_on_startup:       number
     slides:                The0_Slide[]
     start_ts:              string
 }
 
-export interface The2 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    hud_button:            HudButton
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              null
-    show_on_startup:       number
-    slides:                The0_Slide[]
-    start_ts:              string
-}
-
-export interface The3 {
+export interface The11 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2064,11 +2076,11 @@ export interface The3 {
     popup_type:            string
     priority:              number
     show_on_startup:       number
-    slides:                The3_Slide[]
+    slides:                The11_Slide[]
     start_ts:              string
 }
 
-export interface The3_Slide {
+export interface The11_Slide {
     content_localized_key:      string
     custom_title_localized_key: string
     header_localized_key:       string
@@ -2078,7 +2090,46 @@ export interface The3_Slide {
     type:                       SlideType
 }
 
-export interface The4 {
+export interface The2 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_frequency:       string
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The3 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    filter_category:       null
+    hud_button:            The1_HudButton
+    id:                    number
+    label_text_tid:        null
+    label_title_tid:       null
+    min_level:             number
+    popup_type:            string
+    priority:              null
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2092,11 +2143,11 @@ export interface The4 {
     popup_type:            string
     priority:              number | null
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
-export interface The5 {
+export interface The6 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -2107,7 +2158,7 @@ export interface The5 {
     popup_frequency:       string
     popup_type:            string
     show_on_startup:       number
-    slides:                The0_Slide[]
+    slides:                The1_Slide[]
     start_ts:              string
 }
 
@@ -2117,7 +2168,7 @@ export interface Canva {
     start_ts:        number
     end_ts:          number
     min_level:       number
-    slides:          The0_Slide[]
+    slides:          The1_Slide[]
     show_on_startup: number
 }
 
@@ -3016,8 +3067,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
