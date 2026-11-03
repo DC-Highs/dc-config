@@ -1394,7 +1394,7 @@ export type SizeEnum = "Default" | "FullscreenOverlay"
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         PurpleContentLocalizedKey
+    content_localized_key?:         ContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1407,7 +1407,7 @@ export interface HelpViewSlide {
 
 export type AnimationNameEnum = "anim1"
 
-export type PurpleContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
+export type ContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
 
 export interface HeroicRaces {
     islands:        HeroicRacesIsland[]
@@ -1930,13 +1930,14 @@ export interface News {
     "1":    The1
     "2":    The2
     "3":    The3
-    "4":    The4
+    "4":    The10
     "5":    The5
     "6":    The5
-    "7":    The7
+    "7":    The5
     "8":    The5
-    "9":    The4
+    "9":    The10
     "10":   The10
+    "11":   The11
     canvas: Canva[]
 }
 
@@ -1960,9 +1961,7 @@ export interface The0_HudButton {
 }
 
 export interface The0_Slide {
-    content_localized_key:      string
     custom_title_localized_key: string
-    header_localized_key:       string
     image_url:                  string
     link:                       string
     link_button_key:            string
@@ -2000,17 +1999,15 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key?:     FluffyContentLocalizedKey
+    content_localized_key?:     string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
     image_url:                  string
-    multiple_buttons:           MultipleButton[]
+    multiple_buttons?:          MultipleButton[]
     times_to_show:              number
     type:                       SlideType
 }
-
-export type FluffyContentLocalizedKey = "" | "tid_news_rhinodillo_desc"
 
 export interface MultipleButton {
     animation:          AnimationNameEnum
@@ -2064,6 +2061,27 @@ export interface The10 {
     start_ts:              string
 }
 
+export interface The11 {
+    active_platforms:      The11_ActivePlatforms
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    id:                    number
+    min_level:             number
+    popup_frequency:       string
+    popup_is_critical:     boolean
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The11_ActivePlatforms {
+    android: number[]
+    ios:     number[]
+}
+
 export interface The2 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2103,34 +2121,6 @@ export interface The3 {
     start_ts:              string
 }
 
-export interface The4 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    filter_category:       null
-    id:                    number
-    label_text_tid:        null
-    label_title_tid:       null
-    min_level:             number
-    popup_type:            string
-    priority:              number
-    show_on_startup:       number
-    slides:                The4_Slide[]
-    start_ts:              string
-}
-
-export interface The4_Slide {
-    content_localized_key:      string
-    custom_title_localized_key: string
-    header_localized_key:       string
-    image_url:                  string
-    multiple_buttons:           MultipleButton[]
-    times_to_show:              number
-    type:                       SlideType
-}
-
 export interface The5 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
@@ -2143,21 +2133,6 @@ export interface The5 {
     popup_type:            string
     show_on_startup:       number
     slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The7 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    id:                    number
-    min_level:             number
-    popup_frequency:       string
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The4_Slide[]
     start_ts:              string
 }
 
@@ -2188,19 +2163,15 @@ export interface CanvaSlide {
 }
 
 export interface Content {
-    height:      number
-    rotation:    number
-    stroke?:     string
-    text_color?: string
-    text_key:    string
-    text_size?:  number
-    timer?:      number
-    type:        string
-    width:       number
-    x:           number
-    y:           number
-    action?:     ContentAction
-    style?:      string
+    action:   ContentAction
+    height:   number
+    rotation: number
+    style:    string
+    text_key: string
+    type:     string
+    width:    number
+    x:        number
+    y:        number
 }
 
 export interface ContentAction {
