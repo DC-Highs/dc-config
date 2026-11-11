@@ -1935,9 +1935,10 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The3
-    "6":    The6
-    "7":    The3
+    "5":    The5
+    "6":    The3
+    "7":    The7
+    "8":    The3
     canvas: Canva[]
 }
 
@@ -1979,7 +1980,7 @@ export interface The0_Slide {
     type:                       SlideType
 }
 
-export type FluffyContentLocalizedKey = "" | "tid_news_rhinodillo_desc"
+export type FluffyContentLocalizedKey = "" | "tid_news_rhinodillo_desc" | "tid_news_epic_legendary_dtv_desc"
 
 export interface MultipleButton {
     animation:          AnimationNameEnum
@@ -2094,7 +2095,34 @@ export interface The4_Slide {
     type:                       SlideType
 }
 
-export interface The6 {
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The5_Slide[]
+    start_ts:              string
+}
+
+export interface The5_Slide {
+    content_localized_key:      string
+    custom_title_localized_key: string
+    header_localized_key:       string
+    image_url:                  string
+    link:                       string
+    link_button_key:            string
+    slide_type:                 string
+    slide_type_2:               string
+    timer:                      string
+}
+
+export interface The7 {
     active_platforms:      ValueClass
     allow_island_tutorial: number
     assets_name:           string
@@ -3015,8 +3043,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
