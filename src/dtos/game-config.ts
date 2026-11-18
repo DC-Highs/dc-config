@@ -82,7 +82,7 @@ export interface ConfigBattlePass {
 
 export interface BattlePassElement {
     id:                                                        number
-    type:                                                      TypeElement
+    type:                                                      ValueElement
     availability:                                              BattlePassAvailability[]
     nodes:                                                     number[]
     extra_node:                                                number
@@ -169,7 +169,7 @@ export type IconID = "icon_1" | "icon_2" | "icon_3" | "icon_4" | "icon_5" | "ico
 
 export type BattlePassSoundTag = "MYSTERIOUS" | "HOLY"
 
-export type TypeElement = "global" | "ngu"
+export type ValueElement = "global" | "ngu"
 
 export interface CollectibleAction {
     id:     number
@@ -228,7 +228,7 @@ export interface BattlePassNode {
 export interface BattlePassParameter {
     id:    number
     name:  string
-    value: TypeElement[] | boolean | ValueClass | number | string
+    value: ValueElement[] | boolean | ValueClass | number | string
 }
 
 export interface ValueClass {
@@ -1732,7 +1732,7 @@ export interface Properties {
     ft_flying?:         number
 }
 
-export type Tag = "VIP" | "Family" | "Youtuber" | "hasSkill" | "Mythical" | "Titan" | "Vampire" | "TitanVamp" | "Divinepass" | "Karma" | "Dual" | "TWD" | "Eternal" | "Plasma" | "Berserker" | "Spikes" | "Strategist" | "CritCrew" | "Evader" | "Critcrew" | "Silencer" | "Originals" | "Armor" | "Apocalypse" | "Doom" | "Astro" | "Apex" | "Void" | "Stained" | "Hypno"
+export type Tag = "VIP" | "Family" | "Youtuber" | "hasSkill" | "Mythical" | "Titan" | "Vampire" | "TitanVamp" | "Divinepass" | "Karma" | "Dual" | "TWD" | "Eternal" | "Plasma" | "Berserker" | "Spikes" | "Strategist" | "CritCrew" | "Evader" | "Critcrew" | "Silencer" | "Originals" | "Armor" | "Apocalypse" | "Doom" | "Astro" | "Apex" | "Void" | "Stained" | "Hypno" | "Aegis"
 
 export type ItemType = "b" | "l" | "u"
 
@@ -1935,10 +1935,11 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The4
-    "6":    The3
+    "5":    The5
+    "6":    The4
     "7":    The3
     "8":    The3
+    "9":    The3
     canvas: Canva[]
 }
 
@@ -1971,7 +1972,7 @@ export interface The0_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show:              number
+    times_to_show?:             number
 }
 
 export interface The1 {
@@ -2097,6 +2098,21 @@ export interface The4 {
     priority:              number
     show_on_startup:       number
     slides:                The1_Slide[]
+    start_ts:              string
+}
+
+export interface The5 {
+    active_platforms:      ValueClass
+    allow_island_tutorial: number
+    assets_name:           string
+    direct_to_shop:        number
+    end_ts:                string
+    hud_button:            The1_HudButton
+    id:                    number
+    min_level:             number
+    popup_type:            string
+    show_on_startup:       number
+    slides:                The0_Slide[]
     start_ts:              string
 }
 
@@ -2534,7 +2550,7 @@ export type AttackType = "physical" | "fire" | "plant" | "earth" | "water" | "ic
 
 export interface Aura {
     id:                      number
-    type:                    AuraType
+    type:                    DestroySkillElement
     parameters:              AuraParameters
     stacks:                  number
     active_turns:            number
@@ -2570,7 +2586,7 @@ export interface DeployTextColor {
 
 export type Level1_EffectName = "tid_crit_effect_name" | "tid_crit_effect_damage_name"
 
-export type AuraType = "BUNKER" | "IMPALER" | "EVASION" | "CRITICAL_CHANCE"
+export type DestroySkillElement = "BUNKER" | "IMPALER" | "EVASION" | "CRITICAL_CHANCE" | "ARMOR" | "SHIELD" | "CRITICAL" | "CHANGE_STATS_ON_KILL"
 
 export interface Effect {
     id:                      number
@@ -2642,31 +2658,39 @@ export interface EffectParameters {
     armorMultiplier?:              number
     carryDamage?:                  boolean
     avoidSkills?:                  AvoidSkill[]
-    destroySkills?:                AvoidSkill[]
+    destroySkills?:                DestroySkillElement[]
     element?:                      ElementType
     giveToDragons?:                GiveToDragons
     canReceiveElementalDamage?:    boolean
     canReceiveCriticals?:          boolean
     spreadOnDeathChance?:          number
-    mode?:                         string
+    mode?:                         Mode
     tickMultiplier?:               number
     bypassList?:                   AvoidSkill[]
-    stackingMode?:                 string
+    stackingMode?:                 StackingMode
     lives?:                        number
     health_multiplier?:            number
     attack_multiplier?:            number
-    calloutTid?:                   string
+    calloutTid?:                   CalloutTid
     duration?:                     number
     missTid?:                      string
     procChance?:                   number
     vfxAttachedToTarget?:          string
+    maxEffectsRemoved?:            MaxEffectsRemoved
+    excludedEffects?:              DestroySkillElement[]
+    fg_vfx?:                       FgVfx
+    bg_vfx?:                       BgVfx
 }
 
 export type AvoidSkill = "VENGEFUL" | "EVASION" | "SHIELD" | "BUNKER" | "ARMOR"
 
 export type BenchTargetMode = "sequential"
 
+export type BgVfx = "vfx_cleanse_bg"
+
 export type BgVfxNodeName = "bg_berserk_vortex"
+
+export type CalloutTid = "tid_minbreak" | "tid_cleansed"
 
 export type CounterAttackEffectName = "plasma_skill_impact"
 
@@ -2678,13 +2702,21 @@ export type PurpleEffectName = "plasma_skill_main" | "tid_crit_effect_name" | "t
 
 export type EffectTid = "tid_skill_description_250_battlefield"
 
+export type FgVfx = "vfx_cleanse"
+
 export type FgVfxNodeName = "fg_berserk_vortex"
 
 export type FgVfxScreenEffectname = "megacrit_speedlines"
 
 export type GiveToDragons = "any" | "alive"
 
+export type MaxEffectsRemoved = "ALL"
+
+export type Mode = "Damage" | "Heal"
+
 export type PlayerEffectName = "emergency_damage"
+
+export type StackingMode = "ResetDuration"
 
 export type TidDamageMultiplier = "DAMAGE INCREASED!!!"
 
@@ -2781,7 +2813,7 @@ export interface Post {
     skill_id:     number
 }
 
-export type Name = "On Kill Buff" | "Soul extraction" | "Soul extraction Skin Mindbreak"
+export type Name = "On Kill Buff" | "Soul extraction" | "Soul extraction Skin Mindbreak" | "Aegis Kheiron Dragon - Team Cleanse on Kill"
 
 export interface Skill {
     id:              number
@@ -2931,7 +2963,7 @@ export interface TreasureItem {
     name_key:         string
     image:            string
     price:            number
-    type:             string
+    type:             TreasureItemType
     display_order:    number
     badge:            number
     use_formula:      number
@@ -2942,7 +2974,9 @@ export interface TreasureItem {
     badgeText?:       string
 }
 
-export type Feature = "packs_shop" | "missing_dragon_rescue"
+export type Feature = "packs_shop"
+
+export type TreasureItemType = "g" | "f" | "p"
 
 export interface TreeOfLife {
     parameters:             TreeOfLifeParameter[]
@@ -3041,8 +3075,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    rarity:                     Rarity
     max_rarity_seeds_per_grade: number[]
+    rarity:                     Rarity
 }
 
 export interface Visual {
