@@ -1396,7 +1396,7 @@ export type SizeEnum = "Default" | "FullscreenOverlay"
 
 export interface HelpViewSlide {
     header_localized_key?:          string
-    content_localized_key?:         PurpleContentLocalizedKey
+    content_localized_key?:         ContentLocalizedKey
     image_url?:                     string
     custom_title_localized_key?:    string
     slide_type:                     string
@@ -1409,7 +1409,7 @@ export interface HelpViewSlide {
 
 export type AnimationNameEnum = "anim1"
 
-export type PurpleContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
+export type ContentLocalizedKey = "" | "tid_piggy_bank_best_deal_message" | "tid_db_mastery_help_screen_1" | "tid_db_collections_help_screen_1" | "tid_db_collections_help_screen_2" | "tid_vip_tier_help_slide_1_content_{}" | "tid_vip_tier_help_slide_2_content_{}" | "tid_titans_help_slide_1_content_{}" | "tid_titans_help_slide_2_content_{}"
 
 export interface HeroicRaces {
     islands:        HeroicRacesIsland[]
@@ -1935,8 +1935,8 @@ export interface News {
     "2":    The2
     "3":    The3
     "4":    The4
-    "5":    The5
-    "6":    The4
+    "5":    The4
+    "6":    The3
     "7":    The3
     "8":    The3
     "9":    The3
@@ -1972,7 +1972,7 @@ export interface The0_Slide {
     slide_type:                 string
     slide_type_2:               string
     timer:                      string
-    times_to_show?:             number
+    times_to_show:              number
 }
 
 export interface The1 {
@@ -2003,7 +2003,7 @@ export interface The1_HudButton {
 }
 
 export interface The1_Slide {
-    content_localized_key:      FluffyContentLocalizedKey
+    content_localized_key:      string
     custom_title_localized_key: string
     forceClose?:                boolean
     header_localized_key:       string
@@ -2012,8 +2012,6 @@ export interface The1_Slide {
     times_to_show:              number
     type:                       SlideType
 }
-
-export type FluffyContentLocalizedKey = "" | "tid_news_mythicalmarathon_impreviousdiamond_desc" | "tid_news_coven’shatch_desc"
 
 export interface MultipleButton {
     animation:          AnimationNameEnum
@@ -2098,21 +2096,6 @@ export interface The4 {
     priority:              number
     show_on_startup:       number
     slides:                The1_Slide[]
-    start_ts:              string
-}
-
-export interface The5 {
-    active_platforms:      ValueClass
-    allow_island_tutorial: number
-    assets_name:           string
-    direct_to_shop:        number
-    end_ts:                string
-    hud_button:            The1_HudButton
-    id:                    number
-    min_level:             number
-    popup_type:            string
-    show_on_startup:       number
-    slides:                The0_Slide[]
     start_ts:              string
 }
 
@@ -3075,8 +3058,8 @@ export interface MultiplierTime {
 }
 
 export interface TreeOfLifePowerupRaritySeed {
-    max_rarity_seeds_per_grade: number[]
     rarity:                     Rarity
+    max_rarity_seeds_per_grade: number[]
 }
 
 export interface Visual {
@@ -3119,8 +3102,8 @@ export interface Unlock {
 }
 
 export interface UnlockAvailability {
-    from:   string
-    to?:    string
+    from:   number | string
+    to?:    number | string
     dur?:   FluffyDur
     cycle?: Cycle
     until?: string
